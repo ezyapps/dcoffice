@@ -4,16 +4,18 @@ import { FormsModule } from '@angular/forms';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { NavigationComponent } from './components/navigation/navigation.component';
+import { NavComponent } from './components/nav/nav.component';
 import { HomeComponent } from './components/home/home.component';
 import { LoginComponent } from './components/login/login.component';
 import { AuthService } from './_services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
+import { UserModule } from './modules/user/user.module';
+import { AlertifyService } from './_services/alertify.service';
 
 @NgModule({
   declarations: [
     AppComponent,
-    NavigationComponent,
+    NavComponent,
     HomeComponent,
     LoginComponent
   ],
@@ -21,10 +23,12 @@ import { HttpClientModule } from '@angular/common/http';
     BrowserModule,
     HttpClientModule,
     AppRoutingModule,
-    FormsModule
+    FormsModule,
+    UserModule
   ],
   providers: [
-    AuthService
+    AuthService,
+    AlertifyService
   ],
   bootstrap: [AppComponent]
 })
