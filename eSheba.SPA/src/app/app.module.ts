@@ -11,7 +11,13 @@ import { AuthService } from './_services/auth.service';
 import { HttpClientModule } from '@angular/common/http';
 import { UserModule } from './modules/user/user.module';
 import { AlertifyService } from './_services/alertify.service';
+import { BsDropdownModule } from 'ngx-bootstrap';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { JwtModule } from '@auth0/angular-jwt';
 
+export function tokenGetter() {
+  return this.localStorage.getItem('token');
+}
 @NgModule({
   declarations: [
     AppComponent,
@@ -24,7 +30,16 @@ import { AlertifyService } from './_services/alertify.service';
     HttpClientModule,
     AppRoutingModule,
     FormsModule,
-    UserModule
+    UserModule,
+    BrowserAnimationsModule,
+    BsDropdownModule.forRoot(),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter(),
+        whitelistedDomains: ['localhost:5000'],
+        blacklistedRoutes: ['localhost:5000/api/auth']
+      }
+    })
   ],
   providers: [
     AuthService,
