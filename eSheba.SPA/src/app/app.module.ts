@@ -16,7 +16,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtModule } from '@auth0/angular-jwt';
 
 export function tokenGetter() {
-  return this.localStorage.getItem('token');
+  return localStorage.getItem('token');
 }
 @NgModule({
   declarations: [
@@ -35,7 +35,7 @@ export function tokenGetter() {
     BsDropdownModule.forRoot(),
     JwtModule.forRoot({
       config: {
-        tokenGetter: tokenGetter(),
+        tokenGetter: tokenGetter,
         whitelistedDomains: ['localhost:5000'],
         blacklistedRoutes: ['localhost:5000/api/auth']
       }
