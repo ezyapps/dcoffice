@@ -24,6 +24,7 @@ namespace eSheba.API.Controllers
             _userRepo = userRepo;
         }
         [HttpGet]
+        [Route("all")]
         public async Task<IActionResult> GetAllUsers()
         {
             var users = await _userRepo.GetUsers();
