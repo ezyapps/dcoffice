@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { DesignationService } from 'src/app/_services/designation.service';
+import { Designation } from '../../models/designation';
 
 @Component({
   selector: 'app-designation',
@@ -6,10 +8,13 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./designation.component.css']
 })
 export class DesignationComponent implements OnInit {
-
-  constructor() { }
+  designations: Designation[];
+  constructor(private designService: DesignationService) { }
 
   ngOnInit() {
+    this.loadDesignations();
   }
-
+  loadDesignations() {
+    this.designService.getAll().subscribe(values => this.designations = values);
+  }
 }

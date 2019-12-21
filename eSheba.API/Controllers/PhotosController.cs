@@ -1,5 +1,5 @@
 using AutoMapper;
-using eSheba.API.Data;
+using eSheba.API.Data.Interfaces;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 

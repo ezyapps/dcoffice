@@ -10,9 +10,11 @@ import { User } from '../modules/user/models/user';
 })
 export class UserService {
   baseUrl = environment.apiUrl + 'users/';
-constructor(private http: HttpClient) { }
-getUsers(): Observable<User[]> {
-  return this.http.get<User[]>(this.baseUrl + 'all');
-}
-
+  constructor(private http: HttpClient) { }
+  getUsers(): Observable<User[]> {
+    return this.http.get<User[]>(this.baseUrl + 'all');
+  }
+  saveDesignation(model) {
+    return this.http.post(this.baseUrl + 'designations', model);
+  }
 }
