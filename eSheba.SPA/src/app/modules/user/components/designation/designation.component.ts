@@ -17,4 +17,5 @@ export class DesignationComponent implements OnInit {
   loadDesignations() {
     this.designService.getAll().subscribe(values => this.designations = values);
   }
+
 }

@@ -32,7 +32,8 @@ namespace eSheba.API.Controllers
             if(ModelState.IsValid){
                 await _repo.Add(model);
                 await _repo.SaveAll();
-                return StatusCode(201);
+                //return StatusCode(201);
+                return Ok(model);
             }else
             {
                 return BadRequest("Invalid Input");
