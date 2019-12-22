@@ -3,7 +3,7 @@ using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
 using System.Threading.Tasks;
-using eSheba.API.Data;
+using eSheba.API.Data.Interfaces;
 using eSheba.API.Dtos;
 using eSheba.API.Models;
 using Microsoft.AspNetCore.Mvc;

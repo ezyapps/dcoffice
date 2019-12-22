@@ -1,3 +1,10 @@
-<p>
-  user works!
-</p>
+<div class="row" style="margin: auto;">
+  <div class="col col-md-4 col-sm-1" *ngFor="let userType of userTypes">
+    <div class="card" >
+      <div class="card-body">
+        <h5 class="card-title">{{userType.typeName}}</h5>
+        <span>{{userType.count}}</span>
+      </div>
+    </div>
+  </div>
+</div>

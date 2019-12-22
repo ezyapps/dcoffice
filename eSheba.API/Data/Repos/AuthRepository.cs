@@ -1,10 +1,11 @@
 using System;
 using System.Linq;
 using System.Threading.Tasks;
+using eSheba.API.Data.Interfaces;
 using eSheba.API.Models;
 using Microsoft.EntityFrameworkCore;
 
-namespace eSheba.API.Data
+namespace eSheba.API.Data.Repos
 {
     public class AuthRepository : IAuthRepository
     {

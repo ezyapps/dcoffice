@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Security.Claims;
 using System.Threading.Tasks;
 using AutoMapper;
-using eSheba.API.Data;
+using eSheba.API.Data.Interfaces;
 using eSheba.API.Dtos;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -24,6 +24,7 @@ namespace eSheba.API.Controllers
             _userRepo = userRepo;
         }
         [HttpGet]
+        [Route("all")]
         public async Task<IActionResult> GetAllUsers()
         {
             var users = await _userRepo.GetUsers();

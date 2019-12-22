@@ -1,11 +1,11 @@
 using System;
 using System.Collections.Generic;
+using eSheba.API.Data;
 
 namespace eSheba.API.Models
 {
-    public class User
+    public class User: Entity
     {
-        public int Id { get; set; }
         public string Username { get; set; }
         public byte[] PasswordHash { get; set; }
         public byte[] PasswordSalt { get; set; }
@@ -15,11 +15,9 @@ namespace eSheba.API.Models
         public DateTime Created { get; set; }
         public DateTime LastActive { get; set; }
         public string Introduction { get; set; }
-        public string LookingFor { get; set; }
-        public string Interests { get; set; }
-        public string City { get; set; }
-        public string Country { get; set; }
         public ICollection<Photo> Photos { get; set; }
+        public ICollection<Role> Roles {get; set;}
+        public Designation Designation { get; set; }
 
     }
 }

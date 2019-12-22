@@ -20,6 +20,8 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Hosting;
 using Microsoft.Extensions.Logging;
 using Microsoft.IdentityModel.Tokens;
+using eSheba.API.Data.Interfaces;
+using eSheba.API.Data.Repos;
 
 namespace eSheba.API
 {
@@ -43,6 +45,7 @@ namespace eSheba.API
             services.AddTransient<Seed>();
             services.AddScoped<IAuthRepository, AuthRepository>();
             services.AddScoped<IUserRepo, UserRepo>();
+            services.AddScoped<IDesignationRepo, DesignationRepo>();
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(Options=>{
                 Options.TokenValidationParameters = new TokenValidationParameters{
@@ -57,7 +60,7 @@ namespace eSheba.API
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
-        public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
+        public void Configure(IApplicationBuilder app, IWebHostEnvironment env, Seed seeder)
         {
             if (env.IsDevelopment())
             {
@@ -80,7 +83,7 @@ namespace eSheba.API
             }
 
             //app.UseHttpsRedirection();
-            
+            seeder.SeedUser();
             app.UseRouting();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthentication();

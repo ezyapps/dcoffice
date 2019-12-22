@@ -1,7 +1,7 @@
 using System.Threading.Tasks;
 using eSheba.API.Models;
 
-namespace eSheba.API.Data
+namespace eSheba.API.Data.Interfaces
 {
     public interface IAuthRepository
     {
