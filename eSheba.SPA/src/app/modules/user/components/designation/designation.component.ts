@@ -9,10 +9,16 @@ import { Designation } from '../../models/designation';
 })
 export class DesignationComponent implements OnInit {
   designations: Designation[];
+  editDesignation: Designation;
+  editMode = false;
   constructor(private designService: DesignationService) { }
 
   ngOnInit() {
     this.loadDesignations();
+  }
+  showEditView(value) {
+    this.editMode = true;
+    this.editDesignation = value;
   }
   loadDesignations() {
     this.designService.getAll().subscribe(values => this.designations = values);

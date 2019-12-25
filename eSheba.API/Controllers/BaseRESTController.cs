@@ -1,37 +1,30 @@
 using System.Threading.Tasks;
 using AutoMapper;
+using eSheba.API.Data;
 using eSheba.API.Data.Interfaces;
-using eSheba.API.Models;
-using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;
 
 namespace eSheba.API.Controllers
 {
-    [Authorize]
-    [Route("api/[controller]")]
-    [ApiController]
-    public class DesignationController: BaseRESTController<Designation>
+    public class BaseRESTController<T>: ControllerBase where T: Entity
     {
-        //private readonly IDesignationRepo _repo;
-        //private readonly IMapper _mapper;
-        //private readonly IConfiguration _config;
-        public DesignationController(IDesignationRepo repo, IMapper mapper, IConfiguration config): base(repo,mapper,config)
+        private readonly IMapper _mapper;
+        private readonly IConfiguration _config;
+        private readonly IRepo<T> _repo;
+        public BaseRESTController(IRepo<T> repo, IMapper mapper, IConfiguration config)
         {
-            /*
             _config = config;
             _mapper = mapper;
             _repo = repo;
-            */
         }
-        /*
         [HttpGet]
         public async Task<IActionResult> GetAll() {
             var designs = await _repo.GetAll();
             return Ok(designs);
         }
         [HttpPost]
-        public async Task<IActionResult> Create(Designation model) {
+        public async Task<IActionResult> Create(T model) {
             if(ModelState.IsValid){
                 await _repo.Add(model);
                 await _repo.SaveAll();
@@ -43,18 +36,27 @@ namespace eSheba.API.Controllers
             }
             
         }
-
+        [HttpPut]
+        public async Task<IActionResult> Update(T model) {
+            if(ModelState.IsValid){
+                var entity = _repo.Edit(model);
+                if( entity != null ) {
+                    await _repo.SaveAll();
+                    return Ok(entity);
+                }
+            }
+            return BadRequest("Invalid Input");
+        }
         [HttpDelete]
         public async Task<IActionResult> Delete(int id) {
-            var designs = await _repo.Get(id);
-            if(designs != null) {
-                _repo.Delete(designs);
+            var model = await _repo.Get(id);
+            if(model != null) {
+                _repo.Delete(model);
                 await _repo.SaveAll();
             }                
             else 
-                return BadRequest("Sorry! No user found for the provided id.");
-            return Ok(designs);
+                return BadRequest("Sorry! No data found for the provided id.");
+            return Ok(model);
         }
-        */
     }
 }

@@ -9,7 +9,7 @@ import { map } from 'rxjs/operators';
   providedIn: 'root'
 })
 export class DesignationService {
-  baseUrl = environment.apiUrl + 'designation/';
+  baseUrl = environment.apiUrl + 'designation';
   constructor(private http: HttpClient) { }
   getAll(): Observable<Designation[]> {
     return this.http.get<Designation[]>(this.baseUrl);
@@ -26,6 +26,23 @@ export class DesignationService {
           }
         }
       )
+    );
+  }
+  delete(id: number) {
+    return this.http.delete(this.baseUrl + '?id=' + id).pipe(
+      map((response: any) => {
+        console.log(response);
+        return response;
+      })
+    );
+  }
+  edit(model) {
+    console.log(model);
+    return this.http.put(this.baseUrl, model).pipe(
+      map((response: any ) => {
+        console.log('Edit response: ' + response);
+        return response;
+      })
     );
   }
 }

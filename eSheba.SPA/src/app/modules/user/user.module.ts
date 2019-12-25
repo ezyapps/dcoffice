@@ -6,6 +6,8 @@ import { DesignationComponent } from './components/designation/designation.compo
 import { UserRoutingModule } from './user-routing.module';
 import { DesignationNewComponent } from './components/designation/designation-new/designation-new.component';
 import { FormsModule } from '@angular/forms';
+import { DesignationListItemComponent } from './components/designation/designation-list-item/designation-list-item.component';
+import { DesignationEditComponent } from './components/designation/designation-edit/designation-edit.component';
 
 @NgModule({
   imports: [
@@ -17,7 +19,9 @@ import { FormsModule } from '@angular/forms';
     UserComponent,
     UserListComponent,
     DesignationComponent,
-    DesignationNewComponent
+    DesignationNewComponent,
+    DesignationListItemComponent,
+    DesignationEditComponent
   ]
 })
 export class UserModule { }
