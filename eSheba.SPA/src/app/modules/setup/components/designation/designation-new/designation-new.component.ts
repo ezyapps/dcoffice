@@ -10,7 +10,8 @@ import { DesignationService } from 'src/app/_services/designation.service';
 export class DesignationNewComponent implements OnInit {
   @Output() disgnationCrated = new EventEmitter();
   model: any = {};
-  constructor(private designationService: DesignationService, private alertifyService: AlertifyService) { }
+  constructor(private designationService: DesignationService,
+              private alertifyService: AlertifyService) { }
 
   ngOnInit() {
   }

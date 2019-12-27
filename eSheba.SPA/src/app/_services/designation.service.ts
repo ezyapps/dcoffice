@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { environment } from 'src/environments/environment';
 import { HttpClient } from '@angular/common/http';
 import { Observable, pipe } from 'rxjs';
-import { Designation } from '../modules/user/models/designation';
+import { Designation } from '../modules/setup/models/designation';
 import { map } from 'rxjs/operators';
 
 @Injectable({

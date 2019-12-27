@@ -1,3 +1,10 @@
+<nav aria-label="breadcrumb">
+  <ol class="breadcrumb">
+    <li class="breadcrumb-item"><a [routerLink]="[ '/']">Home</a></li>
+    <li class="breadcrumb-item"><a [routerLink]="[ '/setup']">Setup</a></li>
+    <li class="breadcrumb-item active" aria-current="page">Designations</li>
+  </ol>
+</nav>
 <app-designation-new *ngIf="!editMode" (disgnationCrated)="loadDesignations()"></app-designation-new>
 <app-designation-edit *ngIf="editMode" [model]="editDesignation"
 (editingComplete)="editMode = !editMode"

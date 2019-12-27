@@ -14,6 +14,7 @@ import { AlertifyService } from './_services/alertify.service';
 import { BsDropdownModule } from 'ngx-bootstrap';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { JwtModule } from '@auth0/angular-jwt';
+import { SetupModule } from './modules/setup/setup.module';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -31,6 +32,7 @@ export function tokenGetter() {
     AppRoutingModule,
     FormsModule,
     UserModule,
+    SetupModule,
     BrowserAnimationsModule,
     BsDropdownModule.forRoot(),
     JwtModule.forRoot({
