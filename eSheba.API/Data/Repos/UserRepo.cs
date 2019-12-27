@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using eSheba.API.Data.Interfaces;
@@ -12,7 +13,7 @@ namespace eSheba.API.Data.Repos
         {
         }
 
-        public async Task<User> GetUser(int id)
+        public async Task<User> GetUser(Guid id)
         {
             var users = await _context.Users.Include(p=>p.Photos).FirstAsync( i => i.Id == id);
             return users;            

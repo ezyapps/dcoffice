@@ -32,7 +32,7 @@ namespace eSheba.API.Controllers
             return Ok(usersForSend);
         }
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetUser(int id)
+        public async Task<IActionResult> GetUser(Guid id)
         {
             var user = await _userRepo.GetUser(id);
             if (user == null)
@@ -41,8 +41,8 @@ namespace eSheba.API.Controllers
             return Ok(userToSend);
         }
         [HttpPut("{id}")]
-        public async Task<IActionResult> UpdateUser(int id, UserForUpdateDto userForDetailedDto){
-            if(id != int.Parse(User.FindFirst(ClaimTypes.NameIdentifier).Value)){
+        public async Task<IActionResult> UpdateUser(Guid id, UserForUpdateDto userForDetailedDto){
+            if(id != new Guid(User.FindFirst(ClaimTypes.NameIdentifier).Value)){
                 return Unauthorized();
             }
             var userFromRepo = await _userRepo.GetUser(id);

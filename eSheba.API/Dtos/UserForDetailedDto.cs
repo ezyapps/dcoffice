@@ -1,13 +1,29 @@
 using System;
 using System.Collections.Generic;
+using eSheba.API.Data;
 using eSheba.API.Models;
 
 namespace eSheba.API.Dtos
 {
-    public class UserForDetailedDto
+    public class UserForDetailedDto: Entity
     {
-        public int Id { get; set; }
-        public string Username { get; set; }
+        public UserForDetailedDto(string username, string gender, int age, string knownAs, DateTime created, DateTime lastActive, string introduction, string lookingFor, string interests, string city, string country, string photoUrl) 
+        {
+            this.Username = username;
+                this.Gender = gender;
+                this.Age = age;
+                this.KnownAs = knownAs;
+                this.Created = created;
+                this.LastActive = lastActive;
+                this.Introduction = introduction;
+                this.LookingFor = lookingFor;
+                this.Interests = interests;
+                this.City = city;
+                this.Country = country;
+                this.PhotoUrl = photoUrl;
+               
+        }
+                public string Username { get; set; }
         public string Gender { get; set; }
         public int Age { get; set; }
         public string KnownAs { get; set; }

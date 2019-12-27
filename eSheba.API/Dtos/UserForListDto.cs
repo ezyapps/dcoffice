@@ -1,10 +1,10 @@
 using System;
+using eSheba.API.Data;
 
 namespace eSheba.API.Dtos
 {
-    public class UserForListDto
+    public class UserForListDto: Entity
     {
-        public int Id { get; set; }
         public string Username { get; set; }
         public string Gender { get; set; }
         public int Age { get; set; }

@@ -1,3 +1,4 @@
+using System;
 using System.Threading.Tasks;
 using AutoMapper;
 using eSheba.API.Data;
@@ -48,7 +49,7 @@ namespace eSheba.API.Controllers
             return BadRequest("Invalid Input");
         }
         [HttpDelete]
-        public async Task<IActionResult> Delete(int id) {
+        public async Task<IActionResult> Delete(Guid id) {
             var model = await _repo.Get(id);
             if(model != null) {
                 _repo.Delete(model);
