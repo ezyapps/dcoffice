@@ -88,6 +88,13 @@ namespace eSheba.API
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthentication();
             app.UseAuthorization();
+            
+            // app.Use(async (context, next) => {
+            //     Console.Write(context);
+            //     await next();
+            //     //await context.Response.WriteAsync(context.Request.RouteValues.ToList().ToString());
+                
+            // });
 
             app.UseEndpoints(endpoints =>
             {

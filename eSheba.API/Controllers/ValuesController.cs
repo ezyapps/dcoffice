@@ -22,7 +22,8 @@ namespace eSheba.API.Controllers
         // GET api/values
         [AllowAnonymous]
         [HttpGet]
-        public async Task<IActionResult> GetValues()
+        //public async Task<IActionResult> GetValues()
+        public IActionResult GetValues()
         {
             //var values = await _context.Values.ToListAsync();
             return Ok(); //values
@@ -30,10 +31,11 @@ namespace eSheba.API.Controllers
 
         [AllowAnonymous]
         [HttpGet("{id}")]
-        public async Task<IActionResult> GetValue(int id)
+        //public async Task<IActionResult> GetValue(int id)
+        public IActionResult GetValue(int id)
         {
             //var value = await _context.Values.FirstOrDefaultAsync(x => x.Id == id);
-            return Ok(); //value
+            return Ok("This is from controller"); //value
         }
 
         // POST api/values
