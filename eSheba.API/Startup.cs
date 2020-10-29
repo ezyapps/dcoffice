@@ -43,9 +43,9 @@ namespace eSheba.API
             services.AddCors();
             services.AddAutoMapper(typeof(Startup));
             services.AddTransient<Seed>();
-            services.AddScoped<IAuthRepository, AuthRepository>();
-            services.AddScoped<IUserRepo, UserRepo>();
-            services.AddScoped<IDesignationRepo, DesignationRepo>();
+            
+            StartupRepo.LinkRepos(services);
+
             services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
             .AddJwtBearer(Options=>{
                 Options.TokenValidationParameters = new TokenValidationParameters{
@@ -88,6 +88,13 @@ namespace eSheba.API
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthentication();
             app.UseAuthorization();
+            
+            // app.Use(async (context, next) => {
+            //     Console.Write(context);
+            //     await next();
+            //     //await context.Response.WriteAsync(context.Request.RouteValues.ToList().ToString());
+                
+            // });
 
             app.UseEndpoints(endpoints =>
             {

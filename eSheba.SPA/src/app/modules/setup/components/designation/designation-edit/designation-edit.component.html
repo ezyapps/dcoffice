@@ -1,0 +1,20 @@
+<form #designationEditForm="ngForm" (ngSubmit)="editDesignation()">
+  <div class="row">
+    <div class="col-md-4"></div>
+    <div class="col-md-8">
+      <div class="input-group form-group">
+        <div class="input-form-prepend">
+          <span class="input-group-text form-control">Edit:</span>
+        </div>
+        <input type="text" name="title" class="form-control" placeholder="Title"
+           [(ngModel)]="model.title" required>
+        <button type="submit" [disabled]="!designationEditForm.valid" class="btn btn-primary">
+          <i class="far fa-save"></i></button>
+          <button type="button" class="btn" (click)="cancelEditing()">
+            <i class="fas fa-undo"></i></button>
+      </div>
+
+    </div>
+
+  </div>
+  </form>

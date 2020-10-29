@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using eSheba.API.Models;
 using Newtonsoft.Json;
@@ -18,6 +19,7 @@ namespace eSheba.API.Data
             {
                 byte[] passwordHash, passwordSalt;
                 CreatePasswordHash("123456", out passwordHash, out passwordSalt);
+                user.Id = new Guid();
                 user.PasswordHash = passwordHash;
                 user.PasswordSalt = passwordSalt;
                 user.Username = user.Username.ToLower();

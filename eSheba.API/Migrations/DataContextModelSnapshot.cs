@@ -19,9 +19,9 @@ namespace eSheba.API.Migrations
 
             modelBuilder.Entity("eSheba.API.Models.Designation", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Title")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -33,9 +33,9 @@ namespace eSheba.API.Migrations
 
             modelBuilder.Entity("eSheba.API.Models.Photo", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("char(36)");
 
                     b.Property<DateTime>("DateAdded")
                         .HasColumnType("datetime(6)");
@@ -49,8 +49,8 @@ namespace eSheba.API.Migrations
                     b.Property<string>("Url")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int>("UserId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("char(36)");
 
                     b.HasKey("Id");
 
@@ -61,12 +61,12 @@ namespace eSheba.API.Migrations
 
             modelBuilder.Entity("eSheba.API.Models.Right", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("char(36)");
 
-                    b.Property<int?>("CreatedById")
-                        .HasColumnType("int");
+                    b.Property<Guid>("CreatedById")
+                        .HasColumnType("char(36)");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime(6)");
@@ -77,26 +77,19 @@ namespace eSheba.API.Migrations
                     b.Property<string>("RightName")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
 
-                    b.Property<int?>("RoleId")
-                        .HasColumnType("int");
-
                     b.HasKey("Id");
-
-                    b.HasIndex("CreatedById");
-
-                    b.HasIndex("RoleId");
 
                     b.ToTable("Rights");
                 });
 
             modelBuilder.Entity("eSheba.API.Models.Role", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("char(36)");
 
-                    b.Property<int?>("CreatedById")
-                        .HasColumnType("int");
+                    b.Property<Guid>("CreatedById")
+                        .HasColumnType("char(36)");
 
                     b.Property<DateTime>("DateCreated")
                         .HasColumnType("datetime(6)");
@@ -106,16 +99,31 @@ namespace eSheba.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("CreatedById");
-
                     b.ToTable("Roles");
+                });
+
+            modelBuilder.Entity("eSheba.API.Models.RoleRights", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("RightId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("RoleRights");
                 });
 
             modelBuilder.Entity("eSheba.API.Models.User", b =>
                 {
-                    b.Property<int>("Id")
+                    b.Property<Guid>("Id")
                         .ValueGeneratedOnAdd()
-                        .HasColumnType("int");
+                        .HasColumnType("char(36)");
 
                     b.Property<DateTime>("Created")
                         .HasColumnType("datetime(6)");
@@ -123,8 +131,8 @@ namespace eSheba.API.Migrations
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime(6)");
 
-                    b.Property<int?>("DesignationId")
-                        .HasColumnType("int");
+                    b.Property<Guid>("DesignationId")
+                        .HasColumnType("char(36)");
 
                     b.Property<string>("Gender")
                         .HasColumnType("longtext CHARACTER SET utf8mb4");
@@ -149,9 +157,24 @@ namespace eSheba.API.Migrations
 
                     b.HasKey("Id");
 
-                    b.HasIndex("DesignationId");
-
                     b.ToTable("Users");
+                });
+
+            modelBuilder.Entity("eSheba.API.Models.UserRoles", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("RoleId")
+                        .HasColumnType("char(36)");
+
+                    b.Property<Guid>("UserId")
+                        .HasColumnType("char(36)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("UserRoles");
                 });
 
             modelBuilder.Entity("eSheba.API.Models.Photo", b =>
@@ -161,31 +184,6 @@ namespace eSheba.API.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
-                });
-
-            modelBuilder.Entity("eSheba.API.Models.Right", b =>
-                {
-                    b.HasOne("eSheba.API.Models.User", "CreatedBy")
-                        .WithMany()
-                        .HasForeignKey("CreatedById");
-
-                    b.HasOne("eSheba.API.Models.Role", null)
-                        .WithMany("Rights")
-                        .HasForeignKey("RoleId");
-                });
-
-            modelBuilder.Entity("eSheba.API.Models.Role", b =>
-                {
-                    b.HasOne("eSheba.API.Models.User", "CreatedBy")
-                        .WithMany("Roles")
-                        .HasForeignKey("CreatedById");
-                });
-
-            modelBuilder.Entity("eSheba.API.Models.User", b =>
-                {
-                    b.HasOne("eSheba.API.Models.Designation", "Designation")
-                        .WithMany()
-                        .HasForeignKey("DesignationId");
                 });
 #pragma warning restore 612, 618
         }

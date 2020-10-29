@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 using eSheba.API.Data.Interfaces;
@@ -23,13 +24,15 @@ namespace eSheba.API.Data.Repos
         {
            _context.Remove(entity);
         }
-
+        public void Delete(Guid id) {
+            _context.Remove(Get(id));
+        }
         public async Task<IEnumerable<T>> GetAll()
         {
             return await _context.Set<T>().ToListAsync() ;
         }
 
-        public async Task<T> GetT(int id)
+        public async Task<T> Get(Guid id)
         {
             return await _context.Set<T>().SingleOrDefaultAsync( i => i.Id == id);
         }
@@ -37,6 +40,11 @@ namespace eSheba.API.Data.Repos
         public async Task<bool> SaveAll()
         {
             return await _context.SaveChangesAsync() > 0;
+        }
+
+        public T Edit(T entity)
+        {
+            return _context.Set<T>().Update(entity).Entity;
         }
     }
 }

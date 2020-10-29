@@ -17,6 +17,7 @@
     <li class="nav-item active">
       <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
     </li>
+
     <li class="nav-item">
       <a class="nav-link" href="#">Link</a>
     </li>
@@ -24,22 +25,38 @@
       <a class="nav-link" href="#">Link</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
+      <div class="btn-group" dropdown>
+        <a class="nav-link dropdown-toggle" id="userMenuDDL" dropdownToggle
+          aria-controls="dropdown-user" href="#">User <span class="caret"></span> </a>
+          <ul id="dropdown-user" *dropdownMenu role="menu" class="dropdown-menu"
+          aria-labelledby="userMenuDDL">
+            <li role="menuitem">
+              <a class="dropdown-item" [routerLink]="['users']">Users</a>
+            </li>
+          </ul>
+      </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
+      <div class="btn-group" dropdown>
+        <a class="nav-link dropdown-toggle" id="setupMenuDDL" dropdownToggle
+                  aria-controls="dropdown-setup">
+                  <i class="fa fa-wrench"></i> <span class="caret"></span>
+        </a>
+        <ul id="dropdown-setup" *dropdownMenu class="dropdown-menu"
+            role="menu" aria-labelledby="setupMenuDDL">
+          <li role="menuitem">
+            <a class="dropdown-item" [routerLink]="[ 'setup/designations']">Designations</a>
+          </li>
+          <li role="menuitem"><a class="dropdown-item" [routerLink]="[ 'setup/roles']">Roles</a></li>
+          <li role="menuitem"><a class="dropdown-item" [routerLink]="[ 'setup/rights']">Rights</a></li>
+          <li class="divider dropdown-divider"></li>
+          <li role="menuitem"><a class="dropdown-item" href="#">Separated link</a>
+          </li>
+        </ul>
+      </div>
     </li>
     <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
-    </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#">Link</a>
+      <a class="nav-link" href="#" (click)="logout()" >Logout</a>
     </li>
     <li class="nav-item">
       <a class="nav-link disabled" href="#" tabindex="-1" aria-disabled="true">Disabled</a>

@@ -16,8 +16,7 @@ namespace eSheba.API.Models
         public DateTime LastActive { get; set; }
         public string Introduction { get; set; }
         public ICollection<Photo> Photos { get; set; }
-        public ICollection<Role> Roles {get; set;}
-        public Designation Designation { get; set; }
+        public Guid DesignationId { get; set; }
 
     }
 }

@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using eSheba.API.Data;
 
 namespace eSheba.API.Models
@@ -7,7 +8,7 @@ namespace eSheba.API.Models
     {
         public string RightCode { get; set; }
         public string RightName { get; set; }
-        public User CreatedBy { get; set; }
+        public Guid CreatedById { get; set; }
         public DateTime DateCreated { get; set; }
     }
 }
