@@ -1,5 +1,5 @@
 <app-header
-  [navbarBrandRouterLink]="['/dashboard']"
+  [navbarBrandRouterLink]="['/home']"
   [fixed]="true"
   [navbarBrandFull]="{src: 'assets/img/brand/logo.svg', width: 89, height: 25, alt: 'CoreUI Logo'}"
   [navbarBrandMinimized]="{src: 'assets/img/brand/sygnet.svg', width: 30, height: 30, alt: 'CoreUI Logo'}"
@@ -8,6 +8,9 @@
   <ul class="nav navbar-nav d-md-down-none">
     <li class="nav-item px-3">
       <a class="nav-link" href="#">Dashboard</a>
+    </li>
+    <li class="nav-item px-3">
+      <a class="nav-link" [routerLink]="['/civil-suite']">Civil Suite</a>
     </li>
     <li class="nav-item px-3">
       <a class="nav-link" href="#">Users</a>
@@ -79,7 +82,7 @@
         <!--</div>-->
       <!--</li>-->
     <!--</ol>-->
-    <div class="container-fluid">
+    <div class="container-fluid" style="padding: 7px;">
       <router-outlet></router-outlet>
     </div><!-- /.container-fluid -->
   </main>

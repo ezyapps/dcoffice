@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
+import { HomeComponent } from './common/components/home/home.component';
 
 // Import Containers
 import { DefaultLayoutComponent } from './containers';
@@ -12,7 +13,7 @@ import { RegisterComponent } from './views/register/register.component';
 export const routes: Routes = [
   {
     path: '',
-    redirectTo: 'dashboard',
+    redirectTo: 'home',
     pathMatch: 'full',
   },
   {
@@ -50,6 +51,14 @@ export const routes: Routes = [
       title: 'Home'
     },
     children: [
+      {
+         path: 'home',
+         component: HomeComponent
+      },
+      {
+        path: 'civil-suite',
+        loadChildren: () => import('./modules/civilsuite/civilsute.module').then(m => m.CivilSuiteModule)
+      },
       {
         path: 'base',
         loadChildren: () => import('./views/base/base.module').then(m => m.BaseModule)
