@@ -83,10 +83,10 @@ export function tokenGetter() {
     HomeComponent
   ],
   providers: [
-  //   {
-  //   provide: LocationStrategy,
-  //   useClass: HashLocationStrategy
-  // }
+    {
+    provide: LocationStrategy,
+    useClass: HashLocationStrategy
+  }
 ],
   bootstrap: [ AppComponent ]
 })
