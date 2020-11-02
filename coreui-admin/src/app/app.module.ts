@@ -40,13 +40,23 @@ import { AppRoutingModule } from './app.routing';
 import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
 import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
+import { JwtModule } from '@auth0/angular-jwt';
+import { FormsModule } from '@angular/forms';
+import { AlertifyService } from './common/_services/alertify.service';
+import { HttpClientModule } from '@angular/common/http';
+import { HomeComponent } from './common/components/home/home.component';
 
+export function tokenGetter() {
+  return localStorage.getItem('token');
+}
 @NgModule({
   imports: [
     BrowserModule,
     BrowserAnimationsModule,
+    HttpClientModule,
     AppRoutingModule,
     AppAsideModule,
+    FormsModule,
     AppBreadcrumbModule.forRoot(),
     AppFooterModule,
     AppHeaderModule,
@@ -54,6 +64,13 @@ import { ChartsModule } from 'ng2-charts';
     PerfectScrollbarModule,
     BsDropdownModule.forRoot(),
     TabsModule.forRoot(),
+    JwtModule.forRoot({
+      config: {
+        tokenGetter: tokenGetter,
+        whitelistedDomains: ['localhost:5000'],
+        blacklistedRoutes: ['localhost:5000/api/auth']
+      }
+    }),
     ChartsModule
   ],
   declarations: [
@@ -62,13 +79,14 @@ import { ChartsModule } from 'ng2-charts';
     P404Component,
     P500Component,
     LoginComponent,
-    RegisterComponent
+    RegisterComponent,
+    HomeComponent
   ],
   providers: [
-  //   {
-  //   provide: LocationStrategy,
-  //   useClass: HashLocationStrategy
-  // }
+    {
+    provide: LocationStrategy,
+    useClass: HashLocationStrategy
+  }
 ],
   bootstrap: [ AppComponent ]
 })
