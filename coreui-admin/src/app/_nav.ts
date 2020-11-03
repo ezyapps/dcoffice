@@ -15,6 +15,12 @@ export const civilSuiteNavItems: INavData[] = [
     icon: 'icon-list'
   }
 ];
+export const appAdminNavItems: INavData[] = [
+  {
+    name: 'Roles',
+    url: '/app-admin/roles'
+  }
+];
 export const navItems: INavData[] = [
   {
     name: 'Dashboard',
