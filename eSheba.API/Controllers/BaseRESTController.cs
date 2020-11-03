@@ -20,12 +20,12 @@ namespace eSheba.API.Controllers
             _repo = repo;
         }
         [HttpGet]
-        public async Task<IActionResult> GetAll() {
+        public virtual async Task<IActionResult> GetAll() {
             var designs = await _repo.GetAll();
             return Ok(designs);
         }
         [HttpPost]
-        public async Task<IActionResult> Create(T model) {
+        public virtual async Task<IActionResult> Create(T model) {
             if(ModelState.IsValid){
                 await _repo.Add(model);
                 await _repo.SaveAll();
@@ -38,7 +38,7 @@ namespace eSheba.API.Controllers
             
         }
         [HttpPut]
-        public async Task<IActionResult> Update(T model) {
+        public virtual async Task<IActionResult> Update(T model) {
             if(ModelState.IsValid){
                 var entity = _repo.Edit(model);
                 if( entity != null ) {
@@ -49,7 +49,7 @@ namespace eSheba.API.Controllers
             return BadRequest("Invalid Input");
         }
         [HttpDelete]
-        public async Task<IActionResult> Delete(Guid id) {
+        public virtual async Task<IActionResult> Delete(Guid id) {
             var model = await _repo.Get(id);
             if(model != null) {
                 _repo.Delete(model);
