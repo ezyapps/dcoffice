@@ -60,6 +60,10 @@ export const routes: Routes = [
         loadChildren: () => import('./modules/civilsuite/civilsute.module').then(m => m.CivilSuiteModule)
       },
       {
+        path: 'app-admin',
+        loadChildren: () => import('./modules/app-admin/app-admin.module').then(m => m.AppAdminModule)
+      },
+      {
         path: 'base',
         loadChildren: () => import('./views/base/base.module').then(m => m.BaseModule)
       },
