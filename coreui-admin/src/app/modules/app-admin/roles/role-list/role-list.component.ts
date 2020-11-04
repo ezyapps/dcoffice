@@ -26,11 +26,14 @@ export class RoleListComponent implements OnInit {
         header: 'নতুন রোল',
         width: '50%'
     });
-    ref.onClose.subscribe(()=>{
-      this.alertify.message('The role has been created');
+    ref.onClose.subscribe((role: Role) => {
+      if (role !== null) {
+        this.alertify.message('The role has been created');
+        this.roles.push(role);
+      }
     });
   }
-  loadRoles(){
+  loadRoles() {
     this.roleService.getAll().subscribe((data: Role[]) => {
       this.roles = data;
     },

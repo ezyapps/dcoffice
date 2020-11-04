@@ -12,7 +12,7 @@ namespace eSheba.API.Controllers
     [Route("api/[controller]")]
     public class UserRoleController : BaseRESTController<UserRoles>
     {
-        public UserRoleController(IRepo<UserRoles> repo, IMapper mapper, IConfiguration config) : base(repo, mapper, config)
+        public UserRoleController(IUserRolesRepo repo, IMapper mapper, IConfiguration config) : base(repo, mapper, config)
         {
         }
     }

@@ -7,12 +7,16 @@ import { RoleNewComponent } from './roles/role-new/role-new.component';
 import { AppAdminRoutingModule } from './app-admin-routing.module.ts';
 import { FormsModule } from '@angular/forms';
 import {ButtonModule} from 'primeng/button';
+import {TableModule} from 'primeng/table';
+import {FieldsetModule} from 'primeng/fieldset';
 @NgModule({
   imports: [
     CommonModule,
     AppAdminRoutingModule,
     FormsModule,
-    ButtonModule
+    ButtonModule,
+    TableModule,
+    FieldsetModule
   ],
   declarations: [
     AppAdminComponent,

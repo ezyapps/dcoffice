@@ -13,7 +13,7 @@ namespace eSheba.API.Controllers
     [ApiController]
     public class RolesController : BaseRESTController<Role>
     {
-        public RolesController(IRepo<Role> repo, IMapper mapper, IConfiguration config) : base(repo, mapper, config)
+        public RolesController(IRoleRepo repo, IMapper mapper, IConfiguration config) : base(repo, mapper, config)
         {
         }
     }
