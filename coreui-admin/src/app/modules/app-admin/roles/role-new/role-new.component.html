@@ -1,3 +1,24 @@
-<p>
-  role-new works!
-</p>
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12 mx-auto">
+      <div class="card shadow mx-1">
+        <!-- <div class="card-header">
+          নতুন রোল
+        </div> -->
+        <div class="card-body">
+          <form #roleForm="ngForm" (ngSubmit)="saveRole()">
+            <div class="input-group form-group">
+              <div class="input-group-prepend">
+                <span class="input-group-text">রোলের নাম</span>
+              </div>
+              <input type="text" id="roleName" name="roleName" [(ngModel)]="model.roleName" class="form-control" placeholder="" required>
+              <div class="input-group-prepend">
+                <button type="submit" pButton [disabled]="!roleForm.valid" label='সংরক্ষন' icon="pi pi-check" iconPos="right" class="p-button-sm" ></button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

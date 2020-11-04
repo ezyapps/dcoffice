@@ -45,6 +45,7 @@ import { FormsModule } from '@angular/forms';
 import { AlertifyService } from './common/_services/alertify.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './common/components/home/home.component';
+import {DynamicDialogModule} from 'primeng/dynamicdialog';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -57,6 +58,7 @@ export function tokenGetter() {
     AppRoutingModule,
     AppAsideModule,
     FormsModule,
+    DynamicDialogModule,
     AppBreadcrumbModule.forRoot(),
     AppFooterModule,
     AppHeaderModule,

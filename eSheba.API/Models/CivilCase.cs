@@ -17,6 +17,8 @@ namespace eSheba.API.Models
         public bool HasGovtInterest { get; set; }
         public DateTime HearingDate { get; set; }
         public string Status { get; set; }
+        public Guid CreatedBy { get; set; }
+        public DateTime DateCreated { get; set; }
 
     }
 }
