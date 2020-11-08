@@ -1,0 +1,14 @@
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.Data\bin\Debug\netcoreapp3.0\eSheba.API.Infra.deps.json
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.Data\bin\Debug\netcoreapp3.0\eSheba.API.Infra.dll
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.Data\bin\Debug\netcoreapp3.0\eSheba.API.Infra.pdb
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.Data\bin\Debug\netcoreapp3.0\eSheba.API.Core.dll
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.Data\bin\Debug\netcoreapp3.0\eSheba.API.Shared.dll
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.Data\bin\Debug\netcoreapp3.0\eSheba.API.Core.pdb
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.Data\bin\Debug\netcoreapp3.0\eSheba.API.Shared.pdb
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.Data\obj\Debug\netcoreapp3.0\eSheba.API.Infra.csprojAssemblyReference.cache
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.Data\obj\Debug\netcoreapp3.0\eSheba.API.Infra.AssemblyInfoInputs.cache
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.Data\obj\Debug\netcoreapp3.0\eSheba.API.Infra.AssemblyInfo.cs
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.Data\obj\Debug\netcoreapp3.0\eSheba.API.Infra.csproj.CoreCompileInputs.cache
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.Data\obj\Debug\netcoreapp3.0\eSheba.API.Infra.csproj.CopyComplete
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.Data\obj\Debug\netcoreapp3.0\eSheba.API.Infra.dll
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.Data\obj\Debug\netcoreapp3.0\eSheba.API.Infra.pdb
