@@ -1,0 +1,11 @@
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.GeoLocation\bin\Debug\netcoreapp3.0\eSheba.API.GeoLocation.deps.json
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.GeoLocation\bin\Debug\netcoreapp3.0\eSheba.API.GeoLocation.dll
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.GeoLocation\bin\Debug\netcoreapp3.0\eSheba.API.GeoLocation.pdb
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.GeoLocation\bin\Debug\netcoreapp3.0\eSheba.API.Shared.dll
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.GeoLocation\bin\Debug\netcoreapp3.0\eSheba.API.Shared.pdb
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.GeoLocation\obj\Debug\netcoreapp3.0\eSheba.API.GeoLocation.AssemblyInfoInputs.cache
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.GeoLocation\obj\Debug\netcoreapp3.0\eSheba.API.GeoLocation.AssemblyInfo.cs
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.GeoLocation\obj\Debug\netcoreapp3.0\eSheba.API.GeoLocation.csproj.CoreCompileInputs.cache
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.GeoLocation\obj\Debug\netcoreapp3.0\eSheba.API.GeoLocation.csproj.CopyComplete
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.GeoLocation\obj\Debug\netcoreapp3.0\eSheba.API.GeoLocation.dll
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.GeoLocation\obj\Debug\netcoreapp3.0\eSheba.API.GeoLocation.pdb

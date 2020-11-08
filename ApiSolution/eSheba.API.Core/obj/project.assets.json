@@ -1406,7 +1406,8 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\DOEL LAPTOP\\.nuget\\packages\\": {}
+    "C:\\Users\\USER\\.nuget\\packages\\": {},
+    "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder": {}
   },
   "project": {
     "version": "1.0.0",
@@ -1414,11 +1415,14 @@
       "projectUniqueName": "D:\\Projects\\Git Repo\\dcoffice\\ApiSolution\\eSheba.API.Core\\eSheba.API.Core.csproj",
       "projectName": "eSheba.API.Core",
       "projectPath": "D:\\Projects\\Git Repo\\dcoffice\\ApiSolution\\eSheba.API.Core\\eSheba.API.Core.csproj",
-      "packagesPath": "C:\\Users\\DOEL LAPTOP\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\USER\\.nuget\\packages\\",
       "outputPath": "D:\\Projects\\Git Repo\\dcoffice\\ApiSolution\\eSheba.API.Core\\obj\\",
       "projectStyle": "PackageReference",
+      "fallbackFolders": [
+        "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
+      ],
       "configFilePaths": [
-        "C:\\Users\\DOEL LAPTOP\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\USER\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [
@@ -1426,7 +1430,6 @@
       ],
       "sources": {
         "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Users\\DOEL LAPTOP\\.nuget\\packages": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -1470,14 +1473,6 @@
           {
             "name": "Microsoft.AspNetCore.App.Ref",
             "version": "[3.0.1, 3.0.1]"
-          },
-          {
-            "name": "Microsoft.NETCore.App.Ref",
-            "version": "[3.0.0, 3.0.0]"
-          },
-          {
-            "name": "Microsoft.WindowsDesktop.App.Ref",
-            "version": "[3.0.0, 3.0.0]"
           }
         ],
         "frameworkReferences": {

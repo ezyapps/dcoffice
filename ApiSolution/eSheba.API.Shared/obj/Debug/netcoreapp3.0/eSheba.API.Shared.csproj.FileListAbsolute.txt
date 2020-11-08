@@ -6,3 +6,4 @@ D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.Shared\obj\Debug\netcoreapp
 D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.Shared\obj\Debug\netcoreapp3.0\eSheba.API.Shared.csproj.CoreCompileInputs.cache
 D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.Shared\obj\Debug\netcoreapp3.0\eSheba.API.Shared.dll
 D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.Shared\obj\Debug\netcoreapp3.0\eSheba.API.Shared.pdb
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.Shared\obj\Debug\netcoreapp3.0\eSheba.API.Shared.csprojAssemblyReference.cache
