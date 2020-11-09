@@ -15,6 +15,10 @@ namespace eSheba.API.Shared.Repos
         {
             _context = context;
         }
+        public DbSet<T> GetRepo()
+        {
+            return _context.Set<T>();
+        }
         public async Task<T> Add(T entity)
         {
             await _context.Set<T>().AddAsync(entity);

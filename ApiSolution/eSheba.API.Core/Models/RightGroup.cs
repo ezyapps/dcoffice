@@ -11,6 +11,11 @@ namespace eSheba.API.Core.Models
     {
         public string GroupName { get; set; }
         public string Description { get; set; }
-        public Guid AppId { get; set; }
+        public string AppCode { get; set; }
+        public DateTime DateCreated { get; set; }
+        public RightGroup()
+        {
+            this.DateCreated = DateTime.Now;
+        }
     }
 }

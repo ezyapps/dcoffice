@@ -6,6 +6,7 @@
 /out-tsc
 /eSheba.API/bin
 /eSheba.API/obj
+
 # dependencies
 /node_modules
 
@@ -17,7 +18,8 @@
 *.launch
 .settings/
 *.sublime-workspace
-
+.pdb
+.dll
 # IDE - VSCode
 .vscode/*
 .history/*

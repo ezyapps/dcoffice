@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace eSheba.API.Data.Repos
+namespace eSheba.API.Core.Services
 {
     public class RightService: BaseRepo<Right>, IRightService
     {

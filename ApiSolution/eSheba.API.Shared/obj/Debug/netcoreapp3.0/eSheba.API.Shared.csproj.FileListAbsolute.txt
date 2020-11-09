@@ -1,9 +1,0 @@
-D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.Shared\bin\Debug\netcoreapp3.0\eSheba.API.Shared.deps.json
-D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.Shared\bin\Debug\netcoreapp3.0\eSheba.API.Shared.dll
-D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.Shared\bin\Debug\netcoreapp3.0\eSheba.API.Shared.pdb
-D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.Shared\obj\Debug\netcoreapp3.0\eSheba.API.Shared.AssemblyInfoInputs.cache
-D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.Shared\obj\Debug\netcoreapp3.0\eSheba.API.Shared.AssemblyInfo.cs
-D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.Shared\obj\Debug\netcoreapp3.0\eSheba.API.Shared.csproj.CoreCompileInputs.cache
-D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.Shared\obj\Debug\netcoreapp3.0\eSheba.API.Shared.dll
-D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.Shared\obj\Debug\netcoreapp3.0\eSheba.API.Shared.pdb
-D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.Shared\obj\Debug\netcoreapp3.0\eSheba.API.Shared.csprojAssemblyReference.cache

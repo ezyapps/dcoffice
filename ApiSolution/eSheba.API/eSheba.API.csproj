@@ -19,12 +19,11 @@
     <ProjectReference Include="..\eSheba.API.CivilSuite\eSheba.API.CivilSuite.csproj" />
     <ProjectReference Include="..\eSheba.API.Core\eSheba.API.Core.csproj" />
     <ProjectReference Include="..\eSheba.API.Data\eSheba.API.Infra.csproj" />
+    <ProjectReference Include="..\eSheba.API.GeoLocation\eSheba.API.GeoLocation.csproj" />
     <ProjectReference Include="..\eSheba.API.Shared\eSheba.API.Shared.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Data\Interfaces\" />
-    <Folder Include="Data\Repos\" />
     <Folder Include="Models\" />
   </ItemGroup>
 

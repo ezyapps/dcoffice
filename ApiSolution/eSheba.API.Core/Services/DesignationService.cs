@@ -3,7 +3,7 @@ using eSheba.API.Core.Models;
 using eSheba.API.Shared.Data.Interfaces;
 using eSheba.API.Shared.Repos;
 
-namespace eSheba.API.Data.Repos
+namespace eSheba.API.Core.Services
 {
     public class DesignationService: BaseRepo<Designation>, IDesignationService
     {

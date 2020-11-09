@@ -1,6 +1,7 @@
 using AutoMapper;
 using eSheba.API.Core.Interfaces;
 using eSheba.API.Core.Models;
+using eSheba.API.Shared.Controllers;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Configuration;

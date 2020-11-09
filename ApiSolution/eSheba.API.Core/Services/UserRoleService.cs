@@ -3,7 +3,7 @@ using eSheba.API.Core.Models;
 using eSheba.API.Shared.Data.Interfaces;
 using eSheba.API.Shared.Repos;
 
-namespace eSheba.API.Data.Services
+namespace eSheba.API.Core.Services
 {
     public class UserRoleService : BaseRepo<UserRoles>, IUserRolesService
     {

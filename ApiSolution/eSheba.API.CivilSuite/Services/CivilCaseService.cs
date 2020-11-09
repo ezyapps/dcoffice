@@ -6,7 +6,7 @@ using eSheba.API.CivilSuite.Models;
 using eSheba.API.Shared.Data.Interfaces;
 using eSheba.API.Shared.Repos;
 
-namespace eSheba.API.CivilSuite.Data.Repos
+namespace eSheba.API.CivilSuite.Services
 {
     public class CivilCaseService : BaseRepo<CivilCase>, ICivilCaseService
     {

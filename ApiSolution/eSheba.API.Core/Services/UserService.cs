@@ -7,7 +7,7 @@ using eSheba.API.Shared.Data.Interfaces;
 using eSheba.API.Shared.Repos;
 using Microsoft.EntityFrameworkCore;
 
-namespace eSheba.API.Data.Repos
+namespace eSheba.API.Core.Services
 {
     public class UserService : BaseRepo<User>, IUserService
     {
