@@ -17,6 +17,22 @@ export const civilSuiteNavItems: INavData[] = [
 ];
 export const appAdminNavItems: INavData[] = [
   {
+    title: true,
+    name: 'GEO Location'
+  },
+  {
+    name: 'Divisions',
+    url: '/geo-loc/divisions'
+  },
+  {
+    name: 'Districts',
+    url: '/geo-loc/districts'
+  },
+  {
+    title: true,
+    name: 'User Management'
+  },
+  {
     name: 'Roles',
     url: '/app-admin/roles'
   }

@@ -7,3 +7,17 @@ D:\Projects\Git Repo\dcoffice\eSheba.API.CivilSuite\obj\Debug\netcoreapp3.0\eShe
 D:\Projects\Git Repo\dcoffice\eSheba.API.CivilSuite\obj\Debug\netcoreapp3.0\eSheba.API.CivilSuite.csproj.CoreCompileInputs.cache
 D:\Projects\Git Repo\dcoffice\eSheba.API.CivilSuite\obj\Debug\netcoreapp3.0\eSheba.API.CivilSuite.dll
 D:\Projects\Git Repo\dcoffice\eSheba.API.CivilSuite\obj\Debug\netcoreapp3.0\eSheba.API.CivilSuite.pdb
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.CivilSuite\bin\Debug\netcoreapp3.0\eSheba.API.CivilSuite.deps.json
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.CivilSuite\bin\Debug\netcoreapp3.0\eSheba.API.CivilSuite.dll
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.CivilSuite\bin\Debug\netcoreapp3.0\eSheba.API.CivilSuite.pdb
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.CivilSuite\bin\Debug\netcoreapp3.0\eSheba.API.Core.dll
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.CivilSuite\bin\Debug\netcoreapp3.0\eSheba.API.Shared.dll
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.CivilSuite\bin\Debug\netcoreapp3.0\eSheba.API.Core.pdb
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.CivilSuite\bin\Debug\netcoreapp3.0\eSheba.API.Shared.pdb
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.CivilSuite\obj\Debug\netcoreapp3.0\eSheba.API.CivilSuite.csprojAssemblyReference.cache
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.CivilSuite\obj\Debug\netcoreapp3.0\eSheba.API.CivilSuite.AssemblyInfoInputs.cache
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.CivilSuite\obj\Debug\netcoreapp3.0\eSheba.API.CivilSuite.AssemblyInfo.cs
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.CivilSuite\obj\Debug\netcoreapp3.0\eSheba.API.CivilSuite.csproj.CoreCompileInputs.cache
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.CivilSuite\obj\Debug\netcoreapp3.0\eSheba.API.CivilSuite.csproj.CopyComplete
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.CivilSuite\obj\Debug\netcoreapp3.0\eSheba.API.CivilSuite.dll
+D:\Projects\Git Repo\dcoffice\ApiSolution\eSheba.API.CivilSuite\obj\Debug\netcoreapp3.0\eSheba.API.CivilSuite.pdb

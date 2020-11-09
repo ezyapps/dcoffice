@@ -1,7 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
-import { CivilsuiteDashboardComponent } from './civilsuite-dashboard/civilsuite-dashboard.component';
-import { NewCaseComponent } from './new-case/new-case.component';
+import { CivilsuiteDashboardComponent } from './components/civilsuite-dashboard/civilsuite-dashboard.component';
+import { NewCaseComponent } from './components/new-case/new-case.component';
 
 const routes: Routes = [
   {

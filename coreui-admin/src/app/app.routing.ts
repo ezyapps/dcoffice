@@ -56,6 +56,10 @@ export const routes: Routes = [
          component: HomeComponent
       },
       {
+        path: 'geo-loc',
+        loadChildren: () => import('./modules/geo-location/geo-location.module').then(m => m.GeoLocationModule)
+      },
+      {
         path: 'civil-suite',
         loadChildren: () => import('./modules/civilsuite/civilsute.module').then(m => m.CivilSuiteModule)
       },

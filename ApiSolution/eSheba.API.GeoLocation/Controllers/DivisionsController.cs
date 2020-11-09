@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using eSheba.API.GeoLocation.Interfaces;
 using eSheba.API.GeoLocation.Models;
 using eSheba.API.Shared.Controllers;
 using eSheba.API.Shared.Data.Interfaces;
@@ -13,7 +14,7 @@ namespace eSheba.API.GeoLocation.Controllers
     [ApiController]
     public class DivisionsController : BaseRESTController<GeoDivision>
     {
-        public DivisionsController(IRepo<GeoDivision> repo, IMapper mapper, IConfiguration config) : base(repo, mapper, config)
+        public DivisionsController(IGeoDivisionService repo, IMapper mapper, IConfiguration config) : base(repo, mapper, config)
         {
         }
     }

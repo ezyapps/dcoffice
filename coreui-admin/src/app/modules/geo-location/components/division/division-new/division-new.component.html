@@ -1,0 +1,34 @@
+<div class="animated fadeIn">
+  <div class="row">
+    <div class="col-md-12 mx-auto">
+
+        <div class="shadow">
+          <form #divisionForm="ngForm" (ngSubmit)="saveDivision()">
+            <div class="row">
+              <div class="col-md-4 input-group form-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">বিভাগের Code</span>
+                </div>
+                <input type="text" id="code" name="code" [(ngModel)]="model.code"
+                  class="form-control" placeholder="" required />
+              </div>
+              <div class="col-md-6 input-group form-group">
+                <div class="input-group-prepend">
+                  <span class="input-group-text">বিভাগের নাম</span>
+                </div>
+                <input type="text" id="name" name="name" [(ngModel)]="model.name"
+                  class="form-control" placeholder="" required />
+              </div>
+              <div class="col-md-2 input-group form-group">
+                <div class="input-group-prepend">
+                  <button type="submit" pButton [disabled]="!divisionForm.valid" label='সংরক্ষন' icon="pi pi-check" iconPos="right" class="p-button-sm" ></button>
+                </div>
+              </div>
+            </div>
+            
+          </form>
+        </div>
+
+    </div>
+  </div>
+</div>

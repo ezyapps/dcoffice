@@ -81,7 +81,7 @@ namespace eSheba.API
             }
 
             //app.UseHttpsRedirection();
-            //seeder.SeedUser();
+            seeder.SeedUser();
             app.UseRouting();
             app.UseCors(x => x.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
             app.UseAuthentication();

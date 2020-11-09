@@ -12,7 +12,7 @@ namespace eSheba.API.Shared.Controllers
     {
         private readonly IMapper _mapper;
         private readonly IConfiguration _config;
-        private readonly IRepo<T> _repo;
+        protected readonly IRepo<T> _repo;
         public BaseRESTController(IRepo<T> repo, IMapper mapper, IConfiguration config)
         {
             _config = config;
