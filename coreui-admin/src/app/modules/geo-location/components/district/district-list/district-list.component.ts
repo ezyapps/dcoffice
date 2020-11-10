@@ -9,14 +9,14 @@ import { DistrictNewComponent } from '../district-new/district-new.component';
   selector: 'app-district-list',
   templateUrl: './district-list.component.html',
   styleUrls: ['./district-list.component.scss'],
-  providers: [DialogService]
+  // providers: [DialogService]
 })
 export class DistrictListComponent implements OnInit {
-
+  showNewWindow: boolean = false;
   districts: GeoDistrict[] = [];
   constructor(
     private alertify: AlertifyService,
-    private dialogService: DialogService,
+    // private dialogService: DialogService,
     private districtService: DistrictService
   ) { }
 
@@ -35,16 +35,17 @@ export class DistrictListComponent implements OnInit {
     );
   }
   openNewWindow() {
-    const refDist = this.dialogService.open(DistrictNewComponent, {
-        header: 'নতুন বিভাগ',
-        width: '70%'
-      });
-    refDist.onClose.subscribe((dist: GeoDistrict) => {
-      if (dist !== null) {
-        this.alertify.message('The Division has been created');
-        this.loadDistricts();
-        // this.divisions.push(division);
-      }
-    });
+    this.showNewWindow = !this.showNewWindow;
+    // const refDist = this.dialogService.open(DistrictNewComponent, {
+    //     header: 'নতুন বিভাগ',
+    //     width: '70%'
+    //   });
+    // refDist.onClose.subscribe((dist: GeoDistrict) => {
+    //   if (dist !== null) {
+    //     this.alertify.message('The Division has been created');
+    //     this.loadDistricts();
+    //     // this.divisions.push(division);
+    //   }
+    // });
   }
 }

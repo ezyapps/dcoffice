@@ -12,8 +12,8 @@ import { DivisionService } from '../../../services/division.service';
 export class DivisionNewComponent implements OnInit {
   model: any = {};
   constructor(
-    private ref: DynamicDialogRef,
-    private config: DynamicDialogConfig,
+    // private ref: DynamicDialogRef,
+    // private config: DynamicDialogConfig,
     private divisionService: DivisionService,
     private alertify: AlertifyService) { }
 
@@ -21,7 +21,7 @@ export class DivisionNewComponent implements OnInit {
   }
   saveDivision() {
     this.divisionService.save(this.model).subscribe((data: GeoDivision) => {
-      this.ref.close(data);
+      // this.ref.close(data);
     },
     error => {
       this.alertify.error(error.message);

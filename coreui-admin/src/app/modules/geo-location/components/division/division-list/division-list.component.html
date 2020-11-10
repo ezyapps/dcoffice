@@ -1,8 +1,23 @@
 <div class="row">
   <div class="col">
-    <button type="button" pButton label='New' icon="pi pi-plus" iconPos="right"
-      class="p-button-sm" (click)="openNewWindow()" >
-    </button>
+    <div class="pagelabel">
+      <div class="row" style="margin-bottom: 2px;">
+        <div class="col-sm-6">
+          <ol class="pagetitle" style="margin-bottom: 0rem;">Divisions</ol>
+        </div>
+        <div class="col-sm-4">
+        </div>
+        <div class="col-sm-2" style="text-align: right;">
+          <button type="button" class="btn btn-link" style="text-decoration: none;" (click)="openNewWindow()" >
+            <span *ngIf="showNewWindow === false"> <i class="fa fa-plus"></i> New </span>
+            <span *ngIf="showNewWindow === true"> <b>X</b> Cancel</span>
+          </button>
+        </div>
+      </div>
+    </div>
+    <div>
+      <app-division-new *ngIf="showNewWindow === true"></app-division-new>
+    </div>
   </div>
 </div>
 <div class="row">

@@ -15,8 +15,8 @@ export class DistrictNewComponent implements OnInit {
   model: any = {};
   divisions: GeoDivision[] = [];
   constructor(
-    private ref: DynamicDialogRef,
-    private config: DynamicDialogConfig,
+    // private ref: DynamicDialogRef,
+    // private config: DynamicDialogConfig,
     private divisionService: DivisionService,
     private districtService: DistrictService,
     private alertify: AlertifyService
@@ -39,7 +39,7 @@ export class DistrictNewComponent implements OnInit {
   saveDistrict() {
     this.districtService.save(this.model).subscribe(
       (data: GeoDistrict) => {
-        this.ref.close(data);
+        // this.ref.close(data);
       },
       error => {
         this.alertify.error(error.message);

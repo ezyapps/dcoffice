@@ -10,13 +10,14 @@ import { DivisionNewComponent } from '../division-new/division-new.component';
   selector: 'app-division-list',
   templateUrl: './division-list.component.html',
   styleUrls: ['./division-list.component.scss'],
-  providers: [DialogService]
+  // providers: [DialogService]
 })
 export class DivisionListComponent implements OnInit {
   divisions: GeoDivision[] = [];
+  showNewWindow: boolean = false;
   constructor(
     private alertify: AlertifyService,
-    private dialogService: DialogService,
+    // private dialogService: DialogService,
     private divisionService: DivisionService) { }
 
   ngOnInit() {
@@ -33,16 +34,17 @@ export class DivisionListComponent implements OnInit {
     );
   }
   openNewWindow() {
-    const refDivision = this.dialogService.open(DivisionNewComponent, {
-        header: 'নতুন বিভাগ',
-        width: '70%'
-      });
-    refDivision.onClose.subscribe((division: GeoDivision) => {
-      if (division !== null) {
-        this.alertify.message('The Division has been created');
-        this.loadDivisions();
-        // this.divisions.push(division);
-      }
-    });
+    this.showNewWindow = !this.showNewWindow;
+    // const refDivision = this.dialogService.open(DivisionNewComponent, {
+    //     header: 'নতুন বিভাগ',
+    //     width: '70%'
+    //   });
+    // refDivision.onClose.subscribe((division: GeoDivision) => {
+    //   if (division !== null) {
+    //     this.alertify.message('The Division has been created');
+    //     this.loadDivisions();
+    //     // this.divisions.push(division);
+    //   }
+    // });
   }
 }
