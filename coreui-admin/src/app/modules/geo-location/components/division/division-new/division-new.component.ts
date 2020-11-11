@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit, Output, EventEmitter } from '@angular/core';
 import { DynamicDialogRef, DynamicDialogConfig, DialogService } from 'primeng/dynamicdialog';
 import { AlertifyService } from '../../../../../common/_services/alertify.service';
 import { GeoDivision } from '../../../models/geo-division.model';
@@ -10,7 +10,9 @@ import { DivisionService } from '../../../services/division.service';
   styleUrls: ['./division-new.component.scss']
 })
 export class DivisionNewComponent implements OnInit {
-  model: any = {};
+  @Input() model: any = {};
+  @Output() onCreatedEvent = new EventEmitter<GeoDivision>();
+  frmModel: any = {};
   constructor(
     // private ref: DynamicDialogRef,
     // private config: DynamicDialogConfig,
@@ -22,9 +24,11 @@ export class DivisionNewComponent implements OnInit {
   saveDivision() {
     this.divisionService.save(this.model).subscribe((data: GeoDivision) => {
       // this.ref.close(data);
+      this.onCreatedEvent.emit(data);
     },
     error => {
       this.alertify.error(error.message);
+      console.log(error);
     });
   }
 }

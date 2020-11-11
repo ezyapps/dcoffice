@@ -13,8 +13,11 @@ import { DivisionNewComponent } from '../division-new/division-new.component';
   // providers: [DialogService]
 })
 export class DivisionListComponent implements OnInit {
+
   divisions: GeoDivision[] = [];
   showNewWindow: boolean = false;
+  selectedDivision: GeoDivision;
+
   constructor(
     private alertify: AlertifyService,
     // private dialogService: DialogService,
@@ -33,6 +36,16 @@ export class DivisionListComponent implements OnInit {
       }
     );
   }
+
+  selectForUpdate(selDiv) {
+    this.selectedDivision = selDiv;
+    this.showNewWindow = true;
+  }
+
+  onDivisionCreated(newDivision) {
+    this.divisions.push(newDivision);
+  }
+
   openNewWindow() {
     this.showNewWindow = !this.showNewWindow;
     // const refDivision = this.dialogService.open(DivisionNewComponent, {

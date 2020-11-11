@@ -16,7 +16,10 @@
       </div>
     </div>
     <div>
-      <app-division-new *ngIf="showNewWindow === true"></app-division-new>
+      <app-division-new *ngIf="showNewWindow === true"
+        [model]="selectedDivision"
+        (onCreatedEvent) = "onDivisionCreated($event)">
+      </app-division-new>
     </div>
   </div>
 </div>
@@ -27,12 +30,17 @@
           <tr>
               <th>Code</th>
               <th>Name</th>
+              <th>Actions</th>
           </tr>
       </ng-template>
       <ng-template pTemplate="body" let-division>
           <tr>
               <td>{{division.code}}</td>
               <td>{{division.name}}</td>
+              <td>
+                <span (click)="selectForUpdate(division)" > <i class="fa fa-edit"></i> </span> |
+                <span (click)="selectForUpdate(division)" > <i class="fa fa-trash"></i> </span>
+              </td>
           </tr>
       </ng-template>
   </p-table>
