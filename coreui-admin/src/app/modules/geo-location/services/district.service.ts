@@ -13,8 +13,8 @@ export class DistrictService {
   baseUrl = environment.apiUrl + 'districts/';
   constructor(private http: HttpClient) { }
 
-  getAll(): Observable<GeoDistrict[]> {
-    return this.http.get<GeoDistrict[]>(this.baseUrl + 'withparent');
+  getAll(parentCode): Observable<GeoDistrict[]> {
+    return this.http.get<GeoDistrict[]>(this.baseUrl + 'withparent/' + parentCode);
   }
 
   save(model: any): Observable<GeoDistrict> {

@@ -12,8 +12,9 @@ import { DistrictNewComponent } from '../district-new/district-new.component';
   // providers: [DialogService]
 })
 export class DistrictListComponent implements OnInit {
-  showNewWindow: boolean = false;
+  showNewWindow: boolean = true;
   districts: GeoDistrict[] = [];
+  selectedDistrict: GeoDistrict;
   constructor(
     private alertify: AlertifyService,
     // private dialogService: DialogService,
@@ -21,11 +22,17 @@ export class DistrictListComponent implements OnInit {
   ) { }
 
   ngOnInit() {
-    this.loadDistricts();
+    this.loadDistricts('all');
+    this.selectedDistrict = new GeoDistrict();
   }
-
-  loadDistricts() {
-    this.districtService.getAll().subscribe(
+  onDistCreated(event) {
+    this.loadDistricts('all');
+  }
+  onDivisionChanged(parentCode) {
+    this.loadDistricts(parentCode);
+  }
+  loadDistricts(parentCode) {
+    this.districtService.getAll(parentCode).subscribe(
       (data: GeoDistrict[]) => {
         this.districts = data;
       },

@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';
+import { FormsModule } from '@angular/forms';
 import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
 import { AlertifyService } from '../../../../../common/_services/alertify.service';
 import { GeoDistrict } from '../../../models/geo-district.model';
@@ -12,7 +13,9 @@ import { DivisionService } from '../../../services/division.service';
   styleUrls: ['./district-new.component.scss']
 })
 export class DistrictNewComponent implements OnInit {
-  model: any = {};
+  @Input() model: any = {};
+  @Output() districtCreated = new EventEmitter<GeoDistrict>();
+  @Output() divisionChanged = new EventEmitter<string>();
   divisions: GeoDivision[] = [];
   constructor(
     // private ref: DynamicDialogRef,
@@ -25,6 +28,11 @@ export class DistrictNewComponent implements OnInit {
   ngOnInit() {
     this.loadDivisions();
   }
+
+  onDivisionChange() {
+    this.divisionChanged.emit(this.model.parentcode);
+  }
+
   loadDivisions() {
     this.divisionService.getAll().subscribe(
       (data: GeoDivision[]) => {
@@ -40,6 +48,7 @@ export class DistrictNewComponent implements OnInit {
     this.districtService.save(this.model).subscribe(
       (data: GeoDistrict) => {
         // this.ref.close(data);
+        this.districtCreated.emit(data);
       },
       error => {
         this.alertify.error(error.message);
