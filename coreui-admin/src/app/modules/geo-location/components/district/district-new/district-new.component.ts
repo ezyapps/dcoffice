@@ -13,7 +13,14 @@ import { DivisionService } from '../../../services/division.service';
   styleUrls: ['./district-new.component.scss']
 })
 export class DistrictNewComponent implements OnInit {
-  @Input() model: any = {};
+  model: any = {};
+  @Input()
+  set inpModel(inpModel: GeoDistrict) {
+    this.model = inpModel;
+    console.log(inpModel);
+  }
+  // get inpModel(): GeoDistrict { return this.model; }
+
   @Output() districtCreated = new EventEmitter<GeoDistrict>();
   @Output() divisionChanged = new EventEmitter<string>();
   divisions: GeoDivision[] = [];
@@ -34,7 +41,7 @@ export class DistrictNewComponent implements OnInit {
   }
 
   loadDivisions() {
-    this.divisionService.getAll().subscribe(
+    this.divisionService.findAll().subscribe(
       (data: GeoDivision[]) => {
         this.divisions = data;
         console.log(this.divisions);

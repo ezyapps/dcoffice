@@ -10,7 +10,11 @@ import { DivisionService } from '../../../services/division.service';
   styleUrls: ['./division-new.component.scss']
 })
 export class DivisionNewComponent implements OnInit {
-  @Input() model: any = {};
+  model: any = {};
+  @Input()
+  set inpModel(inpModel: GeoDivision) {
+    this.model = inpModel;
+  }
   @Output() onCreatedEvent = new EventEmitter<GeoDivision>();
   frmModel: any = {};
   constructor(
@@ -22,8 +26,31 @@ export class DivisionNewComponent implements OnInit {
   ngOnInit() {
   }
   saveDivision() {
+    if(this.model !== null)
+    {
+      //console.log(this.model);
+      if(!this.model.id) {
+        this.createNew();
+      }else {
+        this.updateDivision();
+      }
+    }
+
+  }
+
+  createNew() {
     this.divisionService.save(this.model).subscribe((data: GeoDivision) => {
-      // this.ref.close(data);
+      this.onCreatedEvent.emit(data);
+    },
+    error => {
+      this.alertify.error(error.message);
+      console.log(error);
+    });
+  }
+
+  updateDivision() {
+    console.log(this.model);
+    this.divisionService.update(this.model.id, this.model).subscribe((data: GeoDivision) => {
       this.onCreatedEvent.emit(data);
     },
     error => {

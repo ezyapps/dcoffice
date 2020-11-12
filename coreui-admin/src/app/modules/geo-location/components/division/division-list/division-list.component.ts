@@ -1,10 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import { DialogService } from 'primeng/dynamicdialog';
 import { AlertifyService } from '../../../../../common/_services/alertify.service';
 import { GeoDivision } from '../../../models/geo-division.model';
 import { DivisionService } from '../../../services/division.service';
-import { DivisionNewComponent } from '../division-new/division-new.component';
 
+import { DivisionNewComponent } from '../division-new/division-new.component';
+import { DialogService } from 'primeng/dynamicdialog';
 
 @Component({
   selector: 'app-division-list',
@@ -24,10 +24,11 @@ export class DivisionListComponent implements OnInit {
     private divisionService: DivisionService) { }
 
   ngOnInit() {
+    this.selectedDivision = new GeoDivision();
     this.loadDivisions();
   }
   loadDivisions() {
-  this.divisionService.getAll().subscribe (
+  this.divisionService.findAll().subscribe (
     (data: GeoDivision[]) => {
         this.divisions = data;
       },

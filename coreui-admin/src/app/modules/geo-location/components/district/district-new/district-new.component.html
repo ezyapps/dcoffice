@@ -9,9 +9,11 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text">Div</span>
                 </div>
-                <select id="parentcode" name="parentcode" [(ngModel)]="model.parentcode" (change)="onDivisionChange()">
+                <select id="parentcode" name="parentcode" [(ngModel)]="model.parentCode" (change)="onDivisionChange()">
                   <option value="all">- All -</option>
-                  <option *ngFor="let division of divisions" [value]="division.code">{{division.name}}</option>
+                  <option *ngFor="let division of divisions" [value]="division.code"
+                  [selected]="division.code == model.parentCode"
+                  >{{division.name}}</option>
                 </select>
                 <!-- <p-dropdown required [options]="divisions" id="parentcode" name="parentcode" [(ngModel)]="model.parentcode" [filter]="true"></p-dropdown> -->
                 <!-- <input type="text" id="parentcode" name="parentcode" [(ngModel)]="model.parentcode"

@@ -19,7 +19,7 @@
       <app-district-new *ngIf="showNewWindow === true"
       (districtCreated) = "onDistCreated($event)"
       (divisionChanged) = "onDivisionChanged($event)"
-      [model] = "selectedDistrict"
+      [inpModel] = "selectedDistrict"
       ></app-district-new>
     </div>
   </div>

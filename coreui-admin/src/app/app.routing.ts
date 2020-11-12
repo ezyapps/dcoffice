@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { HomeComponent } from './common/components/home/home.component';
+import { AuthGuard } from './common/_guards/auth.guard';
 
 // Import Containers
 import { DefaultLayoutComponent } from './containers';
@@ -57,6 +58,8 @@ export const routes: Routes = [
       },
       {
         path: 'geo-loc',
+        runGuardsAndResolvers: 'always',
+        canActivate: [AuthGuard],
         loadChildren: () => import('./modules/geo-location/geo-location.module').then(m => m.GeoLocationModule)
       },
       {

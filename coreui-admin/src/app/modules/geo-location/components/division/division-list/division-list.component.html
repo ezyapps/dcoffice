@@ -17,7 +17,7 @@
     </div>
     <div>
       <app-division-new *ngIf="showNewWindow === true"
-        [model]="selectedDivision"
+        [inpModel]="selectedDivision"
         (onCreatedEvent) = "onDivisionCreated($event)">
       </app-division-new>
     </div>
