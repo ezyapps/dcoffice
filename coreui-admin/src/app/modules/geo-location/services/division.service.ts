@@ -18,8 +18,4 @@ export class DivisionService extends CrudService<GeoDivision, string>{
   // getAll(): Observable<GeoDivision[]> {
   //   return this.http.get<GeoDivision[]>(this.baseUrl);
   // }
-
-  // save(model: any): Observable<GeoDivision> {
-  //   return this.http.post<GeoDivision>(this.baseUrl, model);
-  // }
 }

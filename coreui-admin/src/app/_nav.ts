@@ -29,6 +29,10 @@ export const appAdminNavItems: INavData[] = [
     url: '/geo-loc/districts'
   },
   {
+    name: 'Upazilas',
+    url: '/geo-loc/upazilas'
+  },
+  {
     title: true,
     name: 'User Management'
   },
