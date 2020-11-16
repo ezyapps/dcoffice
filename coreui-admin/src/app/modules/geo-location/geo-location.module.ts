@@ -12,6 +12,7 @@ import {DropdownModule} from 'primeng/dropdown';
 import { DistrictListComponent } from './components/district/district-list/district-list.component';
 import { DistrictNewComponent } from './components/district/district-new/district-new.component';
 import { UpazilaComponent } from './components/upazila/upazila.component';
+import { UnionComponent } from './components/union/union.component';
 
 @NgModule({
   imports: [
@@ -29,7 +30,8 @@ import { UpazilaComponent } from './components/upazila/upazila.component';
     DivisionNewComponent,
     DistrictListComponent,
     DistrictNewComponent,
-    UpazilaComponent
+    UpazilaComponent,
+    UnionComponent
   ],
   entryComponents: [
     DivisionNewComponent,

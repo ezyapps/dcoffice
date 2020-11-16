@@ -2,32 +2,33 @@ import { Component, OnInit } from '@angular/core';
 import { AlertifyService } from '../../../../common/_services/alertify.service';
 import { GeoDistrict } from '../../models/geo-district.model';
 import { GeoDivision } from '../../models/geo-division.model';
+import { GeoUnion } from '../../models/geo-union.module';
 import { GeoUpazila } from '../../models/geo-upazia.module';
 import { DistrictService } from '../../services/district.service';
 import { DivisionService } from '../../services/division.service';
-import { GeoCommonService } from '../../services/geo-common.service';
 import { UnionService } from '../../services/union.service';
 import { UpazilaService } from '../../services/upazila.service';
 
 @Component({
-  selector: 'app-upazila',
-  templateUrl: './upazila.component.html',
-  styleUrls: ['./upazila.component.scss']
+  selector: 'app-union',
+  templateUrl: './union.component.html',
+  styleUrls: ['./union.component.scss']
 })
-export class UpazilaComponent implements OnInit {
+export class UnionComponent implements OnInit {
 
   model: any = {};
   divisions: GeoDivision[];
   districts: GeoDistrict[];
   upazilas: GeoUpazila[];
-
+  unions: GeoUnion[];
   selectedDivCode: string;
-
+  selectedDistCode: string;
   constructor(
     private twister: AlertifyService,
     private upazilaService: UpazilaService,
     private distService: DistrictService,
-    private divService: DivisionService
+    private divService: DivisionService,
+    private unionService: UnionService
   ) { }
 
   ngOnInit() {
@@ -56,8 +57,9 @@ export class UpazilaComponent implements OnInit {
   }
 
   loadUpazilas() {
-    this.upazilaService.getAll(this.model.parentCode).subscribe(
+    this.upazilaService.getAll(this.selectedDistCode).subscribe(
       (data: GeoUpazila[]) => {
+        console.log(data);
         this.upazilas = data;
       }, error => {
         this.twister.error(error.message);
@@ -65,22 +67,33 @@ export class UpazilaComponent implements OnInit {
     );
   }
 
-  saveUpazila() {
+  loadUnions() {
+    this.unionService.getAll(this.model.parentCode).subscribe(
+      (data: GeoUnion[]) => {
+        this.unions = data;
+      }, error => {
+        this.twister.error(error.message);
+      }
+    );
+  }
+
+  saveUnion() {
     if (this.model !== null) {
       // console.log(this.model);
       if (!this.model.id) {
         this.createNew();
       } else {
-        this.updateUpazila();
+        this.updateUnion();
       }
     }
   }
 
   createNew() {
-    this.upazilaService.save(this.model).subscribe((data: GeoUpazila) => {
+
+    this.unionService.save(this.model).subscribe((data: GeoUnion) => {
       this.twister.success('The upazila has been created.');
       this.model = {};
-      this.loadUpazilas();
+      this.loadUnions();
     },
     error => {
       this.twister.error(error.message);
@@ -88,7 +101,7 @@ export class UpazilaComponent implements OnInit {
     });
   }
 
-  updateUpazila() {
+  updateUnion() {
     console.log(this.model);
     this.upazilaService.update(this.model.id, this.model).subscribe((data: GeoUpazila) => {
       this.twister.success('The upazila has been created.');
@@ -100,4 +113,5 @@ export class UpazilaComponent implements OnInit {
       console.log(error);
     });
   }
+
 }

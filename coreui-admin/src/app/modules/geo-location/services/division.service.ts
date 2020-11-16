@@ -8,7 +8,7 @@ import { GeoDivision } from '../models/geo-division.model';
 @Injectable({
   providedIn: 'root'
 })
-export class DivisionService extends CrudService<GeoDivision, string>{
+export class DivisionService extends CrudService<GeoDivision, string> {
 
   baseUrl = environment.apiUrl + 'divisions/';
   constructor(protected _http: HttpClient) {
