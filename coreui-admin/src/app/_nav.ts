@@ -18,31 +18,50 @@ export const civilSuiteNavItems: INavData[] = [
 export const appAdminNavItems: INavData[] = [
   {
     title: true,
-    name: 'GEO Location'
+    name: 'App Settings'
   },
   {
-    name: 'Divisions',
-    url: '/geo-loc/divisions'
+    name: 'GEO Location',
+    url: '/GEOLocation',
+    icon: 'icon-settings',
+    children: [
+      {
+        name: 'Divisions',
+        url: '/geo-loc/divisions',
+        icon: 'icon-map'
+      },
+      {
+        name: 'Districts',
+        url: '/geo-loc/districts',
+        icon: 'icon-map'
+      },
+      {
+        name: 'Upazilas',
+        url: '/geo-loc/upazilas',
+        icon: 'icon-map'
+      },
+      {
+        name: 'Unions',
+        url: '/geo-loc/unions',
+        icon: 'icon-map'
+      },
+      {
+        name: 'Mouzas',
+        url: '/geo-loc/mouzas',
+        icon: 'icon-map'
+      }
+    ]
   },
   {
-    name: 'Districts',
-    url: '/geo-loc/districts'
-  },
-  {
-    name: 'Upazilas',
-    url: '/geo-loc/upazilas'
-  },
-  {
-    name: 'Unions',
-    url: '/geo-loc/unions'
-  },
-  {
-    title: true,
-    name: 'User Management'
-  },
-  {
-    name: 'Roles',
-    url: '/app-admin/roles'
+    name: 'User Management',
+    url: '/UserManagement',
+    icon: 'icon-puzzle',
+    children: [
+      {
+        name: 'Roles',
+        url: '/app-admin/roles'
+      }
+    ]
   }
 ];
 export const navItems: INavData[] = [

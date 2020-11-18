@@ -2,33 +2,40 @@ import { Component, OnInit } from '@angular/core';
 import { AlertifyService } from '../../../../common/_services/alertify.service';
 import { GeoDistrict } from '../../models/geo-district.model';
 import { GeoDivision } from '../../models/geo-division.model';
+import { GeoMouza } from '../../models/geo-mouza.model';
 import { GeoUnion } from '../../models/geo-union.module';
 import { GeoUpazila } from '../../models/geo-upazia.module';
 import { DistrictService } from '../../services/district.service';
 import { DivisionService } from '../../services/division.service';
+import { MouzaService } from '../../services/mouza.service';
 import { UnionService } from '../../services/union.service';
 import { UpazilaService } from '../../services/upazila.service';
 
 @Component({
-  selector: 'app-union',
-  templateUrl: './union.component.html',
-  styleUrls: ['./union.component.scss']
+  selector: 'app-mouza',
+  templateUrl: './mouza.component.html',
+  styleUrls: ['./mouza.component.scss']
 })
-export class UnionComponent implements OnInit {
+export class MouzaComponent implements OnInit {
 
   model: any = {};
   divisions: GeoDivision[];
   districts: GeoDistrict[];
   upazilas: GeoUpazila[];
   unions: GeoUnion[];
+  mouzas: GeoMouza[];
+
   selectedDivCode: string;
   selectedDistCode: string;
+  selectedUpazilaCode: string;
+
   constructor(
     private twister: AlertifyService,
     private upazilaService: UpazilaService,
     private distService: DistrictService,
     private divService: DivisionService,
-    private unionService: UnionService
+    private unionService: UnionService,
+    private mouzaService: MouzaService
   ) { }
 
   ngOnInit() {
@@ -36,7 +43,6 @@ export class UnionComponent implements OnInit {
   }
 
   loadDivisions() {
-
     this.divService.findAll().subscribe(
       (data: GeoDivision[]) => {
         this.divisions = data;
@@ -68,7 +74,7 @@ export class UnionComponent implements OnInit {
   }
 
   loadUnions() {
-    this.unionService.getAll(this.model.parentCode).subscribe(
+    this.unionService.getAll(this.selectedUpazilaCode).subscribe(
       (data: GeoUnion[]) => {
         this.unions = data;
       }, error => {
@@ -77,7 +83,17 @@ export class UnionComponent implements OnInit {
     );
   }
 
-  saveUnion() {
+  loadMouzas() {
+    this.mouzaService.getAll(this.model.parentCode).subscribe(
+      (data: GeoMouza[]) => {
+        this.mouzas = data;
+      }, error => {
+        this.twister.error(error.message);
+      }
+    );
+  }
+
+  saveMouza() {
     if (this.model !== null) {
       // console.log(this.model);
       if (!this.model.id) {
@@ -89,11 +105,10 @@ export class UnionComponent implements OnInit {
   }
 
   createNew() {
-
-    this.unionService.save(this.model).subscribe((data: GeoUnion) => {
-      this.twister.success('The Union has been created.');
+    this.mouzaService.save(this.model).subscribe((data: GeoMouza) => {
+      this.twister.success('The Mouza has been created.');
       this.model = {};
-      this.loadUnions();
+      this.loadMouzas();
     },
     error => {
       this.twister.error(error.message);
@@ -102,11 +117,11 @@ export class UnionComponent implements OnInit {
   }
 
   updateUnion() {
-    console.log(this.model);
-    this.unionService.update(this.model.id, this.model).subscribe((data: GeoUnion) => {
-      this.twister.success('The Union has been created.');
+    // console.log(this.model);
+    this.mouzaService.update(this.model.id, this.model).subscribe((data: GeoMouza) => {
+      this.twister.success('The Mouza has been updated.');
       this.model = {};
-      this.loadUnions();
+      this.loadMouzas();
     },
     error => {
       this.twister.error(error.message);

@@ -13,6 +13,7 @@ import { DistrictListComponent } from './components/district/district-list/distr
 import { DistrictNewComponent } from './components/district/district-new/district-new.component';
 import { UpazilaComponent } from './components/upazila/upazila.component';
 import { UnionComponent } from './components/union/union.component';
+import { MouzaComponent } from './components/mouza/mouza.component';
 
 @NgModule({
   imports: [
@@ -31,7 +32,8 @@ import { UnionComponent } from './components/union/union.component';
     DistrictListComponent,
     DistrictNewComponent,
     UpazilaComponent,
-    UnionComponent
+    UnionComponent,
+    MouzaComponent
   ],
   entryComponents: [
     DivisionNewComponent,

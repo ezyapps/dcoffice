@@ -4,8 +4,10 @@ import { CivilSuiteRoutingModule } from './civilsuite-routing.module';
 import {FieldsetModule} from 'primeng/fieldset';
 import { CivilsuiteDashboardComponent } from './components/civilsuite-dashboard/civilsuite-dashboard.component';
 import { NewCaseComponent } from './components/new-case/new-case.component';
+import { CommonModule } from '@angular/common';
 @NgModule({
   imports: [
+    CommonModule,
     CivilSuiteRoutingModule,
     FormsModule,
     FieldsetModule

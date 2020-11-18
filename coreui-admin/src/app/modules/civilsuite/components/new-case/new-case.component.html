@@ -3,19 +3,21 @@
     <div class="animated fadeIn">
       <div class="row">
         <div class="col-md-12 mx-auto">
+          <form #newCaseForm="ngForm" (ngSubmit)="saveNewCase()" >
           <div class="card shadow mx-1">
             <div class="card-header">
               নতুন মামলা
             </div>
             <div class="card-body">
-              <form #newCaseForm="ngForm" (ngSubmit)="saveNewCase()" >
+
                 <div class="row">
                 <div class="form-group col-md-4">
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text">মামলা নং</span>
                     </div>
-                    <input type="text" id="username" name="username" class="form-control" placeholder="মামলা নং">
+                    <input type="text" id="caseNo" name="caseNo"
+                    [(ngModel)]="model.caseNo" class="form-control" placeholder="মামলা নং" required>
                   </div>
                 </div>
                 <div class="form-group col-md-4">
@@ -23,7 +25,8 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">শ্রেণী</span>
                     </div>
-                    <select class="form-control form-group">
+                    <select class="form-control form-group"
+                      id="caseCategory" name="caseCategory" [(ngModel)]="model.caseCategory" required>
                       <option value="দেওয়ানি মামলা">দেওয়ানি মামলা</option>
                       <option value="অন্যান্য">অন্যান্য মামলা</option>
                     </select>
@@ -34,14 +37,12 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">ধরন</span>
                     </div>
-                    <div class="form-control form-check form-check-inline" id="inline-radios">
-                      <input class="form-check-input" type="radio" name="inline-radios" id="inlineRadio1" value="option1">
-                      <label class="form-check-label" for="inlineRadio1">নতুন</label>
-                    </div>
-                    <div class="form-control form-check form-check-inline">
-                      <input class="form-check-input" type="radio" name="inline-radios" id="inlineRadio2" value="option2">
-                      <label class="form-check-label" for="inlineRadio2">আপিল</label>
-                    </div>
+                    <select class="form-control form-group"
+                      id="caseType" name="caseType" [(ngModel)]="model.caseType" required>
+                      <option value="নতুন">নতুন</option>
+                      <option value="আপিল">আপিল</option>
+                    </select>
+
                   </div>
                 </div>
               </div> <!--end of first row-->
@@ -51,7 +52,8 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">বিষয়</span>
                     </div>
-                    <input type="text" id="username" name="username" class="form-control" placeholder="মামলার বিষয়">
+                    <input type="text" id="caseSubject" name="caseSubject"
+                      [(ngModel)]="model.caseSubject" class="form-control" placeholder="মামলার বিষয়" required>
                   </div>
                 </div>
                 <div class="form-group col-md-4">
@@ -59,7 +61,8 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">রেফারেন্স নং</span>
                     </div>
-                    <input type="text" id="username" name="username" class="form-control" placeholder="মামলার বিষয়">
+                    <input type="text" id="caseRefNo" name="caseRefNo"
+                      [(ngModel)]="model.caseRefNo" class="form-control" placeholder="রেফারেন্স নং">
                   </div>
                 </div>
               </div><!--end of 2nd row-->
@@ -69,7 +72,8 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">জেলা প্রশাসন</span>
                     </div>
-                    <select class="form-control form-group" name="distAdm" [(ngModel)]="model.distAdm" >
+                    <select class="form-control form-group"
+                      name="distAdmin" id="distAdmin" [(ngModel)]="model.distAdmin" required>
                       <option value="বাদী">বাদী</option>
                       <option value="অন্যান্য">বিবাদী</option>
                     </select>
@@ -79,64 +83,90 @@
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text">
-                        {{(model.distAdm==="বাদী")?'বিবাদী':'বাদী'}}
+                        {{(model.distAdmin==="বাদী")?'বিবাদী':'বাদী'}}
                       </span>
                     </div>
-                    <input type="text" class="form-control" placeholder="" name="oponent">
+                    <input type="text" class="form-control" placeholder=""
+                      name="opositParty" id="opositParty" [(ngModel)]="model.opositParty" required>
                   </div>
                 </div>
               </div>
               <div class="row">
 
-                <div class="col-md-12 mx-auto">
-                  <!-- <div class="card">
-                    <div class="card-header">তফসিল</div>
-                    <div class="card-body"> -->
-                      <h4>তফসিল</h4>
+                <div class="col-md-12">
+
+                      <strong>তফসিল</strong>
                       <div class="row">
-                        <div class="col-md-3">
+                        <div class="col-md-3 form-group">
                           <div class="input-group">
                             <div class="input-group-prepend">
                               <span class="input-group-text">জেলা</span>
                             </div>
-                            <select class="form-control form-group" name="district">
-                              <option value="41">যশোর</option>
-                              <option value="40">খুলনা</option>
+                            <select class="form-control" id="distCode" name="distCode" [(ngModel)]="modelTopshil.distCode"
+                               id="distCode" name="distCode" (change)="loadUpazilas()" required>
+                              <!-- <option value="all">- All -</option> -->
+                              <option *ngFor="let district of districts" [value]="district.code">{{district.name}}</option>
                             </select>
                           </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 form-group">
                           <div class="input-group">
                             <div class="input-group-prepend">
                               <span class="input-group-text">উপজেলা</span>
                             </div>
-                            <select class="form-control form-group" name="upazila">
-                              <option value="41">যশোর সদর</option>
-                              <option value="40">মনিরামপুর</option>
+                            <select class="form-control" name="upazilaCode" id="upazilaCode"
+                              [(ngModel)]="modelTopshil.upazilaCode" (change)="loadUnions()" required >
+                              <option *ngFor="let upazila of upazilas" [value]="upazila.code">{{upazila.name}}</option>
                             </select>
                           </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 form-group">
                           <div class="input-group">
                             <div class="input-group-prepend">
                               <span class="input-group-text">ইউনিয়ন</span>
                             </div>
-                            <select class="form-control form-group" name="union">
-                              <option value="41">রামনগর</option>
-                              <option value="40">বসুন্দিয়া</option>
+                            <select class="form-control" id="unionId" name="unionId"
+                              [(ngModel)]="modelTopshil.unionId" (change)="loadMouzas()" required>
+                              <option *ngFor="let union of unions" [value]="union.id">{{union.name}}</option>
                             </select>
                           </div>
                         </div>
-                        <div class="col-md-3">
+                        <div class="col-md-3 form-group">
                           <div class="input-group">
                             <div class="input-group-prepend">
                               <span class="input-group-text">মৌজা</span>
                             </div>
-                            <select class="form-control form-group" name="union">
-                              <option value="41">রামনগর</option>
-                              <option value="40">বসুন্দিয়া</option>
+                            <select class="form-control" id="mouzaNo" name="mouzaNo" [(ngModel)]="modelTopshil.mouzaNo" required>
+                              <option *ngFor="let mouza of mouzas" [value]="mouza.name">{{mouza.name}}</option>
                             </select>
                           </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="form-group col-sm-3">
+                          <label for="city">এস,এ,খং</label>
+                          <input type="text" class="form-control"
+                            id="saKhatianNo" name="saKhatianNo" placeholder="এস,এ,খং" [(ngModel)]="modelTopshil.saKhatianNo" required>
+                        </div>
+                        <div class="form-group col-sm-2">
+                          <label for="postal-code">আর,এস,খং</label>
+                          <input type="text" class="form-control"
+                            id="rsKhatianNo" name="rsKhatianNo" placeholder="আর,এস,খং" [(ngModel)]="modelTopshil.rsKhatianNo" required>
+                        </div>
+                        <div class="form-group col-sm-2">
+                          <label for="city">এস,এ দাগ</label>
+                          <input type="text" class="form-control"
+                            id="saDagNo" name="saDagNo" placeholder="এস,এ দাগ" [(ngModel)]="modelTopshil.saDagNo" required>
+                        </div>
+                        <div class="form-group col-sm-2">
+                          <label for="postal-code">আর,এস দাগ</label>
+                          <input type="text" class="form-control"
+                            id="rsDagNo" name="rsDagNo" placeholder="আর,এস দাগ" [(ngModel)]="modelTopshil.rsDagNo" required>
+                        </div>
+                        <div class="form-group col-sm-3">
+                          <label for="postal-code">জমির পরিমান (শতাংশ)</label>
+                          <input type="text" class="form-control"
+                            id="landPercent" name="landPercent" placeholder="" [(ngModel)]="modelTopshil.landPercent" required>
                         </div>
                       </div>
 
@@ -144,13 +174,13 @@
                   <!-- </div> -->
                 </div>
               </div>
-              </form>
             </div>
             <div class="card-footer">
-              <button type="submit" class="btn btn-sm btn-success"><i class="fa fa-dot-circle-o"></i> Submit</button>
-              <button type="reset" class="btn btn-sm btn-danger"><i class="fa fa-ban"></i> Reset</button>
+              <button type="submit" [disabled]="!newCaseForm.valid" class="btn btn-success"><i class="fa fa-dot-circle-o"></i> সংরক্ষন</button>
+              <button type="reset"[disabled]="newCaseForm.untouched" class="btn btn-danger" (click)="model= {}" ><i class="fa fa-ban"></i> রিসেট</button>
             </div>
           </div>
+        </form>
         </div>
       </div>
     </div>

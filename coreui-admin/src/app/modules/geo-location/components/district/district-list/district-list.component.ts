@@ -32,6 +32,7 @@ export class DistrictListComponent implements OnInit {
     this.loadDistricts(parentCode);
   }
   loadDistricts(parentCode) {
+    console.log(parentCode);
     this.districtService.getAll(parentCode).subscribe(
       (data: GeoDistrict[]) => {
         this.districts = data;

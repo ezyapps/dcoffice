@@ -17,16 +17,18 @@
         <div class="row">
           <div class="col-md-12 mx-auto">
               <div class="shadow">
-                <form #upazilaForm="ngForm" (ngSubmit)="saveUnion()">
+                <form #mouzaForm="ngForm" (ngSubmit)="saveMouza()">
 
                     <table>
                       <thead>
                         <tr>
                           <th>Div</th>
                           <th>District</th>
+                          <th>Upazila</th>
                           <th>Union</th>
                           <th>Code</th>
                           <th>Name</th>
+                          <th>JL No</th>
                           <th>Action</th>
                         </tr>
                       </thead>
@@ -47,10 +49,17 @@
                             </select>
                           </td>
                           <td>
-                            <select id="parentCode" name="parentCode" class="form-control" [(ngModel)]="model.parentCode" (change)="loadUnions()">
+                            <select id="parentCode" name="parentCode" class="form-control" [(ngModel)]="selectedUpazilaCode" (change)="loadUnions()">
                               <option value="all">- All -</option>
                               <option *ngFor="let upazila of upazilas" [value]="upazila.parentCode+'-'+upazila.code"
                               >{{upazila.name}}</option>
+                            </select>
+                          </td>
+                          <td>
+                            <select id="parentCode" name="parentCode" class="form-control" [(ngModel)]="model.parentCode" (change)="loadMouzas()">
+                              <option value="all">- All -</option>
+                              <option *ngFor="let union of unions" [value]="union.id"
+                              >{{union.name}}</option>
                             </select>
                           </td>
                           <td>
@@ -62,8 +71,12 @@
                             class="form-control" placeholder="" required />
                           </td>
                           <td>
-                            <button type="submit" [disabled]="!upazilaForm.valid" class="btn btn-primary" > সংরক্ষন </button>
-                            <button type="button" *ngIf="model.code" [disabled]="!upazilaForm.valid" class="btn btn-light" (click)="model = {}" > বাতিল </button>
+                            <input type="text" id="jlNo" name="jlNo" [(ngModel)]="model.jlNo"
+                            class="form-control" placeholder="" required />
+                          </td>
+                          <td>
+                            <button type="submit" [disabled]="!mouzaForm.valid" class="btn btn-primary" > সংরক্ষন </button>
+                            <button type="button" *ngIf="model.id" [disabled]="!mouzaForm.valid" class="btn btn-light" (click)="model = {}" > বাতিল </button>
                           </td>
                         </tr>
                       </tbody>
@@ -79,24 +92,25 @@
 </div>
 <div class="row">
   <div class="col-md-10" offset="2">
-    <p-table [value]="unions"  styleClass="p-datatable-sm p-datatable-striped">
+    <p-table [value]="mouzas"  styleClass="p-datatable-sm p-datatable-striped">
       <ng-template pTemplate="header">
           <tr>
-
-            <th>Upazila</th>
+            <th>Union</th>
             <th>Code</th>
             <th>Name</th>
+            <th>JL No</th>
             <th>Actions</th>
           </tr>
       </ng-template>
-      <ng-template pTemplate="body" let-upazila>
+      <ng-template pTemplate="body" let-mouza>
           <tr>
-            <td>{{upazila.parentName}}</td>
-            <td>{{upazila.code}}</td>
-            <td>{{upazila.name}}</td>
+            <td>{{mouza.parentName}}</td>
+            <td>{{mouza.code}}</td>
+            <td>{{mouza.name}}</td>
+            <td>{{mouza.jlNo}}</td>
             <td>
-              <span (click)="model = upazila" > <i class="fa fa-edit"></i> </span> |
-              <span (click)="model = upazila" > <i class="fa fa-trash"></i> </span>
+              <span (click)="model = mouza" > <i class="fa fa-edit"></i> </span> |
+              <span (click)="model = mouza" > <i class="fa fa-trash"></i> </span>
             </td>
           </tr>
       </ng-template>

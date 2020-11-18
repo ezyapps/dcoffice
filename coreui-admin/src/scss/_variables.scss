@@ -27,7 +27,7 @@ $navbar-brand-border:                 0 !default;
 // Sidebar
 
 $sidebar-color:                       #fff !default;
-$sidebar-bg:                          rgba(54, 4, 95, 0.685) !default;
+$sidebar-bg:                          rgba(14, 5, 94, 0.685) !default;
 
 // Sidebar Header
 
@@ -118,7 +118,11 @@ $avatar-xs-width:                     20px !default;
 $avatar-xs-status-width:              8px !default;
 
 // Cards
-
+$card-cap-bg:                       rgba($sidebar-bg, .8);
+$card-cap-color:                    rgb(224, 248, 3) !default;
+$card-color:                        black !default;
+$card-bg:                           white !default;
+$card-border-color:                 rgba($sidebar-bg, .625) !default;
 // $card-icon-color:                     $body-color !default;
 
 // Switches

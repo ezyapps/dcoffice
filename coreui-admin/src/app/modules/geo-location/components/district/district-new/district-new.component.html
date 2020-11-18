@@ -8,7 +8,7 @@
                 <div class="input-group-prepend">
                   <span class="input-group-text">Div</span>
                 </div>
-                <select id="parentcode" name="parentcode" [(ngModel)]="model.parentCode" (change)="onDivisionChange()">
+                <select id="parentCode" name="parentCode" [(ngModel)]="model.parentCode" (change)="onDivisionChange()">
                   <option value="all">- All -</option>
                   <option *ngFor="let division of divisions" [value]="division.code"
                   [selected]="division.code == model.parentCode"

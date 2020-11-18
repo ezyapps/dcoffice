@@ -37,7 +37,7 @@ export class DistrictNewComponent implements OnInit {
   }
 
   onDivisionChange() {
-    this.divisionChanged.emit(this.model.parentcode);
+    this.divisionChanged.emit(this.model.parentCode);
   }
 
   loadDivisions() {
