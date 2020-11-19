@@ -9,6 +9,7 @@ import {FieldsetModule} from 'primeng/fieldset';
 import { RoleEditComponent } from './components/roles/role-edit/role-edit.component';
 import { RoleListComponent } from './components/roles/role-list/role-list.component';
 import { RoleNewComponent } from './components/roles/role-new/role-new.component';
+import { RightGroupListComponent } from './components/right-group/right-group-list/right-group-list.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -22,7 +23,8 @@ import { RoleNewComponent } from './components/roles/role-new/role-new.component
     AppAdminComponent,
     RoleListComponent,
     RoleEditComponent,
-    RoleNewComponent
+    RoleNewComponent,
+    RightGroupListComponent
   ]
 })
 export class AppAdminModule { }

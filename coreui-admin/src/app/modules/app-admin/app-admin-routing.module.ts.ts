@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { AppAdminComponent } from './app-admin.component';
+import { RightGroupListComponent } from './components/right-group/right-group-list/right-group-list.component';
 import { RoleListComponent } from './components/roles/role-list/role-list.component';
 import { RoleNewComponent } from './components/roles/role-new/role-new.component';
 
@@ -21,6 +22,13 @@ const routes: Routes = [
         component: AppAdminComponent,
         data: {
           title: 'Dashboard'
+        }
+      },
+      {
+        path: 'right-groups',
+        component: RightGroupListComponent,
+        data: {
+          title: 'App Right Groups'
         }
       },
       {

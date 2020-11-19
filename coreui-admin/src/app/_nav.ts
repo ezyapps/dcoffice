@@ -58,6 +58,10 @@ export const appAdminNavItems: INavData[] = [
     icon: 'icon-puzzle',
     children: [
       {
+        name: 'Right Groups',
+        url: '/app-admin/right-groups'
+      },
+      {
         name: 'Roles',
         url: '/app-admin/roles'
       }

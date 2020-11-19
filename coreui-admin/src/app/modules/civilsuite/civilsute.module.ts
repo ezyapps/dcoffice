@@ -8,6 +8,7 @@ import { CommonModule } from '@angular/common';
 import { CaseListComponent } from './components/case-list/case-list.component';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
+import { CaseDetailsComponent } from './components/case-details/case-details.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -20,7 +21,8 @@ import { TableModule } from 'primeng/table';
   declarations: [
     CivilsuiteDashboardComponent,
     NewCaseComponent,
-    CaseListComponent
+    CaseListComponent,
+    CaseDetailsComponent
   ]
 })
 export class CivilSuiteModule {}
