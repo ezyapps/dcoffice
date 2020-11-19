@@ -11,7 +11,7 @@ export const civilSuiteNavItems: INavData[] = [
   },
   {
     name: 'মামলা তালিকা',
-    url: '/',
+    url: '/civil-suite/caselist',
     icon: 'icon-list'
   }
 ];

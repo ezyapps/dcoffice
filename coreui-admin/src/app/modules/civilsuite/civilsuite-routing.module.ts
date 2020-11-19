@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { CaseListComponent } from './components/case-list/case-list.component';
 import { CivilsuiteDashboardComponent } from './components/civilsuite-dashboard/civilsuite-dashboard.component';
 import { NewCaseComponent } from './components/new-case/new-case.component';
 
@@ -27,6 +28,13 @@ const routes: Routes = [
         component: NewCaseComponent,
         data: {
           title: 'New Case'
+        }
+      },
+      {
+        path: 'caselist',
+        component: CaseListComponent,
+        data: {
+          title: 'Case তালিকা'
         }
       }
     ]

@@ -15,8 +15,8 @@ export class CivilCaseService extends CrudService<NewCivilCase, string> {
     super(_http, `${environment.apiUrl}civilcase`);
   }
 
-  getAll(parentCode): Observable<NewCivilCase[]> {
-    return this._http.get<NewCivilCase[]>(this.baseUrl + '/withparent/' + parentCode);
+  getAll(filterObj): Observable<any[]> {
+    return this._http.post<any[]>(this.baseUrl + '/withfilter', filterObj);
   }
 
 }

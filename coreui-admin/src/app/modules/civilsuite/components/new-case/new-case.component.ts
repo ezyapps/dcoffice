@@ -57,7 +57,7 @@ export class NewCaseComponent implements OnInit {
   }
 
   loadDistricts() {
-    //this.distService.getAll(this.selectedDivCode).subscribe (
+    // this.distService.getAll(this.selectedDivCode).subscribe (
       this.distService.findAll().subscribe (
       (data: GeoDistrict[]) => {
         this.districts = data;
@@ -81,7 +81,7 @@ export class NewCaseComponent implements OnInit {
   }
 
   loadUnions() {
-    this.unionService.getAll(this.modelTopshil.distCode+'-'+this.modelTopshil.upazilaCode).subscribe(
+    this.unionService.getAll(this.modelTopshil.distCode + '-' + this.modelTopshil.upazilaCode).subscribe(
       (data: GeoUnion[]) => {
         this.unions = data;
       }, error => {
@@ -102,6 +102,12 @@ export class NewCaseComponent implements OnInit {
 
   saveNewCase() {
     this.twister.confirm('Are you sure to file new case?', () => {
+      if (this.model.caseType === 'নতুন') {
+        this.model.status = 'SF Pending';
+      } else {
+        this.model.status = 'Waiting for Hearing';
+      }
+
       this.caseService.save(this.model).subscribe (
         (data: NewCivilCase) => {
           this.modelTopshil.caseNo = this.model.caseNo;
@@ -112,7 +118,7 @@ export class NewCaseComponent implements OnInit {
             error => {
               this.twister.error(error.message);
             }
-          )
+          );
         },
         error => {
           this.twister.error(error.message);
