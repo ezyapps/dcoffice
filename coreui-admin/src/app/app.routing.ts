@@ -64,10 +64,12 @@ export const routes: Routes = [
       },
       {
         path: 'civil-suite',
+        canActivate: [AuthGuard],
         loadChildren: () => import('./modules/civilsuite/civilsute.module').then(m => m.CivilSuiteModule)
       },
       {
         path: 'app-admin',
+        canActivate: [AuthGuard],
         loadChildren: () => import('./modules/app-admin/app-admin.module').then(m => m.AppAdminModule)
       },
       {

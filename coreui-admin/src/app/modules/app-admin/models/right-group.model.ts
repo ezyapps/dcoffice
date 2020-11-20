@@ -3,4 +3,5 @@ export class RightGroup {
   groupName: string;
   description: string;
   appCode: string;
+  appName: string;
 }

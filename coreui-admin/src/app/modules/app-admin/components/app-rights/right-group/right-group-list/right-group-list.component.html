@@ -21,6 +21,7 @@
               <thead>
                 <tr>
                   <th>Application</th>
+                  <th>Parent Group</th>
                   <th>Name</th>
                   <th>Description</th>
                   <th>Action</th>
@@ -29,14 +30,21 @@
               <tbody>
                 <tr>
                   <td>
-                    <select id="appCode" name="appCode" class="form-control" [(ngModel)]="model.appCode">
+                    <select id="appCode" name="appCode" class="form-control" [(ngModel)]="model.appCode" (change)="loadRightGroups()" >
                       <option value="all">- All -</option>
                       <option *ngFor="let app of applications" [value]="app.code"
                       >{{app.appName}}</option>
                     </select>
                   </td>
                   <td>
-                    <input type="text" id="appName" name="appName" [(ngModel)]="model.appName"
+                    <select id="parentGroupId" name="parentGroupId" class="form-control" [(ngModel)]="model.parentGroupId" (change)="loadRightGroups()" >
+                      <option value="all">- Parent -</option>
+                      <option *ngFor="let group of rightGroups" [value]="group.id"
+                      >{{group.groupName}}</option>
+                    </select>
+                  </td>
+                  <td>
+                    <input type="text" id="groupName" name="groupName" [(ngModel)]="model.groupName"
                     class="form-control" placeholder="" required />
                   </td>
                   <td>
@@ -61,14 +69,16 @@
     <p-table [value]="rightGroups"  styleClass="p-datatable-sm p-datatable-striped">
       <ng-template pTemplate="header">
           <tr>
-              <th>Group Name</th>
-              <th>Description</th>
+            <th>Application</th>
+            <th>Group Name</th>
+            <th>Description</th>
           </tr>
       </ng-template>
       <ng-template pTemplate="body" let-rightGroup>
           <tr>
-              <td>{{rightGroup.groupName}}</td>
-              <td>{{rightGroup.description}}</td>
+            <td>{{rightGroup.appName}}</td>
+            <td>{{rightGroup.groupName}}</td>
+            <td>{{rightGroup.description}}</td>
           </tr>
       </ng-template>
   </p-table>

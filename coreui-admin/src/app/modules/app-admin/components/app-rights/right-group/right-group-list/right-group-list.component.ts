@@ -1,9 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import { AlertifyService } from '../../../../../common/_services/alertify.service';
-import { Application } from '../../../models/application.model';
-import { RightGroup } from '../../../models/right-group.model';
-import { ApplicationService } from '../../../services/application.service';
-import { RightGroupService } from '../../../services/right-group.service';
+import { AlertifyService } from '../../../../../../common/_services/alertify.service';
+import { Application } from '../../../../models/application.model';
+import { RightGroup } from '../../../../models/right-group.model';
+import { ApplicationService } from '../../../../services/application.service';
+import { RightGroupService } from '../../../../services/right-group.service';
 
 @Component({
   selector: 'app-right-group-list',
@@ -22,6 +22,7 @@ export class RightGroupListComponent implements OnInit {
 
   ngOnInit() {
     this.loadApplications();
+    this.loadRightGroups();
   }
   loadRightGroups() {
     this.rightGroupService.getAll(this.model.appCode).subscribe(
@@ -30,7 +31,7 @@ export class RightGroupListComponent implements OnInit {
       }, error => {
         this.twister.error(error.message);
       }
-    )
+    );
   }
   loadApplications() {
     this.applicationService.findAll().subscribe(
@@ -39,9 +40,18 @@ export class RightGroupListComponent implements OnInit {
       }, error => {
         this.twister.error(error.message);
       }
-    )
+    );
   }
+
   saveRightGroup() {
-    
+    this.rightGroupService.save(this.model).subscribe(
+      (data: RightGroup) =>  {
+        this.rightGroups.push(data);
+        this.twister.success('New item has been added successfully');
+      },
+      error => {
+        this.twister.error(error.message);
+      }
+    );
   }
 }
