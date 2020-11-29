@@ -3,10 +3,11 @@ import { Router } from '@angular/router';
 import { Subscription } from 'rxjs';
 import { AlertifyService } from '../../common/_services/alertify.service';
 import { AuthService } from '../../common/_services/auth.service';
-import { ModuleChangerService } from '../../common/_services/module-changer.service';
+import { SignalService } from '../../common/_services/signal.service';
 import { navItems } from '../../_nav';
 import { appAdminNavItems } from '../../_nav.app-admin';
 import { civilSuiteNavItems } from '../../_nav.civil-suite';
+import { userMgtNavItems } from '../../_nav.user-mgt';
 
 @Component({
   selector: 'app-dashboard',
@@ -18,12 +19,12 @@ export class DefaultLayoutComponent implements OnInit {
   public navItems = navItems;
   subscription: Subscription;
   constructor(
-    private moduleChangerService: ModuleChangerService,
+    private signalService: SignalService,
     private alertify: AlertifyService,
     private router: Router,
     protected authService: AuthService
     ) {
-    this.subscription = this.moduleChangerService.getChangedModuleName().subscribe(
+    this.subscription = this.signalService.getActiveModuleName().subscribe(
       message => {
         switch (message) {
           case 'CIVILSUITE': {
@@ -34,6 +35,10 @@ export class DefaultLayoutComponent implements OnInit {
             this.navItems = appAdminNavItems;
             break;
           }
+          case 'USERS': {
+            this.navItems = userMgtNavItems;
+            break;
+          }
           default: {
             this.navItems = navItems;
           }
@@ -42,9 +47,9 @@ export class DefaultLayoutComponent implements OnInit {
   }
   ngOnInit(): void {
     this.authService.decodeToken();
-    if(this.authService.decodedToken) {
+    if ( this.authService.decodedToken) {
       this.userName = this.authService.decodedToken.unique_name;
-    }else{
+    } else {
       this.router.navigate(['/login']);
     }
 

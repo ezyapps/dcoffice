@@ -4,15 +4,15 @@ import { Observable, Subject } from 'rxjs';
 @Injectable({
   providedIn: 'root'
 })
-export class ModuleChangerService {
+export class SignalService {
 private subject = new Subject<any>();
 constructor() { }
 
-currentModule(moduleName: string) {
+setActiveModule(moduleName: string) {
   this.subject.next(moduleName);
 }
 
-getChangedModuleName(): Observable<any>{
+getActiveModuleName(): Observable<any> {
   return this.subject.asObservable();
 }
 

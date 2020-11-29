@@ -70,8 +70,8 @@ export const appAdminNavItems: INavData[] = [
     ]
   },
   {
-    name: 'User Management',
-    url: '/UserManagement',
+    name: 'App Role-Rights',
+    url: '/AppRoleRights',
     icon: 'icon-puzzle',
     children: [
       {
@@ -81,11 +81,13 @@ export const appAdminNavItems: INavData[] = [
       },
       {
         name: 'Right Groups',
-        url: '/app-admin/right-groups'
+        url: '/app-admin/right-groups',
+        icon: 'icon-settings'
       },
       {
         name: 'Roles',
-        url: '/app-admin/roles'
+        url: '/app-admin/roles',
+        icon: 'icon-settings'
       }
     ]
   }

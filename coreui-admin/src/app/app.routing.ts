@@ -9,7 +9,7 @@ import { DefaultLayoutComponent } from './containers';
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
-import { RegisterComponent } from './views/register/register.component';
+import { RegisterComponent1 } from './views/register/register1.component';
 
 export const routes: Routes = [
   {
@@ -40,7 +40,7 @@ export const routes: Routes = [
   },
   {
     path: 'register',
-    component: RegisterComponent,
+    component: RegisterComponent1,
     data: {
       title: 'Register Page'
     }
@@ -71,6 +71,11 @@ export const routes: Routes = [
         path: 'app-admin',
         canActivate: [AuthGuard],
         loadChildren: () => import('./modules/app-admin/app-admin.module').then(m => m.AppAdminModule)
+      },
+      {
+        path: 'users',
+        canActivate: [AuthGuard],
+        loadChildren: () => import('./modules/users/users.module').then(m => m.UsersModule)
       },
       {
         path: 'base',

@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModuleChangerService } from '../../common/_services/module-changer.service';
+import { SignalService } from '../../common/_services/signal.service';
 
 @Component({
   selector: 'app-app-admin',
@@ -8,8 +8,8 @@ import { ModuleChangerService } from '../../common/_services/module-changer.serv
 })
 export class AppAdminComponent implements OnInit {
 
-  constructor(private moduleChangingService: ModuleChangerService) {
-    this.moduleChangingService.currentModule('APPADMIN');
+  constructor(private signalService: SignalService) {
+    this.signalService.setActiveModule('APPADMIN');
   }
 
   ngOnInit() {

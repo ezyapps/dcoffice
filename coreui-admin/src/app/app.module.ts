@@ -19,7 +19,7 @@ import { DefaultLayoutComponent } from './containers';
 import { P404Component } from './views/error/404.component';
 import { P500Component } from './views/error/500.component';
 import { LoginComponent } from './views/login/login.component';
-import { RegisterComponent } from './views/register/register.component';
+import { RegisterComponent1 } from './views/register/register1.component';
 
 const APP_CONTAINERS = [
   DefaultLayoutComponent
@@ -42,7 +42,6 @@ import { TabsModule } from 'ngx-bootstrap/tabs';
 import { ChartsModule } from 'ng2-charts';
 import { JwtModule } from '@auth0/angular-jwt';
 import { FormsModule } from '@angular/forms';
-import { AlertifyService } from './common/_services/alertify.service';
 import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './common/components/home/home.component';
 import {DynamicDialogModule} from 'primeng/dynamicdialog';
@@ -83,7 +82,7 @@ export function tokenGetter() {
     P404Component,
     P500Component,
     LoginComponent,
-    RegisterComponent,
+    RegisterComponent1,
     HomeComponent
   ],
   providers: [

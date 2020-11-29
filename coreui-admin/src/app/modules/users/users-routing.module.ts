@@ -1,5 +1,8 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { EmployeeListComponent } from './components/employee-list/employee-list.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { RegisterComponent } from './components/register/register.component';
 import { UsersComponent } from './users.component';
 const routes: Routes = [
   {
@@ -14,13 +17,34 @@ const routes: Routes = [
         data: {
           title: 'Dashboard'
         }
+      },
+      {
+        path: 'employee-list',
+        component: EmployeeListComponent,
+        data: {
+          title: 'Employee List'
+        }
+      },
+      {
+        path: 'profile',
+        component: ProfileComponent,
+        data: {
+          title: 'User Profile'
+        }
+      },
+      {
+        path: 'register',
+        component: RegisterComponent,
+        data: {
+          title: 'User Profile'
+        }
       }
     ]
   }
-]
+];
 @NgModule({
-  imports:[RouterModule.forChild(routes)],
-  exports:[RouterModule]
+  imports: [ RouterModule.forChild(routes)],
+  exports: [ RouterModule]
 })
 export class UserRouterModule {
 

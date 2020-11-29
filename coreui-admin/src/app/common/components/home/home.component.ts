@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { ModuleChangerService } from '../../_services/module-changer.service';
+import { SignalService } from '../../_services/signal.service';
 
 @Component({
   selector: 'app-home',
@@ -8,8 +8,8 @@ import { ModuleChangerService } from '../../_services/module-changer.service';
 })
 export class HomeComponent implements OnInit {
 
-  constructor(private moduleChangingService: ModuleChangerService) {
-    this.moduleChangingService.currentModule('MAIN');
+  constructor(private signalService: SignalService) {
+    this.signalService.setActiveModule('MAIN');
    }
 
   ngOnInit() {
