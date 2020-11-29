@@ -65,11 +65,12 @@
   </div>
 </div>
 <div class="row">
-  <div class="col-md-10" offset="2">
+  <div class="col-md-12" >
     <p-table [value]="rightGroups"  styleClass="p-datatable-sm p-datatable-striped">
       <ng-template pTemplate="header">
           <tr>
             <th>Application</th>
+            <th>Parent Group</th>
             <th>Group Name</th>
             <th>Description</th>
           </tr>
@@ -77,6 +78,7 @@
       <ng-template pTemplate="body" let-rightGroup>
           <tr>
             <td>{{rightGroup.appName}}</td>
+            <td>{{rightGroup.parentGroupName}}</td>
             <td>{{rightGroup.groupName}}</td>
             <td>{{rightGroup.description}}</td>
           </tr>

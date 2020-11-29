@@ -17,6 +17,12 @@ export class RoleService {
   getAllByOffice(officeId): Observable<Role[]> {
     return this.http.get<Role[]>(this.baseUrl + officeId);
   }
+  getAllByGeoLevel(geoLevel): Observable<Role[]> {
+    return this.http.get<Role[]>(this.baseUrl+'getbygeolevel/' + geoLevel);
+  }
+  getAllByGeoLevelWithCommon(geoLevel): Observable<Role[]> {
+    return this.http.get<Role[]>(this.baseUrl+'getbygeolevelwithcommon/' + geoLevel);
+  }
 
   saveRole(model: any): Observable<Role> {
     return this.http.post<Role>(this.baseUrl, model);

@@ -27,6 +27,7 @@ export class RightGroupListComponent implements OnInit {
   loadRightGroups() {
     this.rightGroupService.getAll(this.model.appCode).subscribe(
       (data: RightGroup[]) => {
+        console.log(data);
         this.rightGroups = data;
       }, error => {
         this.twister.error(error.message);

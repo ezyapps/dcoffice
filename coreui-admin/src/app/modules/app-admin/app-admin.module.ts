@@ -11,6 +11,11 @@ import { RoleListComponent } from './components/roles/role-list/role-list.compon
 import { RoleNewComponent } from './components/roles/role-new/role-new.component';
 import { RightGroupListComponent } from './components/app-rights/right-group/right-group-list/right-group-list.component';
 import { RightsComponent } from './components/app-rights/rights/rights.component';
+import { OfficeLevelComponent } from './components/office-organogram/office-level/office-level.component';
+import { MinistryComponent } from './components/office-organogram/ministry/ministry.component';
+import { OfficeComponent } from './components/office-organogram/office/office.component';
+import { OfficeBranchComponent } from './components/office-organogram/office-branch/office-branch.component';
+import { OfficeStructureComponent } from './components/office-organogram/office-structure/office-structure.component';
 
 @NgModule({
   imports: [
@@ -27,7 +32,12 @@ import { RightsComponent } from './components/app-rights/rights/rights.component
     RoleEditComponent,
     RoleNewComponent,
     RightGroupListComponent,
-    RightsComponent
+    RightsComponent,
+    MinistryComponent,
+    OfficeLevelComponent,
+    OfficeComponent,
+    OfficeBranchComponent,
+    OfficeStructureComponent
   ]
 })
 export class AppAdminModule { }

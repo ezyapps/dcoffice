@@ -1,21 +1,23 @@
 /* tslint:disable:no-unused-variable */
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { By } from '@angular/platform-browser';
+import { DebugElement } from '@angular/core';
 
-import { RoleNewComponent } from './role-new.component';
+import { MinistryComponent } from './ministry.component';
 
-describe('RoleNewComponent', () => {
-  let component: RoleNewComponent;
-  let fixture: ComponentFixture<RoleNewComponent>;
+describe('MinistryComponent', () => {
+  let component: MinistryComponent;
+  let fixture: ComponentFixture<MinistryComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ RoleNewComponent ]
+      declarations: [ MinistryComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(RoleNewComponent);
+    fixture = TestBed.createComponent(MinistryComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

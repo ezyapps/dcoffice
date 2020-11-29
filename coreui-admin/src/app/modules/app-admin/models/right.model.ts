@@ -1,4 +1,9 @@
 export class Right {
   id: string;
-  roleName: string;
+  code: string;
+  name: string;
+  url: string;
+  icon: string;
+  groupId: string;
+
 }

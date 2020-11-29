@@ -4,4 +4,5 @@ export class RightGroup {
   description: string;
   appCode: string;
   appName: string;
+  parentGroupName: string;
 }

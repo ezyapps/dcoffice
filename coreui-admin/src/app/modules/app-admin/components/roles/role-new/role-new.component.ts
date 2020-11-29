@@ -24,11 +24,14 @@ export class RoleNewComponent implements OnInit {
 
   saveRole() {
     if (this.model != null) {
+      console.log(this.model);
+      this.model.geoLevel = +this.model.geoLevel;
+      console.log(this.model);
       this.roleService.saveRole(this.model).subscribe((role: Role) => {
           this.ref.close(role);
         },
         err => {
-          this.alertify.error(err);
+          this.alertify.error(err.message);
         }
       );
     }
