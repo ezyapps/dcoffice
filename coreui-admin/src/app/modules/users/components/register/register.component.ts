@@ -10,6 +10,7 @@ import { GovtOfficeStructureService } from '../../../app-admin/services/govt-off
 import { GovtOfficeService } from '../../../app-admin/services/govt-office.service';
 import { MinistryService } from '../../../app-admin/services/ministry.service';
 import { OfficeLevelService } from '../../../app-admin/services/office-level.service';
+import { UserService } from '../../services/user.service';
 
 @Component({
   selector: 'app-register',
@@ -31,7 +32,8 @@ export class RegisterComponent implements OnInit {
     private officeService:  GovtOfficeService,
     private twister: AlertifyService,
     private officeBranchService: GovtOfficeBranchService,
-    private officeStructureService: GovtOfficeStructureService
+    private officeStructureService: GovtOfficeStructureService,
+    private userService: UserService
   ) { }
 
   ngOnInit() {
@@ -52,7 +54,7 @@ export class RegisterComponent implements OnInit {
     )
   }
   onOfficeLevelChange() {
-    var geoLevel = this.officeLevels.find(x => x.id === this.model.officeLevelId).geoLevel;
+    // var geoLevel = this.officeLevels.find(x => x.id === this.model.officeLevelId).geoLevel;
     this.loadOffices();
   }
 

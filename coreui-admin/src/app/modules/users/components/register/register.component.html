@@ -2,7 +2,7 @@
   <div class="pagelabel">
     <div class="row" style="margin-bottom: 2px;">
       <div class="col-sm-6">
-        <ol class="pagetitle" style="margin-bottom: 0rem;">Register</ol>
+        <ol class="pagetitle" style="margin-bottom: 0rem;"> নতুন কর্মকর্তা নিবন্ধন </ol>
       </div>
       <div class="col-sm-4">
       </div>
@@ -21,14 +21,14 @@
             <div class="row">
               <div class="col-sm-6">
                 <div class="form-group">
-                  <label for="knownAs">Name</label>
+                  <label for="knownAs">নাম</label>
                   <input type="text" class="form-control" name="knownAs" id="knownAs"
                     placeholder="Enter your name" required>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                  <label for="email">Email</label>
+                  <label for="email">ই-মেইল </label>
                   <input type="text" class="form-control" name="email" id="email" placeholder="Enter your Email" required>
                 </div>
               </div>
@@ -36,13 +36,13 @@
             <div class="row">
               <div class="col-sm-6">
                 <div class="form-group">
-                  <label for="fatherName">Father Name</label>
+                  <label for="fatherName">পিতার নাম </label>
                   <input type="text" class="form-control" name="fatherName" id="fatherName" placeholder="Enter your father name" required>
                 </div>
               </div>
               <div class="col-sm-6">
                 <div class="form-group">
-                  <label for="motherName">Mother Name</label>
+                  <label for="motherName">মাতার নাম</label>
                   <input type="text" class="form-control" name="motherName" id="motherName" placeholder="Enter your mother name" required>
                 </div>
               </div>
@@ -50,25 +50,25 @@
             <div class="row">
               <div class="col-sm-3">
                 <div class="form-group">
-                  <label for="dateOfBirth">Date of Birth</label>
+                  <label for="dateOfBirth">জন্ম তারিখ </label>
                   <input type="date" class="form-control" name="dateOfBirth" id="dateOfBirth" placeholder="Date Of Birth" required>
                 </div>
               </div>
               <div class="col-sm-3">
                 <div class="form-group">
-                  <label for="nid">NID</label>
+                  <label for="nid">জাতীয় পরিচয় পত্র নং </label>
                   <input type="text" class="form-control" name="nid" id="nid" placeholder="National Identity" required>
                 </div>
               </div>
               <div class="col-sm-3">
                 <div class="form-group">
-                  <label for="birthRegNo">Birth Reg. No.</label>
+                  <label for="birthRegNo">জন্ম নিবন্ধন নং</label>
                   <input type="text" class="form-control" name="birthRegNo" id="birthRegNo" placeholder="Birth RegNo.">
                 </div>
               </div>
               <div class="col-sm-3">
                 <div class="form-group">
-                  <label for="birthRegNo">Passport No.</label>
+                  <label for="birthRegNo">পাসপোর্ট নং</label>
                   <input type="text" class="form-control" name="passportNo" id="passportNo" placeholder="Passport No">
                 </div>
               </div>
@@ -76,13 +76,13 @@
             <div class="row">
               <div class="col-sm-3">
                 <div class="form-group">
-                  <label for="phone">Phone No.</label>
+                  <label for="phone">ফোন নম্বর</label>
                   <input type="text" class="form-control" name="phone" id="phone" placeholder="Phone" required>
                 </div>
               </div>
               <div class="col-sm-3">
                 <div class="form-group">
-                  <label for="gender">Gender</label>
+                  <label for="gender">লিঙ্গ </label>
                   <select class="form-control" name="gender" id="gender">
                     <option value="Male">Male</option>
                     <option value="Female">Female</option>
@@ -92,7 +92,7 @@
               </div>
               <div class="col-sm-3">
                 <div class="form-group">
-                  <label for="religion">Religion</label>
+                  <label for="religion">ধর্ম</label>
                   <select class="form-control" name="religion" id="religion">
                     <option value="Islam">Islam</option>
                     <option value="Hindu">Hindu</option>
@@ -104,7 +104,7 @@
               </div>
               <div class="col-sm-3">
                 <div class="form-group">
-                  <label for="bloodGroup">Blood Group</label>
+                  <label for="bloodGroup">রক্তের গ্রুপ</label>
                   <select class="form-control" name="bloodGroup" id="bloodGroup">
                     <option value="A+">A+</option>
                     <option value="A-">A-</option>
@@ -122,7 +122,7 @@
             <div class="row">
               <div class="col-sm-4">
                 <div class="form-group">
-                  <label for="ministryId">Ministry</label>
+                  <label for="ministryId">মন্ত্রনালয়</label>
                   <select id="ministryId" name="ministryId" [(ngModel)]="model.ministryId" (change)="loadOfficeLevels()"
                     class="form-control" required >
                     <option value="">- Please Select -</option>
@@ -132,7 +132,7 @@
               </div>
               <div class="col-sm-4">
                 <div class="form-group">
-                  <label for="officeLevelId">Office Level</label>
+                  <label for="officeLevelId">বিভাগ</label>
                   <select id="officeLevelId" name="officeLevelId"
                     [(ngModel)]="model.officeLevelId" (change)="onOfficeLevelChange()"
                     class="form-control" required >
@@ -144,7 +144,7 @@
               </div>
               <div class="col-sm-4">
                 <div class="form-group">
-                  <label for="officeId">Office</label>
+                  <label for="officeId">কার্যালয়</label>
                   <select id="officeId" name="officeId" [(ngModel)]="model.officeId"
                     class="form-control"  (change)="loadOfficeBranches()">
                     <option value="">- Please Select -</option>
@@ -156,7 +156,7 @@
             <div class="row">
               <div class="col-sm-4">
                 <div class="form-group">
-                  <label for="officeId">Office Branch</label>
+                  <label for="officeId">শাখা</label>
                   <select id="officeBranchId" name="officeBranchId" [(ngModel)]="model.branchId"
                     class="form-control"  (change)="loadOfficeStructures()">
                     <option value="">- Please Select -</option>
@@ -166,7 +166,7 @@
               </div>
               <div class="col-sm-4">
                 <div class="form-group">
-                  <label for="officeStructureId">Role</label>
+                  <label for="officeStructureId">পদবী</label>
                   <select id="officeStructureId" name="officeStructureId" [(ngModel)]="model.officeStructureId"
                     class="form-control"  (change)="loadOfficeStructures()">
                     <option value="">- Please Select -</option>
@@ -176,7 +176,7 @@
               </div>
               <div class="col-sm-4">
                 <div class="form-group">
-                  <label for="officeStructureId">Role Type</label>
+                  <label for="officeStructureId">পদবীর ধরন</label>
                   <select id="roleType" name="roleType" [(ngModel)]="model.roleType"
                     class="form-control">
                     <option value="">- নির্বাচন করুন -</option>
@@ -192,29 +192,28 @@
             <div class="row">
               <div class="col-sm-4">
                 <div class="form-group">
-                  <label for="username">User Name</label>
-                  <input type="text" class="form-control" name="username" id="username" placeholder="Username">
+                  <label for="username">লগইন নাম</label>
+                  <input type="text" class="form-control" name="username" id="username" [(ngModel)]="model.login.username" placeholder="Username">
                 </div>
               </div>
               <div class="col-sm-4">
                 <div class="form-group">
-                  <label for="password">Password</label>
+                  <label for="password">পাসওয়ার্ড</label>
                   <input type="text" class="form-control" name="password" id="password" placeholder="National Identity">
                 </div>
               </div>
               <div class="col-sm-4">
                 <div class="form-group">
-                  <label for="birthRegNo">Confirm Password</label>
+                  <label for="birthRegNo">পাসওয়ার্ড নিশ্চিতকরুন </label>
                   <input type="text" class="form-control" name="birthRegNo" id="birthRegNo" placeholder="Birth RegNo.">
                 </div>
               </div>
             </div>
             <div class="row">
               <div class="col" style="text-align: right;">
-                <button type="submit" class="btn btn-success">Create Employee</button>
+                <button type="submit" class="btn btn-success">কর্মকর্তা সংরক্ষন</button>
               </div>
             </div>
-
           </form>
         </div>
       </div>
