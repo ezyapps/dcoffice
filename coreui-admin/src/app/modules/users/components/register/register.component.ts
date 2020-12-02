@@ -41,7 +41,11 @@ export class RegisterComponent implements OnInit {
   }
 
   saveEmployee() {
-
+    this.userService.save(this.model).subscribe(
+      (data: any) => {
+        
+      }
+    )
   }
   loadMinistries(){
     this.ministryService.findAll().subscribe(
