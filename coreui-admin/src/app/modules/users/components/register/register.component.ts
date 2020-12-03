@@ -10,6 +10,7 @@ import { GovtOfficeStructureService } from '../../../app-admin/services/govt-off
 import { GovtOfficeService } from '../../../app-admin/services/govt-office.service';
 import { MinistryService } from '../../../app-admin/services/ministry.service';
 import { OfficeLevelService } from '../../../app-admin/services/office-level.service';
+import { UserRoleService } from '../../services/user-role.service';
 import { UserService } from '../../services/user.service';
 
 @Component({
@@ -33,7 +34,8 @@ export class RegisterComponent implements OnInit {
     private twister: AlertifyService,
     private officeBranchService: GovtOfficeBranchService,
     private officeStructureService: GovtOfficeStructureService,
-    private userService: UserService
+    private userService: UserService,
+    private userRoleService: UserRoleService
   ) { }
 
   ngOnInit() {
@@ -41,13 +43,30 @@ export class RegisterComponent implements OnInit {
   }
 
   saveEmployee() {
-    this.userService.save(this.model).subscribe(
-      (data: any) => {
-        
-      }
-    )
+    this.twister.confirm('আপনি কি নতুন কর্মকর্তা নিবন্ধন করতে ইচ্ছুক?', () => {
+      this.userService.save(this.model).subscribe(
+        (data: any) => {
+          console.log(data);
+          const userRoleModel =  {userId: data.id, officeStructureId: this.model.officeStructureId, roleType: this.model.roleType};
+          console.log('--------------------------------');
+          console.log(userRoleModel);
+          this.userRoleService.assignRole(userRoleModel).subscribe(() => {
+            this.twister.success('কর্মকর্তা নিবন্ধন সফল হয়েছে।');
+            this.model = {};
+          },
+          error => {
+            this.twister.error(error.message);
+          }
+          );
+        },
+        error => {
+          this.twister.error(error.message);
+        }
+      );
+    });
   }
-  loadMinistries(){
+
+  loadMinistries() {
     this.ministryService.findAll().subscribe(
       (data: Ministry[]) => {
         this.ministries = data;
@@ -55,7 +74,7 @@ export class RegisterComponent implements OnInit {
       error => {
         this.twister.error(error.message);
       }
-    )
+    );
   }
   onOfficeLevelChange() {
     // var geoLevel = this.officeLevels.find(x => x.id === this.model.officeLevelId).geoLevel;
@@ -80,9 +99,9 @@ export class RegisterComponent implements OnInit {
       error => {
         this.twister.error(error.message);
       }
-    )
+    );
   }
-  loadOfficeBranches(){
+  loadOfficeBranches() {
     this.officeBranchService.getAllByOffice(this.model.officeId).subscribe(
       (data: GovtOfficeBranch[]) => {
         this.officeBranches = data;
@@ -91,7 +110,7 @@ export class RegisterComponent implements OnInit {
       error => {
         this.twister.error(error.message);
       }
-    )
+    );
   }
 
   loadOfficeStructures() {
@@ -102,6 +121,6 @@ export class RegisterComponent implements OnInit {
       error => {
         this.twister.error(error.message);
       }
-    )
+    );
   }
 }

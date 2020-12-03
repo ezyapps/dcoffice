@@ -22,8 +22,8 @@ export class UserRoleService extends CrudService<any, string> {
     return this._http.get<any[]>(this.baseUrl + '/activerolebyuserid/' + userId);
   }
 
-  assignRole(model):Observable<any> {
-    return this._http.post<any>(this._base, model);
+  assignRole(model): Observable<any> {
+    return this._http.post<any>(this._base + '/assignrole', model);
   }
 
   // getByNID(nid): Observable<any> {
