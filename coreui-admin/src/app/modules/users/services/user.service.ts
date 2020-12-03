@@ -15,12 +15,20 @@ export class UserService extends CrudService<any, string> {
     super(_http, `${environment.apiUrl}users`);
   }
 
-  getAll(rightGroupId): Observable<any[]> {
-    return this._http.get<any[]>(this.baseUrl + '/bygroup/' + rightGroupId);
+  getMe(): Observable<any[]> {
+    return this._http.get<any[]>(this.baseUrl + '/me');
   }
 
   getByNID(nid): Observable<any> {
     return this._http.get<any>(this.baseUrl + '/bynid/' + nid);
+  }
+
+  getByUserName(username): Observable<any> {
+    return this._http.get<any>(this.baseUrl + '/byusername/' + username);
+  }
+
+  getByEmail(email): Observable<any> {
+    return this._http.get<any>(this.baseUrl + '/byemail/' + email);
   }
 
 }

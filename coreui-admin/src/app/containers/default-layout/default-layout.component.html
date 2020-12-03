@@ -1,7 +1,7 @@
 <app-header
   [navbarBrandRouterLink]="['/home']"
   [fixed]="true"
-  [navbarBrandFull]="{src: 'assets/img/brand/untitled.svg', width: 100, height: 35, alt: 'CoreUI Logo'}"
+  [navbarBrandFull]="{src: 'assets/img/brand/untitled.svg', width: 100, height: 35, alt: 'eSheba Logo'}"
   [navbarBrandMinimized]="{src: 'assets/img/brand/sygnet.svg', width: 30, height: 30, alt: 'CoreUI Logo'}"
   [sidebarToggler]="'lg'"
   [asideMenuToggler]="'lg'">
@@ -32,8 +32,17 @@
     <li class="nav-item dropdown" dropdown placement="bottom right">
       <a class="nav-link" data-toggle="dropdown" href="#" role="button" aria-haspopup="true" aria-expanded="false" dropdownToggle (click)="false">
         <!--    assets/img/avatars/6.jpg -->
-        <img src="{{this.authService.decodedToken?.PhotoUrl}}" class="img-avatar" alt="admin@bootstrapmaster.com"/>
-        <span>{{userName}}</span>
+        <div class="row">
+          <div class="col-md-3">
+            <img src="{{this.authService.decodedToken?.PhotoUrl}}" class="img-avatar" alt="admin@bootstrapmaster.com"/>
+          </div>
+          <div class="col-md-7" style="text-align: left;">
+            <div>{{userName}}</div>
+            <small>প্রোগ্রামার, প্রোগ্রামারের দপ্তর </small>
+            <!-- <div> <small> তথ্য ও যোগাযোগ প্রযুক্তি অধিদপ্তর, যশোর</small> </div> -->
+          </div>
+
+        </div>
       </a>
       <div class="dropdown-menu dropdown-menu-right" *dropdownMenu aria-labelledby="simple-dropdown">
         <div class="dropdown-header text-center"><strong>Account: {{userName}} </strong></div>

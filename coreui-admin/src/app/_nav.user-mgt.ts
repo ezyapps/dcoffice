@@ -16,7 +16,7 @@ export const userMgtNavItems: INavData[] = [
   },
   {
     name: 'কর্মকর্তা ব্যবস্থাপনা',
-    url: '/civil-suite/caselist',
+    url: '/users/employee-mgt',
     icon: 'icon-list'
   }
 ];

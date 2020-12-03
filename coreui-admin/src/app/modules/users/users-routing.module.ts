@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { EmployeeListComponent } from './components/employee-list/employee-list.component';
+import { EmployeeMgtComponent } from './components/employee-mgt/employee-mgt.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { RegisterComponent } from './components/register/register.component';
 import { UsersComponent } from './users.component';
@@ -23,6 +24,13 @@ const routes: Routes = [
         component: EmployeeListComponent,
         data: {
           title: 'Employee List'
+        }
+      },
+      {
+        path: 'employee-mgt',
+        component: EmployeeMgtComponent,
+        data: {
+          title: 'কর্মকর্তা ব্যবস্থাপনা'
         }
       },
       {
