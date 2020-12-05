@@ -12,23 +12,23 @@ $layout-transition-speed:             .25s !default;
 
 // Navbar
 
-$navbar-height:                       55px !default;
-$navbar-bg:                           rgb(255, 255, 255) !default;
+$navbar-height:                       70px !default;
+$navbar-bg:                           rgb(218, 243, 204) !default;
 
 $navbar-brand-width:                  155px !default;
 $navbar-brand-bg:                     transparent !default;
 $navbar-brand-border:                 0 !default;
 
-// $navbar-color:                        $gray-600 !default;
-// $navbar-hover-color:                  $gray-800 !default;
-// $navbar-active-color:                 $gray-800 !default;
-// $navbar-disabled-color:               $gray-300 !default;
+$navbar-color:                        green !default;
+$navbar-hover-color:                  #8c00ff !default;
+$navbar-active-color:                 #8c00ff !default;
+$navbar-disabled-color:               gray !default;
 
 
 // Sidebar
 
 $sidebar-color:                       #fff !default;
-$sidebar-bg:                          rgba(14, 5, 94, 0.685) !default;
+$sidebar-bg:                          rgb(67, 95, 60) !default;
 
 // Sidebar Header
 

@@ -16,6 +16,9 @@ import { userMgtNavItems } from '../../_nav.user-mgt';
 export class DefaultLayoutComponent implements OnInit {
   public sidebarMinimized = false;
   userName: string;
+  userRole: string;
+  officeBranch: string;
+  officeName: string;
   public navItems = navItems;
   subscription: Subscription;
   constructor(
@@ -49,6 +52,9 @@ export class DefaultLayoutComponent implements OnInit {
     this.authService.decodeToken();
     if ( this.authService.decodedToken) {
       this.userName = this.authService.decodedToken.unique_name;
+      this.userRole = this.authService.decodedToken.RoleName;
+      this.officeBranch = this.authService.decodedToken.BranchName;
+      this.officeName = this.authService.decodedToken.OfficeName;
     } else {
       this.router.navigate(['/login']);
     }
