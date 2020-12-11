@@ -18,5 +18,7 @@ export class CivilCaseService extends CrudService<NewCivilCase, string> {
   getAll(filterObj): Observable<any[]> {
     return this._http.post<any[]>(this.baseUrl + '/withfilter', filterObj);
   }
-
+  getAllWithTopshil() {
+    return this._http.get<any[]>(this._base + '/allwithtopshil');
+  }
 }
