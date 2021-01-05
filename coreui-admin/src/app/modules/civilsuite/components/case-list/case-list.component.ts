@@ -19,9 +19,10 @@ export class CaseListComponent implements OnInit {
   }
 
   loadCases() {
-    this.caseService.findAll().subscribe(
+    this.caseService.getAllWithTopshil().subscribe(
       (data: any[]) => {
         this.caseList = data;
+        console.log(data);
       },
       error => {
         this.twister.error(error.message);
