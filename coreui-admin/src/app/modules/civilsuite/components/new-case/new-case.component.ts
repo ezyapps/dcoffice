@@ -1,5 +1,8 @@
+import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { AlertifyService } from '../../../../common/_services/alertify.service';
+import { GovtOffice } from '../../../app-admin/models/govt-office.model';
+import { GovtOfficeService } from '../../../app-admin/services/govt-office.service';
 import { GeoDistrict } from '../../../geo-location/models/geo-district.model';
 import { GeoDivision } from '../../../geo-location/models/geo-division.model';
 import { GeoMouza } from '../../../geo-location/models/geo-mouza.model';
@@ -29,6 +32,7 @@ export class NewCaseComponent implements OnInit {
   upazilas: GeoUpazila[];
   unions: GeoUnion[];
   mouzas: GeoMouza[];
+  offices: GovtOffice[];
 
   selectedDivCode: string;
 
@@ -40,7 +44,8 @@ export class NewCaseComponent implements OnInit {
     private unionService: UnionService,
     private mouzaService: MouzaService,
     private caseService: CivilCaseService,
-    private caseTopshilService: CaseTopshilService
+    private caseTopshilService: CaseTopshilService,
+    private officeServices: GovtOfficeService
   ) { }
 
   ngOnInit() {
@@ -91,6 +96,7 @@ export class NewCaseComponent implements OnInit {
   }
 
   loadMouzas() {
+    this.loadLandOffices();
     this.mouzaService.getAll(this.modelTopshil.unionId).subscribe(
       (data: GeoMouza[]) => {
         this.mouzas = data;
@@ -100,6 +106,22 @@ export class NewCaseComponent implements OnInit {
     );
   }
 
+  loadLandOffices() {
+    console.log(this.districts.find(a => a.code == this.modelTopshil.distCode));
+
+
+    var geoCode: string = this.districts.find(a => a.code == this.modelTopshil.distCode).parentCode+"-"
+    +this.modelTopshil.distCode+"-"+this.modelTopshil.upazilaCode+"-"+this.unions.find(x => x.id == this.modelTopshil.unionId).code;
+
+    console.log(geoCode);
+
+    this.officeServices.getAllOfficesByGeoLevel(geoCode).subscribe((data: GovtOffice[])=>{
+      this.offices = data;
+    },
+    error => {
+      console.log(error.message);
+    })
+  }
   saveNewCase() {
     this.twister.confirm('Are you sure to file new case?', () => {
       if (this.model.caseType === 'নতুন') {

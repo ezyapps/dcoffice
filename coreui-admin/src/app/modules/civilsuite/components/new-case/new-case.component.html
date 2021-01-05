@@ -37,7 +37,7 @@
                     <div class="input-group-prepend">
                       <span class="input-group-text">ধরন</span>
                     </div>
-                    <select class="form-control form-group"
+                    <select class="form-control form-group" #caseType
                       id="caseType" name="caseType" [(ngModel)]="model.caseType" required>
                       <option value="নতুন">নতুন</option>
                       <option value="আপিল">আপিল</option>
@@ -56,7 +56,7 @@
                       [(ngModel)]="model.caseSubject" class="form-control" placeholder="মামলার বিষয়" required>
                   </div>
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-4" *ngIf="caseType.value == 'আপিল'">
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text">রেফারেন্স নং</span>
@@ -140,6 +140,16 @@
                               <option *ngFor="let mouza of mouzas" [value]="mouza.name">{{mouza.name}}</option>
                             </select>
                           </div>
+                        </div>
+                      </div>
+                      <div class="row">
+                        <div class="input-group">
+                          <div class="input-group-prepend">
+                            <span class="input-group-text">ভূমি অফিস</span>
+                          </div>
+                          <select class="form-control" id="landOfficeId" name="landOfficeId" [(ngModel)]="modelTopshil.landOfficeId" required>
+                            <option *ngFor="let office of offices" [value]="office.id">{{office.name}}</option>
+                          </select>
                         </div>
                       </div>
                       <div class="row">

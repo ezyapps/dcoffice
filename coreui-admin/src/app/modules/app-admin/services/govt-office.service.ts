@@ -23,6 +23,10 @@ export class GovtOfficeService extends CrudService<GovtOffice, string> {
     return this._http.get<GovtOffice[]>(this.baseUrl + '/byofficelevel/' + officeLevelId);
   }
 
+  getAllOfficesByGeoLevel(geoLevel): Observable<GovtOffice[]> {
+    return this._http.get<GovtOffice[]>(this.baseUrl + '/bygeolevel/' + geoLevel);
+  }
+
   getUpperLevelOfficesByMinistryOfficeLevel(officeLevelId): Observable<GovtOffice[]> {
     return this._http.get<GovtOffice[]>(this.baseUrl + '/upperofficesbyofficelevel/' + officeLevelId);
   }
