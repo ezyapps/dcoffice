@@ -25,6 +25,18 @@ export class AuthService {
     );
   }
 
+  loadActiveToken() {
+    return this.http.get(this.baseUrl + 'generatetoken').pipe(
+      map((response: any) => {
+        const user = response;
+        if (user) {
+          localStorage.setItem('token', user.token);
+          this.decodeToken();
+        }
+      })
+    );
+  }
+
   decodeToken() {
     const token = localStorage.getItem('token');
     if (token) {

@@ -46,6 +46,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { HomeComponent } from './common/components/home/home.component';
 import {DynamicDialogModule} from 'primeng/dynamicdialog';
 import {TableModule} from 'primeng/table';
+import { UsersModule } from './modules/users/users.module';
+import { MenuRolesComponent } from './common/components/menu-roles/menu-roles.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -83,7 +85,8 @@ export function tokenGetter() {
     P500Component,
     LoginComponent,
     RegisterComponent1,
-    HomeComponent
+    HomeComponent,
+    MenuRolesComponent
   ],
   providers: [
     {
