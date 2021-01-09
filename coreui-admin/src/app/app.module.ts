@@ -48,6 +48,7 @@ import {DynamicDialogModule} from 'primeng/dynamicdialog';
 import {TableModule} from 'primeng/table';
 import { UsersModule } from './modules/users/users.module';
 import { MenuRolesComponent } from './common/components/menu-roles/menu-roles.component';
+import { MenuUserComponent } from './common/components/menu-user/menu-user.component';
 
 export function tokenGetter() {
   return localStorage.getItem('token');
@@ -86,7 +87,8 @@ export function tokenGetter() {
     LoginComponent,
     RegisterComponent1,
     HomeComponent,
-    MenuRolesComponent
+    MenuRolesComponent,
+    MenuUserComponent
   ],
   providers: [
     {

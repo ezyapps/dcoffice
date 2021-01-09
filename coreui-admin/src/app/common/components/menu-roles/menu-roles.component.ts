@@ -4,6 +4,7 @@ import { UserRole } from '../../../modules/users/models/user-roles.model';
 import { UserRoleService } from '../../../modules/users/services/user-role.service';
 import { AuthService } from '../../_services/auth.service';
 import { Router } from '@angular/router';
+import { SignalService } from '../../_services/signal.service';
 
 @Component({
   selector: 'app-menu-roles',
@@ -16,7 +17,8 @@ export class MenuRolesComponent implements OnInit {
     private userRoleService: UserRoleService,
     private twister: AlertifyService,
     private authService: AuthService,
-    private router: Router
+    private router: Router,
+    private signalService: SignalService
   ) { }
 
   ngOnInit() {
@@ -25,7 +27,8 @@ export class MenuRolesComponent implements OnInit {
     this.userRoleService.activateRole(this.userRole.id).subscribe(() => {
       this.authService.loadActiveToken().subscribe(() => {
         this.twister.message('Operation done.');
-        this.router.navigateByUrl('/users');
+        this.signalService.sendMessage('RELOAD-TOKEN');
+        this.router.navigate(['/']);
       });
     })
     console.log(this.userRole);

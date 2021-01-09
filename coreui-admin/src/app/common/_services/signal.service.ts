@@ -11,6 +11,12 @@ constructor() { }
 setActiveModule(moduleName: string) {
   this.subject.next(moduleName);
 }
+sendMessage(msg: string) {
+  this.subject.next(msg);
+}
+getMessage(): Observable<string> {
+  return this.subject.asObservable();
+}
 
 getActiveModuleName(): Observable<any> {
   return this.subject.asObservable();
