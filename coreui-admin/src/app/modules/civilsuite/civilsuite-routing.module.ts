@@ -13,28 +13,28 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'Civil Suite'
+      title: 'দেওয়ানি মামলা'
     },
     children: [
       {
         path: 'dashboard',
         component: CivilsuiteDashboardComponent,
         data: {
-          title: 'Dashboard'
+          title: 'ড্যাশবোর্ড'
         }
       },
       {
         path: 'new-case',
         component: NewCaseComponent,
         data: {
-          title: 'New Case'
+          title: 'নতুন মামলা'
         }
       },
       {
         path: 'caselist',
         component: CaseListComponent,
         data: {
-          title: 'Case তালিকা'
+          title: 'মামলার তালিকা'
         }
       }
     ]
