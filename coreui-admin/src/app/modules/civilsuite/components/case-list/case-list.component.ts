@@ -35,11 +35,10 @@ export class CaseListComponent implements OnInit {
 
   ngOnInit() {
     this.loadDistricts();
-    this.loadCases();
   }
 
   findCase() {
-
+    this.loadCases();
   }
 
   loadDistricts() {
@@ -60,7 +59,13 @@ export class CaseListComponent implements OnInit {
       (data: GeoUpazila[]) => {
         console.log(data);
         this.upazilas = data;
-        this.searchModel.upazilaCode = this.authService.decodedToken.OfficeGEOCode.split('-')[2];
+        try {
+          if(this.authService.decodedToken.OfficeGEOCode.split('-')[2] != '00'){
+            this.searchModel.upazilaCode = this.authService.decodedToken.OfficeGEOCode.split('-')[2];
+          }
+        }catch(ex) {
+        }
+
       }, error => {
         this.twister.error(error.message);
       }
@@ -77,7 +82,7 @@ export class CaseListComponent implements OnInit {
     );
   }
   loadCases() {
-    this.caseService.getAllWithTopshil().subscribe(
+    this.caseService.getAll(this.searchModel).subscribe(
       (data: any[]) => {
         this.caseList = data;
         console.log(data);
