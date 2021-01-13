@@ -27,40 +27,64 @@
           <div class="row">
             <div class="col-sm-3">
               <div class="form-group">
-                <label for="rCaseNo">মামলা নং</label>
-                <label class="form-control" name="rCaseNo" id="rCaseNo">{{caseDetails.CaseNo}}</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">মামলা নং</span>
+                  </div>
+                  <label class="form-control" name="rCaseNo" id="rCaseNo">{{caseDetails.CaseNo}}</label>
+                </div>
               </div>
             </div>
             <div class="col-sm-3">
               <div class="form-group">
-                <label for="CaseCategory">শ্রেণী </label>
-                <label class="form-control" name="CaseCategory" id="CaseCategory">{{caseDetails.CaseCategory}}</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">শ্রেণী</span>
+                  </div>
+                  <label class="form-control" name="CaseCategory" id="CaseCategory">{{caseDetails.CaseCategory}}</label>
+                </div>
               </div>
             </div>
             <div class="col-sm-3">
               <div class="form-group">
-                <label for="CaseType">ধরন </label>
-                <label class="form-control" name="CaseType" id="CaseType">{{caseDetails.CaseType}}</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">ধরন</span>
+                  </div>
+                  <label class="form-control" name="CaseType" id="CaseType">{{caseDetails.CaseType}}</label>
+                </div>
               </div>
             </div>
             <div class="col-sm-3">
               <div class="form-group">
-                <label for="DistAdmin">জেলা প্রশাসন</label>
-                <label class="form-control" name="DistAdmin" id="DistAdmin" >{{caseDetails.DistAdmin}}</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">জেলা প্রশাসন</span>
+                  </div>
+                  <label class="form-control" name="DistAdmin" id="DistAdmin" >{{caseDetails.DistAdmin}}</label>
+                </div>
               </div>
             </div>
           </div>
           <div class="row">
             <div class="col-sm-6">
               <div class="form-group">
-                <label for="subject">শিরোনাম</label>
-                <label class="form-control" name="subject" id="subject" >{{caseDetails.CaseSubject}}</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">বিষয়</span>
+                  </div>
+                  <label class="form-control" name="subject" id="subject" >{{caseDetails.CaseSubject}}</label>
+                </div>
               </div>
             </div>
             <div class="col-sm-6">
               <div class="form-group">
-                <label for="email">অপর পক্ষ </label>
-                <label class="form-control" >{{caseDetails.OpositParty}}</label>
+                <div class="input-group">
+                  <div class="input-group-prepend">
+                    <span class="input-group-text">অপর পক্ষ</span>
+                  </div>
+                  <label class="form-control" >{{caseDetails.OpositParty}}</label>
+                </div>
               </div>
             </div>
           </div>
@@ -90,15 +114,69 @@
               </div>
             </div>
           </div>
+          <div class="row">
+            <div class="col-sm-2">
+              <div class="form-group">
+                <label for="district">মৌজা</label>
+                <label class="form-control" name="knownAs" id="knownAs" >{{caseDetails.MouzaNo}}</label>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="form-group">
+                <label for="district">এস,এ,খং</label>
+                <label class="form-control" name="knownAs" id="knownAs" >{{caseDetails.SAKhatianNo}}</label>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="form-group">
+                <label for="district">আর,এস,খং</label>
+                <label class="form-control" name="knownAs" id="knownAs" >{{caseDetails.RSKhatianNo}}</label>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="form-group">
+                <label for="district">এস,এ দাগ</label>
+                <label class="form-control" name="knownAs" id="knownAs" >{{caseDetails.SADagNo}}</label>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="form-group">
+                <label for="district">আর,এস দাগ</label>
+                <label class="form-control" name="knownAs" id="knownAs" >{{caseDetails.RSDagNo}}</label>
+              </div>
+            </div>
+            <div class="col-sm-2">
+              <div class="form-group">
+                <label for="district">জমি (শতাংশ)</label>
+                <label class="form-control" name="knownAs" id="knownAs" >{{caseDetails.LandPercent}}</label>
+              </div>
+            </div>
+          </div>
         </div>
       </div>
     </div>
-    <div class="col-md-4 mx-auto">
+    <div class="col-md-4 mx-auto animated fadeIn">
       <div class="card">
         <div class="card-header">
           মামলার কার্যক্রম
         </div>
-        <div class="card-body"></div>
+        <div class="card-body">
+          <div class="wrapper">
+            <ul class="StepProgress">
+              <li class="StepProgress-item {{currentStage >= 1? 'is-done':''}} {{currentStage < 1? 'current':''}}" ><span>{{currentStage >= 1? 'এস এফ প্রাপ্ত':'এস এফ অপেক্ষমান'}}</span>
+                <div *ngIf="currentStage >= 1"> SF Received on {{caseDetails.SFReceiveDate}}</div>
+                <div *ngIf="currentStage < 1"> <a href="#">Update SF Status</a> </div>
+              </li>
+              <li class="StepProgress-item"><span>Has Govt Interest</span> <br/>
+              <li class="StepProgress-item"><span>SF Sent To GP Office</span> <br/>
+                Got more entries that you love? Buy more entries anytime! Just hover on your favorite entry and click the Buy button
+              </li>
+              <li class="StepProgress-item"><span>GP Office Reply Received</span></li>
+              <li class="StepProgress-item"><span>Signed Reply Sent To GP Office</span></li>
+              <li class="StepProgress-item"><span>Hearing Stage</span></li>
+            </ul>
+          </div>
+        </div>
       </div>
     </div>
   </div>
