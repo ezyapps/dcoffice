@@ -163,17 +163,22 @@
         <div class="card-body">
           <div class="wrapper">
             <ul class="StepProgress">
-              <li class="StepProgress-item {{currentStage >= 1? 'is-done':''}} {{currentStage < 1? 'current':''}}" ><span>{{currentStage >= 1? 'এস এফ প্রাপ্ত':'এস এফ অপেক্ষমান'}}</span>
-                <div *ngIf="currentStage >= 1"> SF Received on {{caseDetails.SFReceiveDate}}</div>
-                <div *ngIf="currentStage < 1"> <a href="#">Update SF Status</a> </div>
+              <li class="StepProgress-item is-done" ><span>মামলা দায়ের</span>
+                <div> মামলার তারিখঃ {{caseDetails.DateCreated}}</div>
               </li>
-              <li class="StepProgress-item"><span>Has Govt Interest</span> <br/>
-              <li class="StepProgress-item"><span>SF Sent To GP Office</span> <br/>
+              <li class="StepProgress-item {{currentStage >= 1? 'is-done':''}} {{currentStage < 1? 'current':''}}" ><span>{{currentStage >= 1? 'এস এফ প্রাপ্ত':'এস এফ অপেক্ষমান'}}</span>
+                <div *ngIf="currentStage >= 1"> এস এফ প্রাপ্তির তারিখঃ {{caseDetails.SFReceiveDate}}</div>
+                <div *ngIf="currentStage < 1">
+
+                </div>
+              </li>
+              <li class="StepProgress-item"><span> সরকারী স্বত্ব আছে কি না? </span> <br/>
+              <li class="StepProgress-item"><span> এস এফ জিপি অফিসে প্রেরণ </span> <br/>
                 Got more entries that you love? Buy more entries anytime! Just hover on your favorite entry and click the Buy button
               </li>
-              <li class="StepProgress-item"><span>GP Office Reply Received</span></li>
-              <li class="StepProgress-item"><span>Signed Reply Sent To GP Office</span></li>
-              <li class="StepProgress-item"><span>Hearing Stage</span></li>
+              <li class="StepProgress-item"><span> জিপি অফিস থেকে জবাব প্রাপ্তি </span></li>
+              <li class="StepProgress-item"><span> স্বাক্ষরিত জবাব জিপি অফিসে প্রেরণ </span></li>
+              <li class="StepProgress-item"><span> শুনানী </span></li>
             </ul>
           </div>
         </div>
