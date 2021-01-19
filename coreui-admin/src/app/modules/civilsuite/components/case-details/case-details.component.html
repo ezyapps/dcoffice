@@ -169,12 +169,16 @@
               <li class="StepProgress-item {{currentStage >= 1? 'is-done':''}} {{currentStage < 1? 'current':''}}" ><span>{{currentStage >= 1? 'এস এফ প্রাপ্ত':'এস এফ অপেক্ষমান'}}</span>
                 <div *ngIf="currentStage >= 1"> এস এফ প্রাপ্তির তারিখঃ {{caseDetails.SFReceiveDate}}</div>
                 <div *ngIf="currentStage < 1">
+                  <form #sfForm="ngForm" (submit)="UpdateSFReceive()" >
 
+                  </form>
                 </div>
               </li>
-              <li class="StepProgress-item"><span> সরকারী স্বত্ব আছে কি না? </span> <br/>
-              <li class="StepProgress-item"><span> এস এফ জিপি অফিসে প্রেরণ </span> <br/>
-                Got more entries that you love? Buy more entries anytime! Just hover on your favorite entry and click the Buy button
+              <li class="StepProgress-item  {{caseDetails.HasGovtInterest? 'is-done':''}}"><span>{{caseDetails.HasGovtInterest? 'সরকারী স্বত্ব আছে':'সরকারী স্বত্ব নাই'}}</span> <br/>
+              <li *ngIf="caseDetails.HasGovtInterest"
+                class="StepProgress-item {{currentStage >= 2? 'is-done':''}} {{currentStage == 1? 'current':''}}">
+                  <span> {{currentStage == 1? 'এস এফ জিপি অফিসে প্রেরণ হয়নি':'এস এফ জিপি অফিসে প্রেরিত'}}</span> <br/>
+
               </li>
               <li class="StepProgress-item"><span> জিপি অফিস থেকে জবাব প্রাপ্তি </span></li>
               <li class="StepProgress-item"><span> স্বাক্ষরিত জবাব জিপি অফিসে প্রেরণ </span></li>

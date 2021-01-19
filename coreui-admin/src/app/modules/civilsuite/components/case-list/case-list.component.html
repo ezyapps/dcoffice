@@ -41,7 +41,7 @@
     <div class="col-md-2 form-group">
       <div class="input-group">
         <div class="input-group-prepend">
-          <span class="input-group-text">জেলা প্রশাসন</span>
+          <span class="input-group-text">সরকার</span>
         </div>
         <select class="form-control" id="distAdmin" name="distAdmin"
           [(ngModel)]="searchModel.distAdmin" (change)="findCase()" required>
@@ -78,9 +78,9 @@
         <ng-template pTemplate="header">
             <tr>
               <th>Case#</th>
-              <th>বিষয়</th>
-              <th>জেলা প্রশাসন</th>
-              <th>অপর পক্ষ</th>
+              <th>বাদী</th>
+              <th>বিবাদী</th>
+              <th>বিস্তারিত</th>
               <th>জেলা</th>
               <th>উপজেলা</th>
               <th>
@@ -94,9 +94,9 @@
         <ng-template pTemplate="body" let-case>
             <tr>
               <td>{{case.CaseNo}}</td>
-              <td>{{case.CaseSubject}}</td>
-              <td>{{case.DistAdmin}}</td>
-              <td>{{case.OpositParty}}</td>
+              <td>{{case.Complaintant}}</td>
+              <td>{{case.Defendant}}</td>
+              <td>{{case.CaseDescription}}</td>
               <td>{{case.DistName}}</td>
               <td>{{case.UpzName}}</td>
               <td>{{case.LandPercent}} (শতাংশ)</td>

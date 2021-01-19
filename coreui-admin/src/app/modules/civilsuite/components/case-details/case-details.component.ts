@@ -50,4 +50,8 @@ export class CaseDetailsComponent implements OnInit {
       this.currentStage = 4;
     }
   }
+
+  UpdateSFReceive() {
+
+  }
 }

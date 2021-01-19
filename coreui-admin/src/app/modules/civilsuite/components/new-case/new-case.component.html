@@ -11,7 +11,7 @@
             <div class="card-body">
 
                 <div class="row">
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-3">
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text">মামলা নং</span>
@@ -20,19 +20,24 @@
                     [(ngModel)]="model.caseNo" class="form-control" placeholder="মামলা নং" required>
                   </div>
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-3">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">মামলার তারিখ</span>
+                    </div>
+                    <input type="date" id="caseDate" name="caseDate"
+                    [(ngModel)]="model.caseDate" class="form-control" placeholder="তারিখ" required>
+                  </div>
+                </div>
+                <div class="form-group col-md-3">
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text">শ্রেণী</span>
                     </div>
-                    <select class="form-control form-group"
-                      id="caseCategory" name="caseCategory" [(ngModel)]="model.caseCategory" required>
-                      <option value="দেওয়ানি মামলা">দেওয়ানি মামলা</option>
-                      <option value="অন্যান্য">অন্যান্য মামলা</option>
-                    </select>
+                    <label class="form-control form-group">দেওয়ানি মামলা</label>
                   </div>
                 </div>
-                <div class="form-group col-md-4">
+                <div class="form-group col-md-3">
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text">ধরন</span>
@@ -42,52 +47,54 @@
                       <option value="নতুন">নতুন</option>
                       <option value="আপিল">আপিল</option>
                     </select>
-
                   </div>
                 </div>
               </div> <!--end of first row-->
               <div class="row">
-                <div class="form-group col-md-8">
+                <div class="form-group col-md-9">
                   <div class="input-group">
                     <div class="input-group-prepend">
-                      <span class="input-group-text">বিষয়</span>
+                      <span class="input-group-text"> মামলার বিস্তারিত </span>
                     </div>
-                    <input type="text" id="caseSubject" name="caseSubject"
-                      [(ngModel)]="model.caseSubject" class="form-control" placeholder="মামলার বিষয়" required>
+                    <textarea type="text" id="caseDescription" name="caseDescription" rows="2"
+                      [(ngModel)]="model.caseDescription" class="form-control" required></textarea>
                   </div>
                 </div>
-                <div class="form-group col-md-4" *ngIf="caseType.value == 'আপিল'">
+                <div class="form-group col-md-3" *ngIf="caseType.value == 'আপিল'">
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text">রেফারেন্স নং</span>
                     </div>
                     <input type="text" id="caseRefNo" name="caseRefNo"
-                      [(ngModel)]="model.caseRefNo" class="form-control" placeholder="রেফারেন্স নং">
+                      [(ngModel)]="model.caseRefNo" class="form-control" placeholder="রেফারেন্স নং" />
+                  </div>
+                </div>
+                <div class="form-group col-md-3" *ngIf="caseType.value == 'নতুন'">
+                  <div class="input-group">
+                    <div class="input-group-prepend">
+                      <span class="input-group-text">এসএফ দাখিলের তারিখ </span>
+                    </div>
+                    <input type="date" id="nextDate" name="nextDate"
+                      [(ngModel)]="model.nextDate" class="form-control" />
                   </div>
                 </div>
               </div><!--end of 2nd row-->
               <div class="row">
-                <div class="form-group col-md-6">
+                <!-- <div class="form-group col-md-1">
                   <div class="input-group">
                     <div class="input-group-prepend">
-                      <span class="input-group-text">জেলা প্রশাসন</span>
+
                     </div>
-                    <select class="form-control form-group"
-                      name="distAdmin" id="distAdmin" [(ngModel)]="model.distAdmin" required>
-                      <option value="বাদী">বাদী</option>
-                      <option value="বিবাদী">বিবাদী</option>
-                    </select>
                   </div>
-                </div>
-                <div class="form-group col-md-6">
+                </div> -->
+                <div class="form-group col-md-12">
                   <div class="input-group">
+                    <span class="input-group-text"> <input type="checkbox" #govtCompaintent checked (click)="alterComplaintant(govtCompaintent.checked)" > &nbsp; সরকার বাদী</span>
                     <div class="input-group-prepend">
-                      <span class="input-group-text">
-                        {{(model.distAdmin==="বাদী")?'বিবাদী':'বাদী'}}
-                      </span>
+                      <span class="input-group-text"> {{govtCompaintent.checked? 'বিবাদী' : 'বাদী'}} </span>
                     </div>
-                    <input type="text" class="form-control" placeholder=""
-                      name="opositParty" id="opositParty" [(ngModel)]="model.opositParty" required>
+                    <input type="text" class="form-control form-group" *ngIf="!govtCompaintent.checked" name="complaintant" id="complaintant" [(ngModel)]="model.complaintant" required />
+                    <input type="text" class="form-control" placeholder="" *ngIf="govtCompaintent.checked" name="defendant" id="defendant" [(ngModel)]="model.defendant" required>
                   </div>
                 </div>
               </div>
@@ -152,7 +159,7 @@
                           </select>
                         </div>
                       </div>
-                      <div class="row">
+                      <div class="row pt-3">
                         <div class="form-group col-sm-3">
                           <label for="city">এস,এ,খং</label>
                           <input type="text" class="form-control"

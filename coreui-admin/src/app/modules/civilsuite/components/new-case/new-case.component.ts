@@ -122,6 +122,16 @@ export class NewCaseComponent implements OnInit {
       console.log(error.message);
     })
   }
+  alterComplaintant(ctr) {
+    console.log(ctr);
+    if(ctr) {
+      this.model.complaintant = 'সরকার';
+      this.model.defendant = '';
+    }else {
+      this.model.defendant = 'সরকার';
+      this.model.complaintant = '';
+    }
+  }
   saveNewCase() {
     this.twister.confirm('Are you sure to file new case?', () => {
       if (this.model.caseType === 'নতুন') {
@@ -130,9 +140,19 @@ export class NewCaseComponent implements OnInit {
         this.model.status = 'Waiting for Hearing';
       }
 
+      if(this.model.complaintant == null) {
+        this.model.complaintant = 'সরকার';
+      }
+
+      if(this.model.defendant == null) {
+        this.model.defendant = 'সরকার';
+      }
+
+      this.model.caseCategory = "দেওয়ানি মামলা";
       this.caseService.save(this.model).subscribe (
         (data: NewCivilCase) => {
           this.modelTopshil.caseNo = this.model.caseNo;
+          this.modelTopshil.caseId = data.id;
           this.caseTopshilService.save(this.modelTopshil).subscribe (
             (topshil: CaseTopshil) => {
               this.twister.success('New case has been recorded successfully.');
