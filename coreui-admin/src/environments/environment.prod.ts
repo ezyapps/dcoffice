@@ -1,4 +1,4 @@
 export const environment = {
   production: true,
-  apiUrl: 'http://localhost:5000/api/'
+  apiUrl: 'http://180.211.191.2/dc-sheba-api/api/',
 };

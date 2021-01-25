@@ -16,12 +16,11 @@ export class MenuUserComponent implements OnInit {
   subscription: Subscription;
   constructor (
     private signalService: SignalService,
-    protected authService: AuthService
+    public authService: AuthService
     ) {
       this.subscription = this.signalService.getMessage().subscribe(
         message => {
-          if(message == 'RELOAD-TOKEN')
-          {
+          if (message === 'RELOAD-TOKEN') {
             this.setUserInfo();
           }
         });
@@ -30,7 +29,7 @@ export class MenuUserComponent implements OnInit {
   ngOnInit() {
     this.setUserInfo();
   }
-  
+
   setUserInfo() {
     this.authService.decodeToken();
     if ( this.authService.decodedToken) {
