@@ -13,9 +13,11 @@ import { DivisionService } from '../../../geo-location/services/division.service
 import { MouzaService } from '../../../geo-location/services/mouza.service';
 import { UnionService } from '../../../geo-location/services/union.service';
 import { UpazilaService } from '../../../geo-location/services/upazila.service';
+import { CivilCaseProgress } from '../../models/case-progress.model';
 import { CaseTopshil } from '../../models/case-topshil.model';
 import { NewCivilCase } from '../../models/new-case.model';
 import { CaseTopshilService } from '../../services/case-topshil.service';
+import { CivilCaseProgressService } from '../../services/civilcase-progress.service';
 import { CivilCaseService } from '../../services/civilcase.service';
 
 @Component({
@@ -45,7 +47,8 @@ export class NewCaseComponent implements OnInit {
     private mouzaService: MouzaService,
     private caseService: CivilCaseService,
     private caseTopshilService: CaseTopshilService,
-    private officeServices: GovtOfficeService
+    private officeServices: GovtOfficeService,
+    private civilCaseProgressService: CivilCaseProgressService
   ) { }
 
   ngOnInit() {
@@ -155,7 +158,16 @@ export class NewCaseComponent implements OnInit {
           this.modelTopshil.caseId = data.id;
           this.caseTopshilService.save(this.modelTopshil).subscribe (
             (topshil: CaseTopshil) => {
-              this.twister.success('New case has been recorded successfully.');
+              var progressModel = new CivilCaseProgress();
+              progressModel.CaseId = data.id;
+              this.civilCaseProgressService.save(progressModel).subscribe (
+                (resp: any) => {
+                  this.twister.success('New case has been recorded successfully.');
+                },
+                error => {
+                  this.twister.error(error.message);
+                }
+                );
             },
             error => {
               this.twister.error(error.message);

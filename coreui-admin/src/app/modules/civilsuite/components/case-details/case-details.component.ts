@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AlertifyService } from '../../../../common/_services/alertify.service';
+import { CivilCaseProgressService } from '../../services/civilcase-progress.service';
 import { CivilCaseService } from '../../services/civilcase.service';
 
 @Component({
@@ -10,10 +11,13 @@ import { CivilCaseService } from '../../services/civilcase.service';
 export class CaseDetailsComponent implements OnInit {
   caseDetails: any = {};
   searchModel: any = {};
+  caseSFModel: any = {};
+
   currentStage: number = 0;
   constructor(
     private twister: AlertifyService,
-    private caseService: CivilCaseService
+    private caseService: CivilCaseService,
+    private caseProgressService: CivilCaseProgressService
   ) { }
 
   ngOnInit() {
@@ -52,6 +56,16 @@ export class CaseDetailsComponent implements OnInit {
   }
 
   UpdateSFReceive() {
-
+    this.caseSFModel.CaseId = this.caseDetails.CaseId;
+    console.log(this.caseSFModel);
+    this.caseProgressService.updateSFDate(this.caseSFModel).subscribe(
+      (resp: any) => {
+        this.twister.success('Updated Successfully.');
+        this.caseDetails.IsSFReceived = true;
+        this.currentStage = 1;
+    },
+    error => {
+      this.twister.error(error.message);
+    });
   }
 }
