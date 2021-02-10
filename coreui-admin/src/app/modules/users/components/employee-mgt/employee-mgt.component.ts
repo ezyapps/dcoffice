@@ -46,7 +46,7 @@ export class EmployeeMgtComponent implements OnInit {
     if(!this.empModel.id) {
       this.twister.message('Sorry! Employee not selected.');
     }else {
-      this.twister.confirm('Are you sure?', () => {
+      this.twister.confirm('Confirmation','Are you sure?', () => {
         const userRoleModel =  {userId: this.empModel.id, officeStructureId: this.model.officeStructureId, roleType: this.model.roleType};
         this.userRoleService.assignRole(userRoleModel).subscribe(() => {
             this.twister.success('কর্মকর্তার নতুন পদবী সংযুক্ত হয়েছে।');
@@ -57,7 +57,7 @@ export class EmployeeMgtComponent implements OnInit {
             this.twister.error(error.message);
           }
         );
-      }
+      }, ()=> {}
       );
 
     }

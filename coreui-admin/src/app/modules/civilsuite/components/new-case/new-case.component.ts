@@ -136,7 +136,7 @@ export class NewCaseComponent implements OnInit {
     }
   }
   saveNewCase() {
-    this.twister.confirm('Are you sure to file new case?', () => {
+    this.twister.confirm('Confirmation','Are you sure to file new case?', () => {
       if (this.model.caseType === 'নতুন') {
         this.model.status = 'SF Pending';
       } else {
@@ -159,7 +159,7 @@ export class NewCaseComponent implements OnInit {
           this.caseTopshilService.save(this.modelTopshil).subscribe (
             (topshil: CaseTopshil) => {
               var progressModel = new CivilCaseProgress();
-              progressModel.CaseId = data.id;
+              progressModel.caseId = data.id;
               this.civilCaseProgressService.save(progressModel).subscribe (
                 (resp: any) => {
                   this.twister.success('New case has been recorded successfully.');
@@ -178,8 +178,7 @@ export class NewCaseComponent implements OnInit {
           this.twister.error(error.message);
         }
       );
-    });
-
+    }, () => {});
     console.log(this.model);
     console.log(this.modelTopshil);
   }

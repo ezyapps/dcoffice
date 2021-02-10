@@ -56,7 +56,7 @@ export class OfficeLevelComponent implements OnInit {
     }
   }
   saveOfficeLevel() {
-    this.twister.confirm('Are you sure to add new level?', () => {
+    this.twister.confirm('Confirmation','Are you sure to add new level?', () => {
       this.model.geoLevel = +this.model.geoLevel;
         this.officeLevelService.save(this.model).subscribe(
           (data: OfficeLevel) => {
@@ -66,6 +66,8 @@ export class OfficeLevelComponent implements OnInit {
             this.twister.error(error.message);
           }
         );
+      }, () => {
+        // Cancel button
       }
     );
   }

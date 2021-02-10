@@ -20,9 +20,9 @@ export class CivilCaseProgressService extends CrudService<CivilCaseProgress, str
     return this._http.post<any>(this.baseUrl+ '/update_sf_receive', model);
   }
 
-  // getAll(filterObj): Observable<any[]> {
-  //   return this._http.post<any[]>(this.baseUrl + '/withfilter', filterObj);
-  // }
+  getByCaseId(caseId): Observable<CivilCaseProgress> {
+    return this._http.get<CivilCaseProgress>(this.baseUrl + '/bycaseid/'+caseId);
+  }
   // getAllWithTopshil() {
   //   return this._http.get<any[]>(this._base + '/allwithtopshil');
   // }

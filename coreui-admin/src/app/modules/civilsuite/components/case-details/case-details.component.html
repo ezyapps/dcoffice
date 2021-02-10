@@ -174,7 +174,7 @@
               </li>
               <li class="StepProgress-item {{currentStage >= 1? 'is-done':''}} {{currentStage < 1? 'current':''}}" >
                 <span>{{currentStage >= 1? 'এস এফ প্রাপ্ত':'এস এফ অপেক্ষমান'}}</span>
-                <div *ngIf="currentStage >= 1"> এস এফ প্রাপ্তির তারিখঃ {{caseDetails.SFReceiveDate}}</div>
+                <div *ngIf="currentStage >= 1"> প্রাপ্তির তারিখঃ {{caseProgressModel.sfReceiveDate}}</div>
                 <div *ngIf="currentStage < 1">
                   <form #sfForm="ngForm" (submit)="UpdateSFReceive()" >
                     <div class="row">
@@ -183,7 +183,7 @@
                           <div class="input-group">
                             <label for="ActionDate">প্রাপ্তির তারিখঃ </label>
                             <input type="date" id="ActionDate" name="ActionDate" class="form-control1" [(ngModel)]="caseSFModel.ActionDate">
-                            <input type="submit" value="Update">
+                            <input type="submit" value="সংরক্ষন">
                           </div>
                         </div>
                       </div>
@@ -191,25 +191,40 @@
                   </form>
                 </div>
               </li>
-              <li class="StepProgress-item  {{caseDetails.HasGovtInterest == true? 'is-done':''}}">
-                <span *ngIf="caseDetails.HasGovtInterest == null">সরকারী স্বত্ব আছে/নাই?</span>
-                <span *ngIf="caseDetails.HasGovtInterest != null">{{caseDetails.HasGovtInterest == true? 'সরকারী স্বত্ব আছে':'সরকারী স্বত্ব নাই'}}</span> <br/>
-              <li *ngIf="caseDetails.HasGovtInterest == true"
+              <li class="StepProgress-item  {{currentStage>=2? 'is-done': currentStage==1?'current':''}}">
+                <div  *ngIf="currentStage == 1" >
+                  <span>সরকারী স্বত্ব </span>
+                  <div class="form-group">
+                    <div class="input-group">
+                      <div class="input-group-prepend">
+                        <span class="input-group-text">আছে? </span>
+                      </div>
+                      <label class="switch-lg switch-label switch-pill switch-success m-1">
+                        <input type="checkbox" class="switch-input" [(ngModel)] = "hasGovtInterest">
+                        <span class="switch-slider" data-checked="হ্যাঁ" data-unchecked="না"></span>
+                      </label>
+                      <input type="button" value="সংরক্ষন" (click)="updateGovtInterest()" >
+                    </div>
+                  </div>
+
+                </div>
+                <span *ngIf="caseProgressModel.hasGovtInterest != null">{{caseProgressModel.hasGovtInterest == true? 'সরকারী স্বত্ব আছে':'সরকারী স্বত্ব নাই'}}</span> <br/>
+              <li *ngIf="caseProgressModel.hasGovtInterest == true"
                   class="StepProgress-item {{currentStage >= 2? 'is-done':''}} {{currentStage == 1? 'current':''}}">
                   <span> {{currentStage == 1? 'এস এফ জিপি অফিসে প্রেরণ হয়নি':'এস এফ জিপি অফিসে প্রেরিত'}}</span> <br/>
 
               </li>
-              <li *ngIf="caseDetails.HasGovtInterest == true"
+              <li *ngIf="caseProgressModel.hasGovtInterest == true"
                   class="StepProgress-item">
                   <span> জিপি অফিস থেকে জবাব প্রাপ্তি </span>
 
               </li>
-              <li *ngIf="caseDetails.HasGovtInterest == true"
+              <li *ngIf="caseProgressModel.hasGovtInterest == true"
                   class="StepProgress-item">
                   <span> স্বাক্ষরিত জবাব জিপি অফিসে প্রেরণ </span>
 
               </li>
-              <li *ngIf="caseDetails.HasGovtInterest == true"
+              <li *ngIf="caseProgressModel.hasGovtInterest == true"
                   class="StepProgress-item">
                   <span> শুনানী </span>
 
