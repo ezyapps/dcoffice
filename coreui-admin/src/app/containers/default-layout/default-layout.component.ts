@@ -59,14 +59,14 @@ export class DefaultLayoutComponent implements OnInit {
   }
 
   loadUserRoles() {
-    var userId = this.authService.decodedToken.nameid;
+    const userId = this.authService.decodedToken.nameid;
     this.userRoleService.getAllByUser(userId).subscribe((data: any) => {
       this.userRoles = data;
       console.log(data);
     },
     error => {
       this.alertify.error(error.message);
-    })
+    });
   }
 
   toggleMinimize(e) {

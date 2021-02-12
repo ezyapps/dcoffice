@@ -1,6 +1,8 @@
-import { stringify } from '@angular/compiler/src/util';
+// import { stringify } from '@angular/compiler/src/util';
 import { Component, OnInit } from '@angular/core';
 import { AlertifyService } from '../../../../common/_services/alertify.service';
+import { Voice2TextService } from '../../../../common/_services/voice2text.service';
+import { WindowRef } from '../../../../common/_services/window-ref.service';
 import { GovtOffice } from '../../../app-admin/models/govt-office.model';
 import { GovtOfficeService } from '../../../app-admin/services/govt-office.service';
 import { GeoDistrict } from '../../../geo-location/models/geo-district.model';
@@ -23,7 +25,8 @@ import { CivilCaseService } from '../../services/civilcase.service';
 @Component({
   selector: 'app-new-case',
   templateUrl: './new-case.component.html',
-  styleUrls: ['./new-case.component.less']
+  styleUrls: ['./new-case.component.less'],
+  providers: [Voice2TextService]
 })
 export class NewCaseComponent implements OnInit {
   model: any = {};
@@ -35,7 +38,7 @@ export class NewCaseComponent implements OnInit {
   unions: GeoUnion[];
   mouzas: GeoMouza[];
   offices: GovtOffice[];
-
+  voiceListening: boolean = false;
   selectedDivCode: string;
 
   constructor(
@@ -48,11 +51,31 @@ export class NewCaseComponent implements OnInit {
     private caseService: CivilCaseService,
     private caseTopshilService: CaseTopshilService,
     private officeServices: GovtOfficeService,
-    private civilCaseProgressService: CivilCaseProgressService
-  ) { }
+    private civilCaseProgressService: CivilCaseProgressService,
+    public v2textService: Voice2TextService,
+    private winRef: WindowRef
+  ) {
+    this.v2textService.init();
+    this.v2textService.getText().subscribe(
+      data => {
+      this.model.caseDescription = data;
+    });
+    console.log('Native window obj', winRef.nativeWindow);
+   }
 
   ngOnInit() {
     this.loadDistricts();
+  }
+
+  convertVoice() {
+    if (this.voiceListening === false) {
+      this.v2textService.start();
+      this.voiceListening = true;
+    } else {
+      this.v2textService.stop();
+      // this.model.caseDescription = this.v2textService.text;
+      this.voiceListening = false;
+    }
   }
   loadDivisions() {
     this.divService.findAll().subscribe(
@@ -110,55 +133,56 @@ export class NewCaseComponent implements OnInit {
   }
 
   loadLandOffices() {
-    console.log(this.districts.find(a => a.code == this.modelTopshil.distCode));
+    console.log(this.districts.find(a => a.code === this.modelTopshil.distCode));
 
 
-    var geoCode: string = this.districts.find(a => a.code == this.modelTopshil.distCode).parentCode+"-"
-    +this.modelTopshil.distCode+"-"+this.modelTopshil.upazilaCode+"-"+this.unions.find(x => x.id == this.modelTopshil.unionId).code;
+    const geoCode: string = this.districts.find(a => a.code === this.modelTopshil.distCode).parentCode + '-'
+    + this.modelTopshil.distCode + '-' + this.modelTopshil.upazilaCode + '-' +
+     this.unions.find(x => x.id === this.modelTopshil.unionId).code;
 
     console.log(geoCode);
 
-    this.officeServices.getAllOfficesByGeoLevel(geoCode).subscribe((data: GovtOffice[])=>{
+    this.officeServices.getAllOfficesByGeoLevel(geoCode).subscribe((data: GovtOffice[]) => {
       this.offices = data;
     },
     error => {
       console.log(error.message);
-    })
+    });
   }
   alterComplaintant(ctr) {
     console.log(ctr);
-    if(ctr) {
+    if (ctr) {
       this.model.complaintant = 'সরকার';
       this.model.defendant = '';
-    }else {
+    } else {
       this.model.defendant = 'সরকার';
       this.model.complaintant = '';
     }
   }
   saveNewCase() {
-    this.twister.confirm('Confirmation','Are you sure to file new case?', () => {
+    this.twister.confirm('Confirmation', 'Are you sure to file new case?', () => {
       if (this.model.caseType === 'নতুন') {
         this.model.status = 'SF Pending';
       } else {
         this.model.status = 'Waiting for Hearing';
       }
 
-      if(this.model.complaintant == null) {
+      if (this.model.complaintant == null) {
         this.model.complaintant = 'সরকার';
       }
 
-      if(this.model.defendant == null) {
+      if (this.model.defendant == null) {
         this.model.defendant = 'সরকার';
       }
 
-      this.model.caseCategory = "দেওয়ানি মামলা";
+      this.model.caseCategory = 'দেওয়ানি মামলা';
       this.caseService.save(this.model).subscribe (
         (data: NewCivilCase) => {
           this.modelTopshil.caseNo = this.model.caseNo;
           this.modelTopshil.caseId = data.id;
           this.caseTopshilService.save(this.modelTopshil).subscribe (
             (topshil: CaseTopshil) => {
-              var progressModel = new CivilCaseProgress();
+              const progressModel = new CivilCaseProgress();
               progressModel.caseId = data.id;
               this.civilCaseProgressService.save(progressModel).subscribe (
                 (resp: any) => {

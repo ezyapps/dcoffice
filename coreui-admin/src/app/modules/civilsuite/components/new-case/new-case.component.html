@@ -55,9 +55,17 @@
                   <div class="input-group">
                     <div class="input-group-prepend">
                       <span class="input-group-text"> মামলার বিস্তারিত </span>
-                    </div>
+                      </div>
                     <textarea type="text" id="caseDescription" name="caseDescription" rows="2"
-                      [(ngModel)]="model.caseDescription" class="form-control" required></textarea>
+                      [(ngModel)]="model.caseDescription" class="form-control" required>{{v2textService.text}}</textarea>
+                      <button id="voice2text" type="button" role="button" class="fr-command fr-btn speaking"
+                        data-cmd="voice2text" data-title="Voice Text" (click)="convertVoice()">
+
+                        <i class="fa startListening fa-microphone-slash" aria-hidden="true" *ngIf="!voiceListening"
+                          style="color: rgb(104, 65, 65); background: white; padding: 1px 3px;"> </i>
+                        <i class="fa startListening fa-microphone" aria-hidden="true" *ngIf="voiceListening"
+                          style="color: rgb(255, 38, 0); background: white; padding: 1px 3px;"> </i>
+                        </button>
                   </div>
                 </div>
                 <div class="form-group col-md-3" *ngIf="caseType.value == 'আপিল'">
