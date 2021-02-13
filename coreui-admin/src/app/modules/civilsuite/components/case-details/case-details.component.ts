@@ -36,10 +36,10 @@ export class CaseDetailsComponent implements OnInit {
             this.caseProgressModel = data;
             console.log(data);
             this.getCurrentStage();
-          },error => {
-            this.twister.error('Sorry! Failed to load case progress. '+ error.message);
+          }, error => {
+            this.twister.error('Sorry! Failed to load case progress. ' + error.message);
           }
-        )
+        );
         console.log(this.caseDetails);
       },
       error => {
@@ -69,10 +69,19 @@ export class CaseDetailsComponent implements OnInit {
     }
   }
   updateGovtInterest() {
-    this.twister.confirm('Confirmation','আপনি কি নিশ্চিত?', () => {
-      alert('Yes you are in here....');
+    this.twister.confirm('Confirmation', 'আপনি কি নিশ্চিত?', () => {
+      this.caseProgressService.updateGovtInterest(this.caseDetails.CaseId, this.hasGovtInterest).subscribe(
+        (data: any) => {
+          this.twister.success('Updated Successfully.');
+          this.caseProgressModel.hasGovtInterest = this.hasGovtInterest;
+          this.currentStage = 2;
+        }, error => {
+          this.twister.error(error.message);
+        }
+      );
     }, () => { });
   }
+
   UpdateSFReceive() {
     this.caseSFModel.CaseId = this.caseDetails.CaseId;
     console.log(this.caseSFModel);
