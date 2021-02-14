@@ -16,11 +16,26 @@ export class CivilCaseProgressService extends CrudService<CivilCaseProgress, str
     super(_http, `${environment.apiUrl}civilcaseprogress`);
   }
 
+  updateHearingDate(model: any): Observable<any> {
+    return this._http.post<any>(this.baseUrl + '/update_hearing_date', model);
+  }
+  updateSendSFToGpO(model: any): Observable<any> {
+    return this._http.post<any>(this.baseUrl + '/update_sf_send2GpO', model);
+  }
+  updateSignedReplySendToGpO(model: any): Observable<any> {
+    return this._http.post<any>(this.baseUrl + '/update_signedreply_sendtoGpO', model);
+  }
+  updateReplyReceivedFromGpO (model: any): Observable<any> {
+    return this._http.post(this.baseUrl+ '/update_reply_receiveFromGpO', model);
+  }
   updateSFDate(model: any): Observable<any> {
     return this._http.post<any>(this.baseUrl + '/update_sf_receive', model);
   }
-  updateGovtInterest (caseId: string, hasInterest): Observable<any> {
+  updateGovtInterest (caseId: string, hasInterest: boolean): Observable<any> {
     return this._http.get(this._base + '/update_govt_interest/' + caseId + '/' + hasInterest);
+  }
+  updateCaseResult (caseId: string, result: number): Observable<any> {
+    return this._http.get(this._base + '/update_case_result/' + caseId + '/' + result);
   }
   getByCaseId(caseId): Observable<CivilCaseProgress> {
     return this._http.get<CivilCaseProgress>(this.baseUrl + '/bycaseid/' + caseId);

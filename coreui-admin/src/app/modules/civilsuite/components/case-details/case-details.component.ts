@@ -13,10 +13,11 @@ export class CaseDetailsComponent implements OnInit {
   caseDetails: any = {};
   searchModel: any = {};
   caseSFModel: any = {};
+  caseSF2GpOModel: any = {};
   caseProgressModel: CivilCaseProgress;
   currentStage: number = 0;
   hasGovtInterest: boolean = false;
-
+  caseResult: number = 0;
   constructor(
     private twister: AlertifyService,
     private caseService: CivilCaseService,
@@ -67,6 +68,12 @@ export class CaseDetailsComponent implements OnInit {
     if(this.caseProgressModel.isSignedReplySentToGPOffice == true){
       this.currentStage = 5;
     }
+    if(this.caseProgressModel.hearingDate !== null){
+      this.currentStage = 5;
+    }
+    if(this.caseProgressModel.result >= 0){
+      this.currentStage = 7;
+    }
   }
   updateGovtInterest() {
     this.twister.confirm('Confirmation', 'আপনি কি নিশ্চিত?', () => {
@@ -82,6 +89,74 @@ export class CaseDetailsComponent implements OnInit {
     }, () => { });
   }
 
+  UpdateSendSFToGpO() {
+    this.caseSF2GpOModel.CaseId = this.caseDetails.CaseId;
+    console.log(this.caseSF2GpOModel);
+    this.caseProgressService.updateSendSFToGpO(this.caseSF2GpOModel).subscribe(
+      (resp: any) => {
+        this.twister.success('Updated Successfully.');
+        this.caseProgressModel.dateSFSentToGPOffice = this.caseSF2GpOModel.ActionDate;
+        this.currentStage = 3;
+    },
+    error => {
+      this.twister.error(error.message);
+    });
+  }
+
+  UpdateSignedReplySendToGpO() {
+    this.caseSF2GpOModel.CaseId = this.caseDetails.CaseId;
+    console.log(this.caseSF2GpOModel);
+    this.caseProgressService.updateSignedReplySendToGpO(this.caseSF2GpOModel).subscribe(
+      (resp: any) => {
+        this.twister.success('Updated Successfully.');
+        this.caseProgressModel.dateSignedReplySentToGPOffice = this.caseSF2GpOModel.ActionDate;
+        this.currentStage = 5;
+    },
+    error => {
+      this.twister.error(error.message);
+    });
+  }
+
+  UpdateHearingDate() {
+    this.caseSF2GpOModel.CaseId = this.caseDetails.CaseId;
+    console.log(this.caseSF2GpOModel);
+    this.caseProgressService.updateHearingDate(this.caseSF2GpOModel).subscribe(
+      (resp: any) => {
+        this.twister.success('Updated Successfully.');
+        this.caseProgressModel.hearingDate = this.caseSF2GpOModel.ActionDate;
+        this.currentStage = 6;
+    },
+    error => {
+      this.twister.error(error.message);
+    });
+  }
+
+  updateResult() {
+    this.twister.confirm('Confirmation', 'আপনি কি নিশ্চিত?', () => {
+      this.caseProgressService.updateCaseResult(this.caseDetails.CaseId, this.caseResult).subscribe(
+        (data: any) => {
+          this.twister.success('Updated Successfully.');
+          this.caseProgressModel.result = this.caseResult;
+          this.currentStage = 7;
+        }, error => {
+          this.twister.error(error.message);
+        }
+      );
+    }, () => { });
+  }
+  UpdateReplyReceivedFromGpO(){
+    this.caseSF2GpOModel.CaseId = this.caseDetails.CaseId;
+    console.log(this.caseSF2GpOModel);
+    this.caseProgressService.updateReplyReceivedFromGpO(this.caseSF2GpOModel).subscribe(
+      (resp: any) => {
+        this.twister.success('Updated Successfully.');
+        this.caseProgressModel.dateReplyReceivedFromGPOffice = this.caseSF2GpOModel.ActionDate;
+        this.currentStage = 4;
+    },
+    error => {
+      this.twister.error(error.message);
+    });
+  }
   UpdateSFReceive() {
     this.caseSFModel.CaseId = this.caseDetails.CaseId;
     console.log(this.caseSFModel);

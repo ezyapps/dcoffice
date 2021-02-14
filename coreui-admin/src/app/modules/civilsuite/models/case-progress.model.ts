@@ -11,4 +11,5 @@ export class CivilCaseProgress {
   isSignedReplySentToGPOffice?: boolean;
   dateSignedReplySentToGPOffice?: Date;
   hearingDate?: Date;
+  result?: number;
 }
