@@ -9,6 +9,9 @@ import { CaseListComponent } from './components/case-list/case-list.component';
 import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { CaseDetailsComponent } from './components/case-details/case-details.component';
+import { CaseDetailsResolver } from './resolvers/case-details.resolver';
+import { CaseProgressComponent } from './components/case-progress/case-progress.component';
+import { CaseProgressPopupComponent } from './components/case-progress-popup/case-progress-popup.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -22,7 +25,12 @@ import { CaseDetailsComponent } from './components/case-details/case-details.com
     CivilsuiteDashboardComponent,
     NewCaseComponent,
     CaseListComponent,
-    CaseDetailsComponent
+    CaseDetailsComponent,
+    CaseProgressComponent,
+    CaseProgressPopupComponent
+  ],
+  providers: [
+    CaseDetailsResolver
   ]
 })
 export class CivilSuiteModule {}

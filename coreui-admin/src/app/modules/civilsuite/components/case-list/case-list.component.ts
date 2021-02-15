@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { DialogService } from 'primeng/dynamicdialog';
 import { AlertifyService } from '../../../../common/_services/alertify.service';
 import { AuthService } from '../../../../common/_services/auth.service';
 import { GeoDistrict } from '../../../geo-location/models/geo-district.model';
@@ -9,12 +11,16 @@ import { DistrictService } from '../../../geo-location/services/district.service
 import { DivisionService } from '../../../geo-location/services/division.service';
 import { UnionService } from '../../../geo-location/services/union.service';
 import { UpazilaService } from '../../../geo-location/services/upazila.service';
+import { CivilCaseProgress } from '../../models/case-progress.model';
+import { CivilCaseProgressService } from '../../services/civilcase-progress.service';
 import { CivilCaseService } from '../../services/civilcase.service';
+import { CaseProgressPopupComponent } from '../case-progress-popup/case-progress-popup.component';
 
 @Component({
   selector: 'app-case-list',
   templateUrl: './case-list.component.html',
-  styleUrls: ['./case-list.component.less']
+  styleUrls: ['./case-list.component.less'],
+  providers: [DialogService]
 })
 export class CaseListComponent implements OnInit {
  caseList: any[];
@@ -30,7 +36,10 @@ export class CaseListComponent implements OnInit {
     private distService: DistrictService,
     private divService: DivisionService,
     private unionService: UnionService,
-    private authService: AuthService
+    private authService: AuthService,
+    private router: Router,
+    private dialogService: DialogService,
+    private caseProgressService: CivilCaseProgressService
   ) { }
 
   ngOnInit() {
@@ -39,6 +48,26 @@ export class CaseListComponent implements OnInit {
 
   findCase() {
     this.loadCases();
+  }
+
+  caseDetails(caseNo){
+    this.router.navigate(['/civil-suite/casedetails/'+caseNo]);
+  }
+
+  loadProgressWindow(caseId){
+    this.caseProgressService.getByCaseId(caseId).subscribe(
+      (repoData: CivilCaseProgress) => {
+          const ref = this.dialogService.open(CaseProgressPopupComponent, {
+            data: {
+                caseProgress: repoData
+            },
+            width: '50%'
+        });
+      }, error => {
+        this.twister.error('Sorry! Failed to load case progress. ' );
+
+      }
+    );
   }
 
   loadDistricts() {

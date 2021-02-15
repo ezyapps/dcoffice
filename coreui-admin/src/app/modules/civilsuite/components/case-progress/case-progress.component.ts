@@ -1,101 +1,65 @@
-import { Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { Component, Input, OnChanges, OnInit } from '@angular/core';
+import { DynamicDialogRef, DynamicDialogConfig } from 'primeng/dynamicdialog';
 import { AlertifyService } from '../../../../common/_services/alertify.service';
 import { CivilCaseProgress } from '../../models/case-progress.model';
 import { CivilCaseProgressService } from '../../services/civilcase-progress.service';
 import { CivilCaseService } from '../../services/civilcase.service';
 
 @Component({
-  selector: 'app-case-details',
-  templateUrl: './case-details.component.html',
-  styleUrls: ['./case-details.component.less']
+  selector: 'app-case-progress',
+  templateUrl: './case-progress.component.html',
+  styleUrls: ['./case-progress.component.scss']
 })
-export class CaseDetailsComponent implements OnInit {
-  caseDetails: any = {};
-  searchModel: any = {};
+export class CaseProgressComponent implements OnInit, OnChanges {
   caseSFModel: any = {};
   caseSF2GpOModel: any = {};
-  caseProgressModel: CivilCaseProgress;
+  @Input()caseProgressModel: CivilCaseProgress;
   currentStage: number = 0;
   hasGovtInterest: boolean = false;
   caseResult: boolean = false;
   constructor(
     private twister: AlertifyService,
     private caseService: CivilCaseService,
-    private caseProgressService: CivilCaseProgressService,
-    private route: ActivatedRoute
-  ) { }
+    private caseProgressService: CivilCaseProgressService
+    ) { }
 
   ngOnInit() {
-    this.route.data.subscribe(data => {
-      console.log(data['caseDetails']);
-      this.caseDetails = data['caseDetails'][0];
-      this.searchModel.caseNo = this.caseDetails.CaseNo;
-      this.loadCaseProgress();
-    },
-    error => {
-      this.searchModel.caseNo = 'D-111';
-    }
-    );
-
+    this.getCurrentStage();
   }
-
-  loadCaseProgress(){
-    this.caseProgressService.getByCaseId(this.caseDetails?.CaseId).subscribe(
-      (data: CivilCaseProgress) => {
-        this.caseProgressModel = data;
-        console.log(data);
-        this.getCurrentStage();
-      }, error => {
-        this.twister.error('Sorry! Failed to load case progress. ' + error.message);
-        this.caseProgressModel = null;
-      }
-    );
+  ngOnChanges() {
+    this.getCurrentStage();
+    // create header using child_id
+    console.log(this.caseProgressModel);
   }
-
-  findCase() {
-    this.caseService.getAll(this.searchModel).subscribe(
-      (data: any[]) => {
-        this.caseDetails = data[0];
-        this.loadCaseProgress();
-        console.log(this.caseDetails);
-      },
-      error => {
-        this.twister.error(error.message);
-        this.caseDetails = null;
-      }
-    );
-  }
-
   getCurrentStage() {
 
-    if(this.caseProgressModel.isSFReceived == true){
+    if(this.caseProgressModel?.isSFReceived == true){
       this.currentStage = 1;
     }
-    if(this.caseProgressModel.hasGovtInterest != null){
+    if(this.caseProgressModel?.hasGovtInterest != null){
       this.currentStage = 2;
     }
-    if(this.caseProgressModel.isSFSentToGPOffice == true){
+    if(this.caseProgressModel?.isSFSentToGPOffice == true){
       this.currentStage = 3;
     }
 
-    if(this.caseProgressModel.isGPOfficeReplyReceived == true){
+    if(this.caseProgressModel?.isGPOfficeReplyReceived == true){
       this.currentStage = 4;
     }
 
-    if(this.caseProgressModel.isSignedReplySentToGPOffice == true){
+    if(this.caseProgressModel?.isSignedReplySentToGPOffice == true){
       this.currentStage = 5;
     }
-    if(this.caseProgressModel.hearingDate !== null){
+    if(this.caseProgressModel?.hearingDate !== null){
       this.currentStage = 5;
     }
-    if(this.caseProgressModel.result >= 0){
+    if(this.caseProgressModel?.result >= 0){
       this.currentStage = 7;
     }
   }
   updateGovtInterest() {
     this.twister.confirm('Confirmation', 'আপনি কি নিশ্চিত?', () => {
-      this.caseProgressService.updateGovtInterest(this.caseDetails.CaseId, this.hasGovtInterest).subscribe(
+      this.caseProgressService.updateGovtInterest(this.caseProgressModel.caseId, this.hasGovtInterest).subscribe(
         (data: any) => {
           this.twister.success('Updated Successfully.');
           this.caseProgressModel.hasGovtInterest = this.hasGovtInterest;
@@ -108,7 +72,7 @@ export class CaseDetailsComponent implements OnInit {
   }
 
   UpdateSendSFToGpO() {
-    this.caseSF2GpOModel.CaseId = this.caseDetails.CaseId;
+    this.caseSF2GpOModel.CaseId = this.caseProgressModel.caseId;
     console.log(this.caseSF2GpOModel);
     this.caseProgressService.updateSendSFToGpO(this.caseSF2GpOModel).subscribe(
       (resp: any) => {
@@ -122,7 +86,7 @@ export class CaseDetailsComponent implements OnInit {
   }
 
   UpdateSignedReplySendToGpO() {
-    this.caseSF2GpOModel.CaseId = this.caseDetails.CaseId;
+    this.caseSF2GpOModel.CaseId = this.caseProgressModel.caseId;
     console.log(this.caseSF2GpOModel);
     this.caseProgressService.updateSignedReplySendToGpO(this.caseSF2GpOModel).subscribe(
       (resp: any) => {
@@ -136,7 +100,7 @@ export class CaseDetailsComponent implements OnInit {
   }
 
   UpdateHearingDate() {
-    this.caseSF2GpOModel.CaseId = this.caseDetails.CaseId;
+    this.caseSF2GpOModel.CaseId = this.caseProgressModel.caseId;
     console.log(this.caseSF2GpOModel);
     this.caseProgressService.updateHearingDate(this.caseSF2GpOModel).subscribe(
       (resp: any) => {
@@ -152,7 +116,7 @@ export class CaseDetailsComponent implements OnInit {
   updateResult() {
     this.twister.confirm('নিশ্চিত করণ', 'আপনি কি নিশ্চিত?', () => {
       const result = this.caseResult == true? 1: 0;
-      this.caseProgressService.updateCaseResult(this.caseDetails.CaseId, result).subscribe(
+      this.caseProgressService.updateCaseResult(this.caseProgressModel.caseId, result).subscribe(
         (data: any) => {
           this.twister.success('Updated Successfully.');
           this.caseProgressModel.result = result;
@@ -165,7 +129,7 @@ export class CaseDetailsComponent implements OnInit {
   }
 
   UpdateReplyReceivedFromGpO(){
-    this.caseSF2GpOModel.CaseId = this.caseDetails.CaseId;
+    this.caseSF2GpOModel.CaseId = this.caseProgressModel.caseId;
     console.log(this.caseSF2GpOModel);
     this.caseProgressService.updateReplyReceivedFromGpO(this.caseSF2GpOModel).subscribe(
       (resp: any) => {
@@ -178,7 +142,7 @@ export class CaseDetailsComponent implements OnInit {
     });
   }
   UpdateSFReceive() {
-    this.caseSFModel.CaseId = this.caseDetails.CaseId;
+    this.caseSFModel.CaseId = this.caseProgressModel.caseId;
     console.log(this.caseSFModel);
     this.caseProgressService.updateSFDate(this.caseSFModel).subscribe(
       (resp: any) => {

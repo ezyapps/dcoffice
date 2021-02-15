@@ -4,6 +4,7 @@ import { CaseDetailsComponent } from './components/case-details/case-details.com
 import { CaseListComponent } from './components/case-list/case-list.component';
 import { CivilsuiteDashboardComponent } from './components/civilsuite-dashboard/civilsuite-dashboard.component';
 import { NewCaseComponent } from './components/new-case/new-case.component';
+import { CaseDetailsResolver } from './resolvers/case-details.resolver';
 
 const routes: Routes = [
   {
@@ -41,6 +42,14 @@ const routes: Routes = [
       {
         path: 'casedetails',
         component: CaseDetailsComponent,
+        data: {
+          title: 'মামলার বিস্তারিত'
+        }
+      },
+      {
+        path: 'casedetails/:caseNo',
+        component: CaseDetailsComponent,
+        resolve: {caseDetails: CaseDetailsResolver},
         data: {
           title: 'মামলার বিস্তারিত'
         }

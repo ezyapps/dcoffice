@@ -14,7 +14,15 @@ setActiveModule(moduleName: string) {
 sendMessage(msg: string) {
   this.subject.next(msg);
 }
+
 getMessage(): Observable<string> {
+  return this.subject.asObservable();
+}
+sendCaseId(caseId: string) {
+  this.subject.next(caseId);
+}
+
+getCaseId(): Observable<string> {
   return this.subject.asObservable();
 }
 

@@ -17,10 +17,12 @@ export class CaseDetailsResolver implements Resolve<any>
     private caseService: CivilCaseService
   ) { }
   resolve(route: ActivatedRouteSnapshot): Observable<any> {
-    return this.caseService.findOne(route.params['id']).pipe(
+    const caseNo = route.params['caseNo'];
+    console.log(caseNo);
+    return this.caseService.getAll({caseNo: route.params['caseNo']}).pipe(
       catchError(error => {
           this.twister.error('Problem retrieving data');
-          this.router.navigate(['/caselist']);
+          this.router.navigate(['/civil-suite/caselist']);
           return of(null);
       })
   );
