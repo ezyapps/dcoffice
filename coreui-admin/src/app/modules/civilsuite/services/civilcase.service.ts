@@ -14,7 +14,9 @@ export class CivilCaseService extends CrudService<NewCivilCase, string> {
   constructor(protected _http: HttpClient) {
     super(_http, `${environment.apiUrl}civilcase`);
   }
-
+  saveNew(model): Observable<any> {
+    return this._http.post<any>(this.baseUrl + '/new-case', model);
+  }
   getAll(filterObj): Observable<any[]> {
     return this._http.post<any[]>(this.baseUrl + '/withfilter', filterObj);
   }

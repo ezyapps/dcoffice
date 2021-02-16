@@ -176,7 +176,7 @@ export class NewCaseComponent implements OnInit {
       }
 
       this.model.caseCategory = 'দেওয়ানি মামলা';
-      this.caseService.save(this.model).subscribe (
+      this.caseService.saveNew(this.model).subscribe (
         (data: NewCivilCase) => {
           this.modelTopshil.caseNo = this.model.caseNo;
           this.modelTopshil.caseId = data.id;
