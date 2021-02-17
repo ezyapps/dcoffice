@@ -12,6 +12,8 @@ import { CaseDetailsComponent } from './components/case-details/case-details.com
 import { CaseDetailsResolver } from './resolvers/case-details.resolver';
 import { CaseProgressComponent } from './components/case-progress/case-progress.component';
 import { CaseProgressPopupComponent } from './components/case-progress-popup/case-progress-popup.component';
+import { LostCasesComponent } from './components/lost-cases/lost-cases.component';
+import { AppealCaseEntryComponent } from './components/appeal-case-entry/appeal-case-entry.component';
 @NgModule({
   imports: [
     CommonModule,
@@ -27,7 +29,9 @@ import { CaseProgressPopupComponent } from './components/case-progress-popup/cas
     CaseListComponent,
     CaseDetailsComponent,
     CaseProgressComponent,
-    CaseProgressPopupComponent
+    CaseProgressPopupComponent,
+    LostCasesComponent,
+    AppealCaseEntryComponent
   ],
   providers: [
     CaseDetailsResolver

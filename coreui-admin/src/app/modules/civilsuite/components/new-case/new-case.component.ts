@@ -164,7 +164,7 @@ export class NewCaseComponent implements OnInit {
       if (this.model.caseType === 'নতুন') {
         this.model.status = 'SF Pending';
       } else {
-        this.model.status = 'Waiting for Hearing';
+        this.model.status = 'শুনানীর অপেক্ষায়';
       }
 
       if (this.model.complaintant == null) {

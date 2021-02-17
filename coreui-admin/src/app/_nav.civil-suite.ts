@@ -5,13 +5,18 @@ export const civilSuiteNavItems: INavData[] = [
     name: 'দেওয়ানী মামলা'
   },
   {
-    name: 'মামলা দায়ের',
+    name: 'নতুন মামলা',
     url: '/civil-suite/new-case',
     icon: 'icon-speech'
   },
   {
-    name: 'মামলা তালিকা',
+    name: 'মামলার তালিকা',
     url: '/civil-suite/caselist',
+    icon: 'icon-list'
+  },
+  {
+    name: 'পরাজিত মামলার তালিকা',
+    url: '/civil-suite/lostcases',
     icon: 'icon-list'
   },
   {

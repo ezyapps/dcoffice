@@ -17,6 +17,10 @@ export class CivilCaseService extends CrudService<NewCivilCase, string> {
   saveNew(model): Observable<any> {
     return this._http.post<any>(this.baseUrl + '/new-case', model);
   }
+
+  getLostCases(filterObj): Observable<any[]> {
+    return this._http.post<any[]>(this.baseUrl + '/lostcases', filterObj);
+  }
   getAll(filterObj): Observable<any[]> {
     return this._http.post<any[]>(this.baseUrl + '/withfilter', filterObj);
   }

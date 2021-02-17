@@ -1,8 +1,10 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AppealCaseEntryComponent } from './components/appeal-case-entry/appeal-case-entry.component';
 import { CaseDetailsComponent } from './components/case-details/case-details.component';
 import { CaseListComponent } from './components/case-list/case-list.component';
 import { CivilsuiteDashboardComponent } from './components/civilsuite-dashboard/civilsuite-dashboard.component';
+import { LostCasesComponent } from './components/lost-cases/lost-cases.component';
 import { NewCaseComponent } from './components/new-case/new-case.component';
 import { CaseDetailsResolver } from './resolvers/case-details.resolver';
 
@@ -52,6 +54,21 @@ const routes: Routes = [
         resolve: {caseDetails: CaseDetailsResolver},
         data: {
           title: 'মামলার বিস্তারিত'
+        }
+      },
+      {
+        path: 'appeal-case-entry/:caseNo',
+        component: AppealCaseEntryComponent,
+        resolve: {caseDetails: CaseDetailsResolver},
+        data: {
+          title: 'আপিল মামলা দায়ের'
+        }
+      },
+      {
+        path: 'lostcases',
+        component: LostCasesComponent,
+        data: {
+          title: 'পরাজিত মামলার তালিকা'
         }
       }
     ]
