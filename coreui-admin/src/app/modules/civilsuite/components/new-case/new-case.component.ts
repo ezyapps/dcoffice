@@ -161,6 +161,7 @@ export class NewCaseComponent implements OnInit {
   }
   saveNewCase() {
     this.twister.confirm('Confirmation', 'Are you sure to file new case?', () => {
+      this.model.caseType = 'নতুন';
       if (this.model.caseType === 'নতুন') {
         this.model.status = 'SF Pending';
       } else {

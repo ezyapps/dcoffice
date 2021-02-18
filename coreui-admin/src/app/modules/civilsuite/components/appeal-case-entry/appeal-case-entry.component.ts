@@ -10,6 +10,8 @@ import { CivilCaseService } from '../../services/civilcase.service';
 })
 export class AppealCaseEntryComponent implements OnInit {
   caseDetails: any = {};
+  appealCaseModel: any = {};
+
   constructor(
     private twister: AlertifyService,
     private caseService: CivilCaseService,
@@ -26,5 +28,7 @@ export class AppealCaseEntryComponent implements OnInit {
     }
     );
   }
-
+  createAppealCase() {
+    
+  }
 }
